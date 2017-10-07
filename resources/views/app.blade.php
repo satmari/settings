@@ -43,6 +43,11 @@
 				<ul class="nav navbar-nav">
 					{{-- <li><a href="{{ url('/') }}">Home</a></li> --}}
 					<li><a href="{{ url('/modules') }}">Modules</a></li>
+					<li><a href="{{ url('/styles') }}">Styles</a></li>
+					<li><a href="{{ url('/fabrics') }}">Fabrics</a></li>
+					<li><a href="{{ url('/matabbrevs') }}">Material Abbreviation</a></li>
+					<li><a href="{{ url('/suppliers') }}">Suppliers</a></li>
+					<li><a href="{{ url('/wms') }}">WMS</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
