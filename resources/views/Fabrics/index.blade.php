@@ -43,38 +43,39 @@
                 -->
 				    <thead>
 				        <tr>
-				           {{-- <td>id</td> --}}
+				           {{-- <th>id</th> --}}
 				           
-				           <td>Fabric</td>
-				           <td>Supplier</td>
-				           <td>Material desc</td>
-				           <td style="background-color:#efefff">Mat1</td>
-				           <td style="background-color:#efefff">Mat1 desc</td>
-				           <td style="background-color:#efefff">Mat1 [%]</td>
-				           <td style="background-color:#effff5">Mat2</td>
-				           <td style="background-color:#effff5">Mat2 desc</td>
-				           <td style="background-color:#effff5">Mat2 [%]</td>
-				           <td style="background-color:#fbffef">Mat3</td>
-				           <td style="background-color:#fbffef">Mat3 desc</td>
-				           <td style="background-color:#fbffef">Mat3 [%]</td>
-				           <td style="background-color:#fff6ef">Mat4</td>
-				           <td style="background-color:#fff6ef">Mat4 desc</td>
-				           <td style="background-color:#fff6ef">Mat4 [%]</td>
-				           <td>Tot width</td>
-				           <td>Usable width</td>
-				           <td>Shr.dry O [%]</td>
-				           <td>Shr.dry W [%]</td>
-				           <td>Shr.dry Tol</td>
-				           <td>Shr.steam O [%]</td>
-				           <td>Shr.steam W [%]</td>
-				           <td>Shr.steam Tol</td>
-				           <td>Relax.</td>
-				           <td>To be checked on QC [%]</td>
-				           <td>Date of update QC</td>
-				           <td>Supplier truck</td>
-				           <!-- <td>Labels to gen.</td> -->
+				           <th>Fabric</th>
+				           <th>Supplier</th>
+				           <th>Material desc</th>
+				           <th style="background-color:#efefff">Mat1</th>
+				           <th style="background-color:#efefff">Mat1 desc</th>
+				           <th style="background-color:#efefff">Mat1 [%]</th>
+				           <th style="background-color:#effff5">Mat2</th>
+				           <th style="background-color:#effff5">Mat2 desc</th>
+				           <th style="background-color:#effff5">Mat2 [%]</th>
+				           <th style="background-color:#fbffef">Mat3</th>
+				           <th style="background-color:#fbffef">Mat3 desc</th>
+				           <th style="background-color:#fbffef">Mat3 [%]</th>
+				           <th style="background-color:#fff6ef">Mat4</th>
+				           <th style="background-color:#fff6ef">Mat4 desc</th>
+				           <th style="background-color:#fff6ef">Mat4 [%]</th>
+				           <th>Tot width</th>
+				           <th>Usable width</th>
+				           <th>Shr.dry O [%]</th>
+				           <th>Shr.dry W [%]</th>
+				           <th>Shr.dry Tol</th>
+				           <th>Shr.steam O [%]</th>
+				           <th>Shr.steam W [%]</th>
+				           <th>Shr.steam Tol</th>
+				           <th>Relax.</th>
+				           <th>To be checked on QC [%]</th>
+				           <th>Date of update QC</th>
+				           <th>Supplier truck</th>
+				           <!-- <th>Labels to gen.</th> -->
+				           <th>Daying type</th>
 				           
-				           <td></td>
+				           <th></th>
 				        </tr>
 				    </thead>
 				    <tbody class="searchable">
@@ -112,6 +113,7 @@
 				        	<td>{{ $d->date_of_update_qc_p }} </td>
 				        	<td>{{ $d->supplier_truck }} </td>
 				        	{{-- <td>{{ $d->labels_to_genetate }} </td> --}}
+				        	<td>{{ $d->daying_type }} </td>
 
 				        	<td>
 				        	@if(Auth::check())

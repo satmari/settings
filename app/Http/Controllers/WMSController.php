@@ -187,7 +187,7 @@ class WMSController extends Controller {
 					if ($delete[0]->Table1 == "1") {
 						$status = "updated";
 					} elseif ($delete[0]->Table1 == "0") {
-						$status = "not found";
+						$status = "problem";
 					}
 
 					try {
@@ -256,6 +256,8 @@ class WMSController extends Controller {
 					$status = "updated";
 				} elseif ($delete[0]->Table1 == "0") {
 					$status = "not found";
+				} else {
+					$status = "problem";
 				}
 
 				try {
