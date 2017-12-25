@@ -65,15 +65,16 @@
 				           <th>Shr.dry O [%]</th>
 				           <th>Shr.dry W [%]</th>
 				           <th>Shr.dry Tol</th>
-				           <th>Shr.steam O [%]</th>
-				           <th>Shr.steam W [%]</th>
-				           <th>Shr.steam Tol</th>
+				           <th>Shr.st O [%]</th>
+				           <th>Shr.st W [%]</th>
+				           <th>Shr.st Tol</th>
 				           <th>Relax.</th>
-				           <th>To be checked on QC [%]</th>
-				           <th>Date of update QC</th>
-				           <th>Supplier truck</th>
+				           <th>QC [%]</th>
+				           <th>Date of up QC</th>
+				           <th>Supplier</th>
 				           <!-- <th>Labels to gen.</th> -->
 				           <th>Daying type</th>
+				           <th>Main mat</th>
 				           
 				           <th></th>
 				        </tr>
@@ -114,6 +115,7 @@
 				        	<td>{{ $d->supplier_truck }} </td>
 				        	{{-- <td>{{ $d->labels_to_genetate }} </td> --}}
 				        	<td>{{ $d->daying_type }} </td>
+				        	<td>{{ $d->main_material }} </td>
 
 				        	<td>
 				        	@if(Auth::check())
