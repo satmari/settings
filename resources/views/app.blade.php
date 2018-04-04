@@ -47,7 +47,9 @@
 					<li><a href="{{ url('/fabrics') }}">Fabrics</a></li>
 					<li><a href="{{ url('/matabbrevs') }}">Material Abbreviation</a></li>
 					<li><a href="{{ url('/suppliers') }}">Suppliers</a></li>
-					<li><a href="{{ url('/wms') }}">WMS</a></li>
+					<li><a href="{{ url('/budget') }}">Budget</a></li>
+					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
+					<li><a href="{{ url('/wms') }}">WMS functions</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

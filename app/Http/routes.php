@@ -62,6 +62,25 @@ Route::get('/delete_hu', 'WMSController@delete_hu');
 Route::post('/import_nothu', 'WMSController@postImportNOTHU');
 Route::post('/import_hu', 'WMSController@postImportHU');
 
+// Budget
+Route::get('/budget', 'BudgetController@index');
+Route::get('/budget_import', 'BudgetController@budget_import');
+Route::post('/import_budget', 'ImportController@postImportBudget');
+Route::get('/add_budget', 'BudgetController@add_budget');
+Route::post('/insert_budget', 'BudgetController@insert_budget');
+Route::get('/edit_budget/{id}', 'BudgetController@edit_budget');
+Route::post('/update_budget/{id}', 'BudgetController@update_budget');
+
+// FR_plan
+Route::get('/fr_plan', 'FR_PlanController@index');
+Route::get('/fr_plan_import', 'FR_PlanController@fr_plan_import');
+Route::post('/import_fr_plan', 'ImportController@postImportFR_plan');
+Route::get('/add_fr_plan', 'FR_PlanController@add_fr_plan');
+Route::post('/insert_fr_plan', 'FR_PlanController@insert_fr_plan');
+Route::get('/edit_fr_plan/{id}', 'FR_PlanController@edit_fr_plan');
+Route::post('/update_fr_plan/{id}', 'FR_PlanController@update_fr_plan');
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
