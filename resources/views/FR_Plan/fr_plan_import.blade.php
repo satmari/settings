@@ -16,11 +16,10 @@
 						<div class="alert alert-info">
 						  <strong>Info:</strong> Excel file (.xlsx) should contain one sheet with coloumns:
 						<i style="font-size: 10px">
-						<p>plan_key</p>
 						<p>module</p>
 						<p>order</p>
 						<p>sku</p>
-						<p>plan_date</p>
+						<p>plan_date [Date format]</p>
 						<p>qty</p>
 						</i>
 

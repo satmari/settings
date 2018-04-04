@@ -422,7 +422,7 @@ class ImportController extends Controller {
 	                {
 
 	                	// dd($row);
-	                	$plan_key = $row['plan_key'];
+	                	$plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$row['plan_date'];
 	                	// dd($plan_key);
 
 	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT id,plan_key FROM fr_plan WHERE plan_key = '".$plan_key."'"));
@@ -459,7 +459,8 @@ class ImportController extends Controller {
 
 		                	$table = new FR_plan;
 
-							$table->plan_key = $row['plan_key'];
+							// $table->plan_key = $row['plan_key'];
+							$table->plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$row['plan_date'];
 							$table->module = $row['module'];
 							$table->order = $row['order'];
 							$table->sku = $row['sku'];
@@ -484,7 +485,6 @@ class ImportController extends Controller {
 								return view('FR_plan.error',compact('msg'));
 							}
 	                	}
-
 	                }
 	            });
 			
