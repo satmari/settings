@@ -39,6 +39,11 @@
 						{!! Form::input('material_description','material_description', $data->material_description, ['class' => 'form-control']) !!}
 	                </div>
 	                <div class="panel-body">
+						<p>Fabric type</p>
+						{!! Form::input('fabric_type', 'fabric_type', $data->fabric_type, ['class' => 'form-control']) !!}
+	                </div>
+
+	                <div class="panel-body">
 						<p>Mat1:</p>
 						{{-- {!! Form::input('mat1','mat1', $data->mat1, ['class' => 'form-control']) !!} --}}
 						<select name="mat1" class="form-control">
@@ -152,6 +157,10 @@
 						{!! Form::select('relaxation', array(''=>'','YES'=>'YES','NO'=>'NO'), $data->relaxation, array('class' => 'form-control')); !!} 
 	                </div>
 	                <div class="panel-body">
+						<p>MQ Weight: </p>
+						{!! Form::input('number','mq_weight', $data->mq_weight, ['class' => 'form-control']) !!}
+	                </div>
+	                <div class="panel-body">
 						<p>To be checked on QC [%]: </p>
 						{!! Form::input('decimal','to_be_checked_on_qc_p', number_format($data->to_be_checked_on_qc_p,2)*100, ['class' => 'form-control']) !!}
 	                </div>
@@ -168,6 +177,11 @@
 						{!! Form::input('labels_to_genetate','labels_to_genetate', $data->labels_to_genetate, ['class' => 'form-control']) !!}
 	                </div>
 
+	                <div class="panel-body">
+						<p>Sample: </p>
+						{!! Form::input('sample','sample', $data->sample, ['class' => 'form-control']) !!}
+	                </div>
+	                
 	                <div class="panel-body">
 						{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}
 					</div>
@@ -277,10 +291,18 @@
 						<p>Supplier truck: </p>
 						{!! Form::input('supplier_truck','supplier_truck', $data->supplier_truck, ['class' => 'form-control']) !!}
 	                </div>
+
 	                <div class="panel-body">
 						<p>Labels to genetate: </p>
 						{!! Form::input('labels_to_genetate','labels_to_genetate', $data->labels_to_genetate, ['class' => 'form-control']) !!}
 	                </div>
+
+	                <div class="panel-body">
+						<p>Sample: </p>
+						{!! Form::input('sample','sample', $data->sample, ['class' => 'form-control']) !!}
+	                </div>
+
+
 
 	                <div class="panel-body">
 						{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}

@@ -18,7 +18,7 @@ class FR_PlanController extends Controller {
 	public function index()
 	{
 		//
-		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM fr_plan ORDER BY id desc"));
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM fr_plan ORDER BY created_at desc"));
 		return view('FR_Plan.index', compact('data'));
 	}
 

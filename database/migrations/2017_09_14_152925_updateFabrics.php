@@ -27,6 +27,15 @@ class UpdateFabrics extends Migration {
     		// $table->string('main_material')->nullable();
     		// $table->string('daying_type')->nullable();
 
+    		// $table->string('fabric_type')->nullable();
+    		// $table->integer('mq_weight')->nullable();
+
+    		// $table->date('first_work_day')->nullable();
+
+    		// $table->renameColumn('labels_to_genetate', 'sample'); //NO 
+
+    		// $table->string('sample')->nullable();
+
 		});
 
 		

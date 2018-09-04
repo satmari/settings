@@ -47,32 +47,35 @@
 				           
 				           <th>Fabric</th>
 				           <th>Supplier</th>
-				           <th>Material desc</th>
-				           <th style="background-color:#efefff">Mat1</th>
-				           <th style="background-color:#efefff">Mat1 desc</th>
-				           <th style="background-color:#efefff">Mat1 [%]</th>
-				           <th style="background-color:#effff5">Mat2</th>
-				           <th style="background-color:#effff5">Mat2 desc</th>
-				           <th style="background-color:#effff5">Mat2 [%]</th>
-				           <th style="background-color:#fbffef">Mat3</th>
-				           <th style="background-color:#fbffef">Mat3 desc</th>
-				           <th style="background-color:#fbffef">Mat3 [%]</th>
-				           <th style="background-color:#fff6ef">Mat4</th>
-				           <th style="background-color:#fff6ef">Mat4 desc</th>
-				           <th style="background-color:#fff6ef">Mat4 [%]</th>
-				           <th>Tot width</th>
-				           <th>Usable width</th>
+				           <th>Mat desc</th>
+				           <th>Fab type</th>
+				           <th style="background-color: aliceblue">Mat1</th>
+				           <th style="background-color: aliceblue">Mat1 desc</th>
+				           <th style="background-color: aliceblue">Mat1 [%]</th>
+				           <th>Mat2</th>
+				           <th>Mat2 desc</th>
+				           <th>Mat2 [%]</th>
+				           <th style="background-color: aliceblue">Mat3</th>
+				           <th style="background-color: aliceblue">Mat3 desc</th>
+				           <th style="background-color: aliceblue">Mat3 [%]</th>
+				           <th>Mat4</th>
+				           <th>Mat4 desc</th>
+				           <th>Mat4 [%]</th>
+				           <th style="background-color: aliceblue;">Tot width</th>
+				           <th style="background-color: aliceblue;">Usable width</th>
 				           <th>Shr.dry O [%]</th>
 				           <th>Shr.dry W [%]</th>
 				           <th>Shr.dry Tol</th>
 				           <th>Shr.st O [%]</th>
 				           <th>Shr.st W [%]</th>
 				           <th>Shr.st Tol</th>
-				           <th>Relax.</th>
+				           <th style="background-color: aliceblue;">Relax.</th>
+				           <th>MQ Weight</th>
 				           <th>QC [%]</th>
-				           <th>Date of up QC</th>
+				           <th style="background-color: aliceblue;">Date of up QC</th>
 				           <th>Supplier</th>
-				           <!-- <th>Labels to gen.</th> -->
+				           <th>Sample</th>
+				           {{-- <th>Labels to gen.</th> --}}
 				           <th>Daying type</th>
 				           <th>Main mat</th>
 				           
@@ -89,31 +92,34 @@
 				            <td>{{ $d->fabric }} </td>
 				        	<td>{{ $d->supplier }} </td>
 				        	<td>{{ $d->material_description }} </td>
-				        	<td style="background-color:#efefff">{{ $d->mat1 }} </td>
-				        	<td style="background-color:#efefff">{{ $d->mat1_description }} </td>
-				        	<td style="background-color:#efefff">{{ number_format($d->mat1_p,2)*100 }}</td>
-				        	<td style="background-color:#effff5">{{ $d->mat2 }} </td>
-				        	<td style="background-color:#effff5">{{ $d->mat2_description }} </td>
-				        	<td style="background-color:#effff5">{{ number_format($d->mat2_p,2)*100 }} </td>
-				        	<td style="background-color:#fbffef">{{ $d->mat3 }} </td>
-				        	<td style="background-color:#fbffef">{{ $d->mat3_description }} </td>
-				        	<td style="background-color:#fbffef">{{ number_format($d->mat3_p,2)*100 }} </td>
-				        	<td style="background-color:#fff6ef">{{ $d->mat4 }} </td>
-				        	<td style="background-color:#fff6ef">{{ $d->mat4_description }} </td>
-				        	<td style="background-color:#fff6ef">{{ number_format($d->mat4_p,2)*100 }} </td>
-				        	<td>{{ number_format($d->tot_width,2) }} </td>
-				        	<td>{{ number_format($d->usable_width,2) }} </td>
+				        	<td>{{ $d->fabric_type }} </td>
+				        	<td style="background-color: aliceblue;">{{ $d->mat1 }} </td>
+				        	<td style="background-color: aliceblue">{{ $d->mat1_description }} </td>
+				        	<td style="background-color: aliceblue">{{ number_format($d->mat1_p,2)*100 }}</td>
+				        	<td>{{ $d->mat2 }} </td>
+				        	<td>{{ $d->mat2_description }} </td>
+				        	<td>{{ number_format($d->mat2_p,2)*100 }} </td>
+				        	<td style="background-color: aliceblue">{{ $d->mat3 }} </td>
+				        	<td style="background-color: aliceblue">{{ $d->mat3_description }} </td>
+				        	<td style="background-color: aliceblue">{{ number_format($d->mat3_p,2)*100 }} </td>
+				        	<td>{{ $d->mat4 }} </td>
+				        	<td>{{ $d->mat4_description }} </td>
+				        	<td>{{ number_format($d->mat4_p,2)*100 }} </td>
+				        	<td style="background-color: aliceblue;">{{ number_format($d->tot_width,2) }} </td>
+				        	<td style="background-color: aliceblue;">{{ number_format($d->usable_width,2) }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_o,2)*100 }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_w,2)*100 }} </td>
 				        	<td>{{ $d->shrinkage_dry_tol }} </td>
 				        	<td>{{ number_format($d->shrinkage_steam_o,2)*100 }} </td>
 				        	<td>{{ number_format($d->shrinkage_steam_w,2)*100 }} </td>
 				        	<td>{{ $d->shrinkage_steam_tol }} </td>
-				        	<td>{{ $d->relaxation }} </td>
+				        	<td style="background-color: aliceblue;">{{ $d->relaxation }} </td>
+				        	<td>{{ $d->mq_weight }} </td>
 				        	<td>{{ number_format($d->to_be_checked_on_qc_p,2)*100 }} </td>
-				        	<td>{{ $d->date_of_update_qc_p }} </td>
+				        	<td style="background-color: aliceblue;">{{ $d->date_of_update_qc_p }} </td>
 				        	<td>{{ $d->supplier_truck }} </td>
-				        	{{-- <td>{{ $d->labels_to_genetate }} </td> --}}
+				        	{{--<td>{{ $d->labels_to_genetate }} </td> --}}
+				        	<td>{{ $d->sample }} </td>
 				        	<td>{{ $d->daying_type }} </td>
 				        	<td>{{ $d->main_material }} </td>
 

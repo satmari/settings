@@ -80,6 +80,12 @@ Route::post('/insert_fr_plan', 'FR_PlanController@insert_fr_plan');
 Route::get('/edit_fr_plan/{id}', 'FR_PlanController@edit_fr_plan');
 Route::post('/update_fr_plan/{id}', 'FR_PlanController@update_fr_plan');
 
+//settings
+Route::get('/atila', 'AtilaController@index');
+Route::get('/copy_cc_from_nav', 'AtilaController@copy_cc_from_nav');
+Route::get('/truncate_local_cc', 'AtilaController@truncate_local_cc');
+Route::get('/copy_cc_from_local', 'AtilaController@copy_cc_from_local');
+Route::get('/delete_nav_cc', 'AtilaController@delete_nav_cc');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

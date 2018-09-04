@@ -419,10 +419,16 @@ class ImportController extends Controller {
 	                // var_dump($readerarray);
 
 	                foreach($readerarray as $row)
-	                {
+	                {	
+
+	                	$test = $row['plan_date'];
+	                	$tnew = date("Y-m-d" , ($test - 25569)* 86400);
+
+	                	// dd($tnew);
+
 
 	                	// dd($row);
-	                	$plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$row['plan_date'];
+	                	$plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$tnew;
 	                	// dd($plan_key);
 
 	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT id,plan_key FROM fr_plan WHERE plan_key = '".$plan_key."'"));
@@ -460,7 +466,7 @@ class ImportController extends Controller {
 		                	$table = new FR_plan;
 
 							// $table->plan_key = $row['plan_key'];
-							$table->plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$row['plan_date'];
+							$table->plan_key = $row['module']." ".$row['order']." ".$row['sku']." ".$tnew;
 							$table->module = $row['module'];
 							$table->order = $row['order'];
 							$table->sku = $row['sku'];

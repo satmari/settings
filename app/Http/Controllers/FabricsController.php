@@ -56,6 +56,7 @@ class FabricsController extends Controller {
 			$table->fabric = $input['fabric'];
 			$table->supplier = $input['supplier'];
 			$table->material_description = $input['material_description'];
+			$table->fabric_type = $input['fabric_type'];
 			$table->mat1 = $input['mat1'];
 			$table->mat1_p = $input['mat1_p']/100;
 			$table->mat2 = $input['mat2'];
@@ -73,10 +74,12 @@ class FabricsController extends Controller {
 			$table->shrinkage_steam_w = $input['shrinkage_steam_w']/100;
 			$table->shrinkage_steam_tol = $input['shrinkage_steam_tol'];
 			$table->relaxation = $input['relaxation'];
+			$table->mq_weight = $input['mq_weight'];
 			$table->to_be_checked_on_qc_p = $input['to_be_checked_on_qc_p']/100;
 			$table->date_of_update_qc_p = $input['date_of_update_qc_p'];
 			$table->supplier_truck = $input['supplier_truck'];
 			$table->labels_to_genetate = $input['labels_to_genetate'];
+			$table->sample = $input['sample'];
 
 			$table->save();
 		}
@@ -115,6 +118,7 @@ class FabricsController extends Controller {
 			$table->fabric = $input['fabric'];
 			$table->supplier = $input['supplier'];
 			$table->material_description = $input['material_description'];
+			$table->fabric_type = $input['fabric_type'];
 			$table->mat1 = $input['mat1'];
 			$table->mat1_p = $input['mat1_p']/100;
 			$table->mat2 = $input['mat2'];
@@ -132,10 +136,12 @@ class FabricsController extends Controller {
 			$table->shrinkage_steam_w = $input['shrinkage_steam_w']/100;
 			$table->shrinkage_steam_tol = $input['shrinkage_steam_tol'];
 			$table->relaxation = $input['relaxation'];
+			$table->mq_weight = $input['mq_weight'];
 			$table->to_be_checked_on_qc_p = $input['to_be_checked_on_qc_p']/100;
 			$table->date_of_update_qc_p = $input['date_of_update_qc_p'];
 			$table->supplier_truck = $input['supplier_truck'];
 			$table->labels_to_genetate = $input['labels_to_genetate'];
+			$table->sample = $input['sample'];
 			
 			$table->save();
 		}

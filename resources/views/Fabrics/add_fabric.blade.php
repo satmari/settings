@@ -32,6 +32,10 @@
 					{!! Form::text('material_description', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
 				</div>
 				<div class="panel-body">
+				<p>Fabric Type: </p>
+					{!! Form::text('fabric_type', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
+				</div>
+				<div class="panel-body">
 				<p>Mat1: </p>
 					{{-- {!! Form::text('mat1', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!} --}}
 					<select name="mat1" class="form-control">
@@ -125,6 +129,10 @@
 					{!! Form::select('relaxation', array(''=>'','YES'=>'YES','NO'=>'NO'), '', array('class' => 'form-control')); !!} 
 				</div>
 				<div class="panel-body">
+				<p>MQ Weight: </p>
+					{!! Form::input('number','mq_weight', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
+				</div>
+				<div class="panel-body">
 				<p>To be checked on QC [%]: </p>
 					{!! Form::input('decimal','to_be_checked_on_qc_p', null, ['class' => 'form-control']) !!}
 				</div>
@@ -140,6 +148,12 @@
 				<p>Labels to genetate: </p>
 					{!! Form::text('labels_to_genetate', null, ['class' => 'form-control']) !!}
 				</div>
+				
+				<div class="panel-body">
+				<p>Sample: </p>
+					{!! Form::text('sample', null, ['class' => 'form-control']) !!}
+				</div>
+				
 
 
 

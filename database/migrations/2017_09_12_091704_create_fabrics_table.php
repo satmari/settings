@@ -39,7 +39,7 @@ class CreateFabricsTable extends Migration {
 			$table->double('to_be_checked_on_qc_p')->nullable();
 			$table->date('date_of_update_qc_p')->nullable();
 			$table->string('supplier_truck')->nullable();
-			$table->string('labels_to_genetate')->nullable();
+			$table->string('labels_to_genetate')->nullable();	
 
 			// $table->string('mat1_description')->nullable();
     		// $table->string('mat2_description')->nullable();
@@ -49,6 +49,11 @@ class CreateFabricsTable extends Migration {
 			// $table->string('composition')->nullable();
     		// $table->string('main_material')->nullable();
     		// $table->string('daying_type')->nullable();
+
+    		// $table->string('fabric_type')->nullable();
+    		// $table->string('mq_weight')->nullable();
+    		
+			// $table->string('sample')->nullable();
     		
 			$table->timestamps();
 		});
