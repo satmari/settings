@@ -148,5 +148,53 @@ class AtilaController extends Controller {
 		// return view('atila.index');
 
 	}
+
+
+	public function bbstatus()
+	{
+
+		$data = DB::connection('sqlsrv2')->select(DB::raw("SELECT 
+			  po.INTKEY as intkey
+		      ,po.[POnum] as pon
+		      ,sku.Variant as variant
+		      ,po.[BoxComplete] as bbstatus
+		      ,po.[POClosed] as poclose
+		      
+		  FROM [BdkCLZG].[dbo].[CNF_PO] as po
+		  JOIN [BdkCLZG].[dbo].[CNF_SKU] as sku on sku.INTKEY = po.SKUKEY
+		  
+		  WHERE po.CREATEDATE > '06-01-2018' ORDER BY po.[POnum] desc "));
+
+		return view('atila.bbstatus', compact('data'));
+
+	}
+
+	public function edit_po_bbstatus($pon)
+	{
+		// dd($pon);
+		return view('atila.bbstatus_change', compact('pon'));
+	}
+
+	public function update_bbstatus(Request $request)
+	{
+
+		$this->validate($request, ['new_status' => 'required', 'pon' => 'required' ]);
+		$input = $request->all();
+
+		$new_status = $input['new_status'];
+		$pon = $input['pon'];
+
+		// dd($new_status);
+
+		$data = DB::connection('sqlsrv2')->select(DB::raw("SET NOCOUNT ON;
+		UPDATE [BdkCLZG].[dbo].[CNF_PO] 
+		SET [BoxComplete] = ".$new_status."
+		WHERE [POnum] = '".$pon."';
+		SELECT TOP 1 [POnum] FROM [BdkCLZG].[dbo].[CNF_PO] WHERE [POnum] = '".$pon."';"));
+
+		
+		return redirect('/bbstatus');
+	}
+	
 	
 }

@@ -42,7 +42,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					{{-- <li><a href="{{ url('/') }}">Home</a></li> --}}
-					<li><a href="{{ url('/modules') }}">Modules</a></li>
+					<li><a href="{{ url('/modules') }}">Lines</a></li>
 					<li><a href="{{ url('/styles') }}">Styles</a></li>
 					<li><a href="{{ url('/fabrics') }}">Fabrics</a></li>
 					<li><a href="{{ url('/matabbrevs') }}">Material Abbreviation</a></li>
@@ -50,6 +50,7 @@
 					<li><a href="{{ url('/budget') }}">Budget</a></li>
 					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
 					<li><a href="{{ url('/wms') }}">WMS functions</a></li>
+					<li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

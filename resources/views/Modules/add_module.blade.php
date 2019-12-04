@@ -5,13 +5,13 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-5 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><b>Add module</b></div>
+				<div class="panel-heading"><b>Add line</b></div>
 				
 				{!! Form::open(['url' => 'insert_module']) !!}
 				<input type="hidden" name="_token" id="_token" value="<?php echo csrf_token(); ?>">
 
 				<div class="panel-body">
-				<p>Module name: </p>
+				<p>Line name: </p>
 					{!! Form::text('module', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
 				</div>
 

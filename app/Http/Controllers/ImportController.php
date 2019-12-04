@@ -498,4 +498,91 @@ class ImportController extends Controller {
 		return redirect('/fr_plan');
 	}
 
+	public function poststock_take() {
+		// dd("Test");
+	  	return view('atila.import');
+	} 
+
+	public function postImportstock_take () {
+
+	    $getSheetName = Excel::load(Request::file('file'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('users')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file'))->chunk(50, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$hu = $row['hu'];
+	                	// dd($hu);
+
+	                	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
+							SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
+							WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
+	                	"));
+	                	
+	                }
+	            });
+			
+	    }
+		return redirect('/');
+	}
+
+	public function postImportstock_takenothu () {
+
+	    $getSheetName = Excel::load(Request::file('file'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('users')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file'))->chunk(50, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$hu = $row['hu'];
+	                	// dd($hu);
+
+	                	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
+							SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
+							WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
+	                	"));
+	                	
+	                }
+	            });
+			
+	    }
+		return redirect('/');
+	}
+
 }

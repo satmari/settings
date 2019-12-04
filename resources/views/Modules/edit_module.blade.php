@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-5 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><b>Edit module</b></div>
+				<div class="panel-heading"><b>Edit line</b></div>
 				
 				
 				@if(Auth::check() && Auth::user()->name == "admin")
@@ -14,7 +14,7 @@
 					<input type="hidden" id="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="panel-body">
-						<p>Module:</p>
+						<p>Line:</p>
 	               		{!! Form::input('module', 'module', $data->module, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
 					</div>
 

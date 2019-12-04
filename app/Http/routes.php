@@ -87,6 +87,15 @@ Route::get('/truncate_local_cc', 'AtilaController@truncate_local_cc');
 Route::get('/copy_cc_from_local', 'AtilaController@copy_cc_from_local');
 Route::get('/delete_nav_cc', 'AtilaController@delete_nav_cc');
 
+// sanja
+Route::get('/bbstatus', 'AtilaController@bbstatus');
+Route::get('/edit_po_bbstatus/{pon}', 'AtilaController@edit_po_bbstatus');
+Route::post('/update_bbstatus', 'AtilaController@update_bbstatus');
+
+
+Route::get('/import', 'ImportController@poststock_take');
+Route::post('/postImportstock_take', 'ImportController@postImportstock_take');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
