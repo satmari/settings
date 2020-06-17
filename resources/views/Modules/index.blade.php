@@ -46,6 +46,7 @@
 				           
 				           <th>Sort Order</th>
 				           <th>Line/Module</th>
+				           <th>Team/Shift</th>
 				           <th>Row</th>
 				           <th>Column Group</th>
 				           <th>Sector</th>
@@ -65,6 +66,7 @@
 				        	
 				        	<td>{{ $d->sort_order }} </td>
 				        	<td>{{ $d->module }} </td>
+				        	<td>{{ $d->team }} </td>
 				        	<td>{{ $d->row }} </td>
 				        	<td>{{ $d->column_group }} </td>
 				        	<td>{{ $d->sector }} </td>

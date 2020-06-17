@@ -51,6 +51,7 @@
 					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
 					<li><a href="{{ url('/wms') }}">WMS functions</a></li>
 					<li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li>
+					<li><a href="{{ url('/machines') }}">Machines</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

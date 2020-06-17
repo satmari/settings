@@ -23,6 +23,8 @@ class CreateModulesTable extends Migration {
 			$table->string('sector');
 			$table->string('workstudy');
 			$table->string('line_leader');
+			$table->string('team')->nullable(); // added later
+			$table->string('linekey')->nullable(); // added later
 
 			$table->timestamps();
 		});

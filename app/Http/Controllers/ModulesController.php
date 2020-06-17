@@ -28,7 +28,7 @@ class ModulesController extends Controller {
 	public function insert_module (Request $request) {
 		
 		//
-		$this->validate($request, ['module' => 'required' ,'sort_order' => 'required','row' => 'required','column_group' => 'required','sector' => 'required','workstudy' => 'required', 'line_leader' => 'required']);
+		$this->validate($request, ['module' => 'required' ,'sort_order' => 'required','row' => 'required','column_group' => 'required','sector' => 'required','workstudy' => 'required', 'line_leader' => 'required', 'team' => 'required']);
 		// $this->validate($request, ['module' => 'required']);
 		$input = $request->all();
 
@@ -44,6 +44,8 @@ class ModulesController extends Controller {
 			$table->sector = $input['sector'];
 			$table->workstudy = $input['workstudy'];
 			$table->line_leader = $input['line_leader'];
+			$table->team = $input['team'];
+			$table->linekey = $input['module']."_".$input['team'];
 			
 			$table->save();
 		}
@@ -65,7 +67,7 @@ class ModulesController extends Controller {
 	public function update_module ($id, Request $request) {
 
 		//
-		$this->validate($request, ['module' => 'required' ,'sort_order' => 'required','row' => 'required','column_group' => 'required','sector' => 'required','workstudy' => 'required', 'line_leader' => 'required']);
+		$this->validate($request, ['module' => 'required' ,'sort_order' => 'required','row' => 'required','column_group' => 'required','sector' => 'required','workstudy' => 'required', 'line_leader' => 'required', 'team' => 'required']);
 		// $this->validate($request, ['module' => 'required']);
 		$input = $request->all();
 
@@ -80,6 +82,8 @@ class ModulesController extends Controller {
 			$table->sector = $input['sector'];
 			$table->workstudy = $input['workstudy'];
 			$table->line_leader = $input['line_leader'];
+			$table->team = $input['team'];
+			$table->linekey = $input['module']."_".$input['team'];
 			
 			$table->save();
 		}

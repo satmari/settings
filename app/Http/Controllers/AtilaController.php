@@ -185,13 +185,13 @@ class AtilaController extends Controller {
 		$pon = $input['pon'];
 
 		// dd($new_status);
-
+		
 		$data = DB::connection('sqlsrv2')->select(DB::raw("SET NOCOUNT ON;
 		UPDATE [BdkCLZG].[dbo].[CNF_PO] 
 		SET [BoxComplete] = ".$new_status."
 		WHERE [POnum] = '".$pon."';
 		SELECT TOP 1 [POnum] FROM [BdkCLZG].[dbo].[CNF_PO] WHERE [POnum] = '".$pon."';"));
-
+		
 		
 		return redirect('/bbstatus');
 	}

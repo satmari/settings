@@ -14,6 +14,10 @@
 				<p>Line name: </p>
 					{!! Form::text('module', null, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
 				</div>
+				<div class="panel-body">
+				<p>Team / Shift: </p>
+					{!! Form::select('team', array('A'=>'A','B'=>'B'), '', array('class' => 'form-control')); !!} 
+				</div>
 
 				<div class="panel-body">
 				<p>Sort order: </p>
@@ -57,7 +61,7 @@
 
 				<br>
 				<div class="">
-						<a href="{{url('/')}}" class="btn btn-default btn-lg center-block">Back to main menu</a>
+						<a href="{{url('/module')}}" class="btn btn-default btn-lg center-block">Back to main menu</a>
 				</div>
 			</div>
 		</div>

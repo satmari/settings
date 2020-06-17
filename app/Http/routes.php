@@ -92,6 +92,22 @@ Route::get('/bbstatus', 'AtilaController@bbstatus');
 Route::get('/edit_po_bbstatus/{pon}', 'AtilaController@edit_po_bbstatus');
 Route::post('/update_bbstatus', 'AtilaController@update_bbstatus');
 
+// Machines
+Route::get('/machines', 'machinesController@index');
+
+Route::get('/transferg_k_get', 'machinesController@transferg_k_get');
+Route::post('/transferg_k', 'machinesController@transferg_k');
+Route::post('/transferg_k_post', 'machinesController@transferg_k_post');
+Route::get('/transferg_k_delete/{os}', 'machinesController@transferg_k_delete');
+
+
+Route::get('/transferk_g_get', 'machinesController@transferk_g_get');
+Route::post('/transferk_g', 'machinesController@transferk_g');
+Route::post('/transferk_g_post', 'machinesController@transferk_g_post');
+Route::get('/transferk_g_delete/{os}', 'machinesController@transferk_g_delete');
+
+
+Route::get('/machines_table', 'machinesController@machines_table');
 
 Route::get('/import', 'ImportController@poststock_take');
 Route::post('/postImportstock_take', 'ImportController@postImportstock_take');

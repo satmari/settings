@@ -19,6 +19,11 @@
 					</div>
 
 					<div class="panel-body">
+						<p>Team / Shift:</p>
+	               		{!! Form::select('team', array('A'=>'A','B'=>'B'), $data->team, array('class' => 'form-control')); !!} 
+					</div>
+
+					<div class="panel-body">
 						<p>Sort order:</p>
 						{!! Form::input('number','sort_order', $data->sort_order, ['class' => 'form-control']) !!}
 	                </div>
@@ -65,14 +70,35 @@
 					<input type="hidden" name="_token" id="_token" value="<?php echo csrf_token(); ?>">
 
 					{!! Form::hidden('module', $data->module, ['class' => 'form-control']) !!}
-					{!! Form::hidden('sort_order', $data->sort_order, ['class' => 'form-control']) !!}
-					{!! Form::hidden('row', $data->row, ['class' => 'form-control']) !!}
-					{!! Form::hidden('column_group', $data->column_group, ['class' => 'form-control']) !!}
-					{!! Form::hidden('sector', $data->sector, ['class' => 'form-control']) !!}
+					
+					<div class="panel-body">
+						<p>Team / Shift:</p>
+	               		{!! Form::select('team', array('A'=>'A','B'=>'B'), $data->team, array('class' => 'form-control')); !!} 
+					</div>
+
+					<div class="panel-body">
+						<p>Sort order:</p>
+						{!! Form::input('number','sort_order', $data->sort_order, ['class' => 'form-control']) !!}
+	                </div>
+
+					<div class="panel-body">
+						<p>Row:</p>
+	               		{!! Form::input('row', 'row', $data->row, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+						<p>Column group:</p>
+	               		{!! Form::input('column_group', 'column_group', $data->column_group, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+						<p>Sector:</p>
+	               		{!! Form::input('sector', 'sector', $data->sector, ['class' => 'form-control']) !!}
+					</div>
 
 					<div class="panel-body">
 						<p>Workstudy name:</p>
-	               		{!! Form::input('workstudy', 'workstudy', $data->workstudy, ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
+	               		{!! Form::input('workstudy', 'workstudy', $data->workstudy, ['class' => 'form-control']) !!}
 					</div>
 
 					<div class="panel-body">
@@ -95,7 +121,7 @@
 
 				<br>
 				<div class="">
-						<a href="{{url('/')}}" class="btn btn-default btn-lg center-block">Back to main menu</a>
+						<a href="{{url('/module')}}" class="btn btn-default btn-lg center-block">Back to main menu</a>
 				</div>
 			</div>
 		</div>
