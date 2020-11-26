@@ -49,14 +49,16 @@
 				           <th>Cutting SMV</th>
 				           <th>Cluster</th>
 				           <th>Order Type</th>
+				           <th>Image file</th>
+				           <th></th>
 				           
+				           <th></th>
 				           <th></th>
 				        </tr>
 				    </thead>
 				    <tbody class="searchable">
 				    
 				    @foreach ($data as $d)
-				    	
 				        <tr>
 				        	{{-- <td>{{ $d->id }}</td> --}}
 				        	
@@ -65,10 +67,18 @@
 				        	<td>{{ number_format($d->cutting_smv, 3) }} </td>
 				        	<td>{{ $d->cluster }} </td>
 				        	<td>{{ $d->order_type}} </td>
-				        	
+				        	<td>{{ $d->image}} </td>
+				        	<td> <a href="{{ url('/public/storage/StyleImages/'.$d->image ) }}" target="_blank" onClick="javascript:window.open('{{ url('/public/storage/StyleImages/'.$d->image ) }}','Windows','width=650,height=350,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,directories=no,status=no');return false" ) >show image</a> </td>
+
 				        	<td>
 				        	@if(Auth::check())
 				        	  	<a href="{{ url('edit_style/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
+				        	@endif
+				        	</td>
+
+				        	<td>
+				        	@if(Auth::check())
+				        		<a href="{{ url('upload_image/'.$d->id) }}" class="btn btn-info btn-xs center-block">Upload image</a>
 				        	@endif
 				        	</td>
 						</tr>

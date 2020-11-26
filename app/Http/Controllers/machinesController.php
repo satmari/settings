@@ -360,7 +360,7 @@ class machinesController extends Controller {
 	public function machines_table() {
 
 		
-		$os = DB::connection('sqlsrv2')->select(DB::raw(" SELECT mp.MachNum
+		$os = DB::connection('sqlsrv2')->select(DB::raw("SELECT mp.MachNum
 		
 		,mt.Brand
 		,mt.MaTyp

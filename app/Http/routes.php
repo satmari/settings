@@ -28,6 +28,18 @@ Route::get('/add_style', 'StylesController@add_style');
 Route::post('/insert_style', 'StylesController@insert_style');
 Route::get('/edit_style/{id}', 'StylesController@edit_style');
 Route::post('/update_style/{id}', 'StylesController@update_style');
+Route::get('/upload_image/{id}', 'StylesController@upload_image');
+Route::post('/upload_style_image/', 'ImportImageController@upload_style_image');
+
+// Styles extra
+Route::get('/styles_extra', 'Styles_extraController@index');
+Route::get('/add_style_extra', 'Styles_extraController@add_style');
+Route::post('/insert_style_extra', 'Styles_extraController@insert_style');
+Route::get('/edit_style_extra/{id}', 'Styles_extraController@edit_style');
+Route::post('/update_style_extra/{id}', 'Styles_extraController@update_style');
+Route::get('/upload_image_extra/{id}', 'Styles_extraController@upload_image');
+Route::post('/upload_style_extra_image/', 'ImportImageController@upload_style_extra_image');
+
 
 // Fabrics
 Route::get('/fabrics', 'FabricsController@index');
@@ -91,28 +103,160 @@ Route::get('/delete_nav_cc', 'AtilaController@delete_nav_cc');
 Route::get('/bbstatus', 'AtilaController@bbstatus');
 Route::get('/edit_po_bbstatus/{pon}', 'AtilaController@edit_po_bbstatus');
 Route::post('/update_bbstatus', 'AtilaController@update_bbstatus');
+Route::get('/it_dezurstva', 'AtilaController@it_dezurstva');
 
 // Machines
 Route::get('/machines', 'machinesController@index');
-
 Route::get('/transferg_k_get', 'machinesController@transferg_k_get');
 Route::post('/transferg_k', 'machinesController@transferg_k');
 Route::post('/transferg_k_post', 'machinesController@transferg_k_post');
 Route::get('/transferg_k_delete/{os}', 'machinesController@transferg_k_delete');
-
-
 Route::get('/transferk_g_get', 'machinesController@transferk_g_get');
 Route::post('/transferk_g', 'machinesController@transferk_g');
 Route::post('/transferk_g_post', 'machinesController@transferk_g_post');
 Route::get('/transferk_g_delete/{os}', 'machinesController@transferk_g_delete');
-
-
 Route::get('/machines_table', 'machinesController@machines_table');
 
+// Box
+Route::get('/box', 'boxController@index');
+Route::get('/add_box', 'boxController@add_box');
+Route::post('insert_box', 'boxController@insert_box');
+Route::get('/edit_box/{id}', 'boxController@edit_box');
+Route::post('/update_box/{id}', 'boxController@update_box');
+Route::get('/box_table', 'boxController@table');
+Route::post('box_search_by_style', 'boxController@box_search_by_style');
+
+// Import
 Route::get('/import', 'ImportController@poststock_take');
 Route::post('/postImportstock_take', 'ImportController@postImportstock_take');
+
+// SAP Inventory
+Route::get('/sap_inventory', 'sap_inventoryController@index_main');
+Route::get('/inventory', 'sap_inventoryController@index');
+Route::get('/inventory_scan', 'sap_inventoryController@index_scan');
+Route::get('/import_inventory', 'sap_inventoryController@import');
+// Route::post('import_post', 'sap_inventoryController@import_post');
+Route::post('import_post', 'ImportController@import_post');
+
+Route::get('/sap_inventory_scan', 'sap_inventoryController@index_main_scan');
+
+Route::post('insert_temp_su', 'sap_inventoryController@insert_temp_su');
+Route::post('update_su/{id}', 'sap_inventoryController@update_su');
+Route::get('/inventory_stop', 'sap_inventoryController@inventory_stop');
+Route::get('/inventory_cancel', 'sap_inventoryController@inventory_cancel');
+
+// SAP Inventory WH
+Route::get('/inventory_wh', 'sap_inventoryController_wh@index');
+Route::get('/inventory_scan_wh', 'sap_inventoryController_wh@index_scan');
+Route::get('/import_inventory_wh', 'sap_inventoryController_wh@import');
+// Route::post('import_post_wh', 'sap_inventoryController_wh@import_post');
+Route::post('import_post_wh', 'ImportController@import_post_wh');
+
+Route::post('insert_temp_su_wh', 'sap_inventoryController_wh@insert_temp_su');
+Route::post('update_su_wh/{id}', 'sap_inventoryController_wh@update_su');
+Route::get('/inventory_stop_wh', 'sap_inventoryController_wh@inventory_stop');
+Route::get('/inventory_cancel_wh', 'sap_inventoryController_wh@inventory_cancel');
+
+// SAP Inventory CUT
+Route::get('/inventory_cut', 'sap_inventoryController_cut@index');
+Route::get('/inventory_scan_cut', 'sap_inventoryController_cut@index_scan');
+Route::get('/import_inventory_cut', 'sap_inventoryController_cut@import');
+// Route::post('import_post_cut', 'sap_inventoryController_cut@import_post');
+Route::post('import_post_cut', 'ImportController@import_post_cut');
+
+Route::post('insert_temp_su_cut', 'sap_inventoryController_cut@insert_temp_su');
+Route::post('update_su_cut/{id}', 'sap_inventoryController_cut@update_su');
+Route::get('/inventory_stop_cut', 'sap_inventoryController_cut@inventory_stop');
+Route::get('/inventory_cancel_cut', 'sap_inventoryController_cut@inventory_cancel');
+
+// SAP Inventory P
+Route::get('/inventory_p', 'sap_inventoryController_p@index');
+Route::get('/inventory_scan_p', 'sap_inventoryController_p@index_scan');
+Route::get('/import_inventory_p', 'sap_inventoryController_p@import');
+// Route::post('import_post_p', 'sap_inventoryController_p@import_post');
+Route::post('import_post_p', 'ImportController@import_post_p');
+
+Route::post('insert_temp_su_p', 'sap_inventoryController_p@insert_temp_su');
+Route::post('update_su_p/{id}', 'sap_inventoryController_p@update_su');
+Route::get('/inventory_stop_p', 'sap_inventoryController_p@inventory_stop');
+Route::get('/inventory_cancel_p/', 'sap_inventoryController_p@inventory_cancel');
+
+// SAP Inventory BB
+Route::get('/inventory_bb', 'sap_inventoryController_bb@index');
+Route::get('/inventory_scan_bb', 'sap_inventoryController_bb@index_scan');
+Route::get('/import_inventory_bb', 'sap_inventoryController_bb@import');
+// Route::post('import_post_bb', 'sap_inventoryController_bb@import_post');
+Route::post('import_post_bb', 'ImportController@import_post_bb');
+
+Route::post('insert_temp_su_bb', 'sap_inventoryController_bb@insert_temp_su');
+Route::post('update_su_bb/{id}', 'sap_inventoryController_bb@update_su');
+Route::get('/inventory_stop_bb', 'sap_inventoryController_bb@inventory_stop');
+Route::get('/inventory_cancel_bb', 'sap_inventoryController_bb@inventory_cancel');
+
+// SAP Inventory BB 2 
+Route::get('/inventory_bb_2', 'sap_inventoryController_bb_2@index');
+Route::get('/inventory_scan_bb_2', 'sap_inventoryController_bb_2@index_scan');
+Route::get('/import_inventory_bb_2', 'sap_inventoryController_bb_2@import');
+// Route::post('import_post_bb_2', 'sap_inventoryController_bb_2@import_post');
+Route::post('import_post_bb_2', 'ImportController@import_post_bb_2');
+
+Route::post('insert_temp_su_bb_2', 'sap_inventoryController_bb_2@insert_temp_su');
+Route::post('update_su_bb_2/{id}', 'sap_inventoryController_bb_2@update_su');
+Route::get('/inventory_stop_bb_2', 'sap_inventoryController_bb_2@inventory_stop');
+Route::get('/inventory_cancel_bb_2', 'sap_inventoryController_bb_2@inventory_cancel');
+
+// s_quality
+Route::get('second_q', 'second_q@index');
+Route::post('import_post_second_q', 'second_q@import_post_second_q');
+
+// SAP Materials
+Route::get('sap_materials', 'sap_materialsController@index');
+Route::get('sap_spare', 'sap_materialsController@sap_spare');
+Route::get('sap_cons', 'sap_materialsController@sap_cons');
+Route::get('sap_spare_all', 'sap_materialsController@sap_spare_all');
+Route::get('sap_cons_all', 'sap_materialsController@sap_cons_all');
+Route::get('sap_import', 'sap_materialsController@sap_import');
+Route::post('sap_import_post_mm', 'importController@sap_import_post_mm');
+Route::post('sap_import_post_s', 'importController@sap_import_post_s');
+Route::post('sap_import_post_u', 'importController@sap_import_post_u');
+
+Route::get('sap_mech', 'sap_materialsController@sap_mech');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::any('getstdata', function() {
+	$term = Input::get('term');
+
+	$data = DB::connection('sqlsrv3')->select(DB::raw("SELECT distinct(REPLACE(substring(fg,0,9),' ','' )) as st FROM [trebovanje].[dbo].[sap_coois] WHERE fg like '".$term."%'"));
+	// var_dump($data);
+	foreach ($data as $v) {
+		$retun_array[] = array('value' => $v->st);
+	}
+return Response::json($retun_array);
+});
+
+Route::any('getcodata', function() {
+	$term = Input::get('term');
+
+	$data = DB::connection('sqlsrv3')->select(DB::raw("SELECT distinct(REPLACE(substring(fg,10,4),' ','' )) as co FROM [trebovanje].[dbo].[sap_coois] WHERE substring(fg,10,4) like '%".$term."%'"));
+	// var_dump($data);
+	foreach ($data as $v) {
+		$retun_array[] = array('value' => $v->co);
+	}
+return Response::json($retun_array);
+});
+
+Route::any('getsidata', function() {
+	$term = Input::get('term');
+
+	$data = DB::connection('sqlsrv3')->select(DB::raw("SELECT distinct(REPLACE(substring(fg,14,5),' ','' )) as si FROM [trebovanje].[dbo].[sap_coois] WHERE substring(fg,14,5) like '%".$term."%'"));
+	// var_dump($data);
+	foreach ($data as $v) {
+		$retun_array[] = array('value' => $v->si);
+	}
+return Response::json($retun_array);
+});
+

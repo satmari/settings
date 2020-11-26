@@ -195,6 +195,11 @@ class AtilaController extends Controller {
 		
 		return redirect('/bbstatus');
 	}
+
+	public function it_dezurstva()
+	{
+		return view('atila.it');
+	}
 	
 	
 }

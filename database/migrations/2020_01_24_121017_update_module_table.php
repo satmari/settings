@@ -13,16 +13,31 @@ class UpdateModuleTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::table('modules', function(Blueprint $table)
+		Schema::table('inventories', function(Blueprint $table)
 		{
-			
-    		// $table->string('team')->nullable();
-    		// $table->string('linekey')->nullable();
-    		// $table->renameColumn('modulekey', 'line');
-    		// $table->dropColumn('modulekey');
-    		
-
+    		// $table->string('ses')->nullable();
 		});
+
+		Schema::table('inventory_whs', function(Blueprint $table)
+		{
+    		// $table->string('ses')->nullable();
+		});
+
+		Schema::table('inventory_cuts', function(Blueprint $table)
+		{
+			// $table->string('ses')->nullable();
+		});
+
+		Schema::table('inventory_ps', function(Blueprint $table)
+		{
+			// $table->string('ses')->nullable();
+		});
+
+		Schema::table('inventory_bbs', function(Blueprint $table)
+		{
+			// $table->string('ses')->nullable();
+		});
+
 	}
 
 	/**

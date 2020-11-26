@@ -17,6 +17,7 @@
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel='stylesheet' type='text/css'>
 	<link href="{{ asset('/css/custom.css') }}" rel='stylesheet' type='text/css'>
 	<link href="{{ asset('/css/app.css') }}" rel='stylesheet' type='text/css'>
+	<link href="{{ asset('/css/choosen.css') }}" rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +37,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url('/') }}">Settings App</a>
+				<a class="navbar-brand" >Settings App</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -44,14 +45,18 @@
 					{{-- <li><a href="{{ url('/') }}">Home</a></li> --}}
 					<li><a href="{{ url('/modules') }}">Lines</a></li>
 					<li><a href="{{ url('/styles') }}">Styles</a></li>
+					<li><a href="{{ url('/styles_extra') }}">Styles Extra</a></li>
 					<li><a href="{{ url('/fabrics') }}">Fabrics</a></li>
 					<li><a href="{{ url('/matabbrevs') }}">Material Abbreviation</a></li>
 					<li><a href="{{ url('/suppliers') }}">Suppliers</a></li>
 					<li><a href="{{ url('/budget') }}">Budget</a></li>
 					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
-					<li><a href="{{ url('/wms') }}">WMS functions</a></li>
+					{{--<li><a href="{{ url('/wms') }}">WMS functions</a></li>--}}
 					<li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li>
 					<li><a href="{{ url('/machines') }}">Machines</a></li>
+					<li><a href="{{ url('/box') }}">FG box settings</a></li>
+					<li><a href="{{ url('/sap_inventory') }}">SAP Inventory</a></li>
+					<li><a href="{{ url('/sap_materials') }}">SAP Materials (Spare and Cons)</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -86,6 +91,7 @@
 	<!--<script src="{{ asset('/js/jspdf.min.js') }}" type="text/javascript" ></script>-->
 	<script src="{{ asset('/js/FileSaver.min.js') }}" type="text/javascript" ></script>
 	<script src="{{ asset('/js/bootstrap-table-export.js') }}" type="text/javascript" ></script>
+	<script src="{{ asset('/js/choosen.js') }}" type="text/javascript" ></script>
 
 	<script type="text/javascript">
 	   $.ajaxSetup({
@@ -97,7 +103,27 @@
 
 <script type="text/javascript">
 $(function() {
-    	
+   	
+   	$('#st').autocomplete({
+		minLength: 1,
+		autoFocus: true,
+		source: '{{ URL('getstdata')}}'
+	});
+
+	$('#co').autocomplete({
+		minLength: 1,
+		autoFocus: true,
+		source: '{{ URL('getcodata')}}'
+	});
+
+
+	$('#si').autocomplete({
+		minLength: 1,
+		autoFocus: true,
+		source: '{{ URL('getsidata')}}'
+	});
+
+
 	// $('#po').autocomplete({
 	// 	minLength: 3,
 	// 	autoFocus: true,
@@ -133,6 +159,8 @@ $(function() {
 	$('#sort').bootstrapTable({
     	
 	});
+
+	$(".chosen").chosen();
 
 	//$('.table tr').each(function(){
   		

@@ -21,6 +21,8 @@ class CreateStylesTable extends Migration {
 			$table->double('cutting_smv', 2, 3)->nullable();
 			$table->string('cluster')->nullable();
 			$table->string('order_type')->nullable();
+
+			$table->string('image')->nullable(); //added
 			
 			$table->timestamps();
 		});

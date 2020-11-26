@@ -31,3 +31,14 @@ body {
 .crveno {
     background-color: #FF9F9F;
 }
+.navbar {
+	margin-bottom: 0px !important;
+}
+/* Borders (if you need them) */
+.tableFixHead          { overflow-y: auto; height: 100px; }
+.tableFixHead thead th { position: sticky; top: 0; !important}
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }

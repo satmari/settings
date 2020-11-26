@@ -85,4 +85,11 @@ class StylesController extends Controller {
 		return Redirect::to('/styles');
 	}
 
+	public function upload_image($id, Request $request){
+
+		return view('Styles.upload_image', compact('id'));	
+	}
+
+
+
 }

@@ -15,7 +15,7 @@ class UpdateFabrics extends Migration {
 		//
 		//
 		
-		Schema::table('fabrics', function($table)
+		Schema::table('styles', function($table)
 		{
 			
     		// $table->string('mat1_description')->nullable();
@@ -35,6 +35,8 @@ class UpdateFabrics extends Migration {
     		// $table->renameColumn('labels_to_genetate', 'sample'); //NO 
 
     		// $table->string('sample')->nullable();
+
+    		// $table->string('image')->nullable(); //added
 
 		});
 
