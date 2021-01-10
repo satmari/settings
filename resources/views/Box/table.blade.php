@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading">Box configuretion table</div>
+				<div class="panel-heading">Box configuration table</div>
 
 				@if((Auth::check() && Auth::user()->name == "admin") OR ( Auth::check() && Auth::user()->name == "magacin"))
 					<a href="{{ url('add_box') }}" class="btn btn-info btn-xs ">Add new box configuration</a>
@@ -46,20 +46,31 @@
 				           {{-- <th>id</th> --}}
 				           
 				           {{--<th>SAP code</th>--}}
-				           <th>Style</th>
-				           <th>Color</th>
-				           <th>Size</th>
+				           <th><span style="color:green">Style</span></th>
+				           <th><span style="color:green">Color</span></th>
+				           <th><span style="color:green">Size</span></th>
 				           <th>Brand</th>
 
-				           <th>Pcs per polybag</th>
+				           <th><span style="color:green">Pcs per polybag</span></th>
+				           <th><span style="color:green">Pcs per box</span></th>
+
 				           <th>Weight of polybag</th>
 				           <th>Weight of 1 pcs</th>
 
-				           <th>Pcs per box</th>
 				           <th>Status</th>
 
 				           <th>Created at</th>
 				           <th>Updated at</th>
+
+				           <th><span style="color:red">Style(2Q)</span></th>
+				           <th><span style="color:red">Color(2Q)</span></th>
+				           <th><span style="color:red">Size(2Q)</span></th>
+				           <th><span style="color:red">Ean(2Q)</span></th>
+
+				           <th><span style="color:red">Pcs per polybag(2Q)</span></th>
+				           <th><span style="color:red">Pcs per box(2Q)</span></th>
+
+
 
 				           <th>Edit</th>
 
@@ -73,24 +84,48 @@
 				        	{{-- <td>{{ $d->id }}</td> --}}
 
 				        	{{--<td>{{ $d->material }}</td>--}}
-							<td>{{ $d->style }}</td>
-				        	<td>{{ $d->color }}</td>
-				        	<td>{{ $d->size }}</td>
+							<td><span style="color:green">{{ $d->style }}</span></td>
+				        	<td><span style="color:green">{{ $d->color }}</span></td>
+				        	<td><span style="color:green">{{ $d->size }}</span></td>
 				        	<td>{{ $d->brand }} </td>
 
-				        	<td>{{ $d->pcs_per_polybag }}</td>
+				        	<td><span style="color:green">{{ $d->pcs_per_polybag }}</span></td>
+				        	<td><span style="color:green">{{ $d->pcs_per_box }}</span></td>
+				        	
 				        	<td>{{ round($d->weight_of_polybag,3) }}</td>
 				        	<td>{{ round($d->weight_of_pcs,3) }}</td>
-
-				        	<td>{{ $d->pcs_per_box }}</td>
+				        	
 				        	<td>{{ $d->status }}</td>
 
 				        	<td>{{ substr($d->created_at,0 , 10) }}</td>
 				        	<td>{{ substr($d->updated_at,0 , 10) }}</td>
+
+				        	<td><span style="color:red">{{ $d->style_2 }}</span></td>
+				        	<td><span style="color:red">{{ $d->color_2 }}</span></td>
+				        	<td><span style="color:red">{{ $d->size_2 }}</span></td>
+				        	<td><span style="color:red">{{ $d->ean_2 }}</span></td>
+
+				        	<td><span style="color:red">{{ $d->pcs_per_polybag_2 }}</span></td>
+				        	<td><span style="color:red">{{ $d->pcs_per_box_2 }}</span></td>
 				        	
 				        	<td>
 				        	@if(Auth::check())
 				        	  	<a href="{{ url('edit_box/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
+				        	@endif
+				        	</td>
+				        	
+				        	<td>
+				        	@if(Auth::check())
+				        	  	
+                                {!! Form::open(['method'=>'POST', 'url'=>'/edit_box2' ]) !!}
+                                    {!! Form::hidden('style', $d->style, ['class' => 'form-control']) !!}
+                                    {!! Form::hidden('color', $d->color, ['class' => 'form-control']) !!}
+                                    {!! Form::hidden('size', $d->size, ['class' => 'form-control']) !!}
+
+                                    {!! Form::submit('Edit', ['class' => 'btn btn-info btn-xs center-block ']) !!}
+                                    @include('errors.list')
+                                {!! Form::close() !!}
+                            
 				        	@endif
 				        	</td>
 						</tr>

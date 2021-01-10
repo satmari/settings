@@ -122,9 +122,12 @@ Route::get('/box', 'boxController@index');
 Route::get('/add_box', 'boxController@add_box');
 Route::post('insert_box', 'boxController@insert_box');
 Route::get('/edit_box/{id}', 'boxController@edit_box');
+Route::post('/edit_box2', 'boxController@edit_box2');
 Route::post('/update_box/{id}', 'boxController@update_box');
 Route::get('/box_table', 'boxController@table');
 Route::post('box_search_by_style', 'boxController@box_search_by_style');
+Route::post('box_search_by_style_2', 'boxController@box_search_by_style_2');
+Route::get('/update_second_q_info', 'boxController@update_second_q_info');
 
 // Import
 Route::get('/import', 'ImportController@poststock_take');
@@ -207,7 +210,7 @@ Route::get('/inventory_cancel_bb_2', 'sap_inventoryController_bb_2@inventory_can
 
 // s_quality
 Route::get('second_q', 'second_q@index');
-Route::post('import_post_second_q', 'second_q@import_post_second_q');
+// Route::post('import_post_second_q', 'second_q@import_post_second_q');
 
 // SAP Materials
 Route::get('sap_materials', 'sap_materialsController@index');

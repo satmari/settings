@@ -26,11 +26,11 @@
 				</div>
 				<br>
 				<div class="panel panel-default">
-					<a href="{{url('/inventory_scan_bb')}}" class="btn btn-default center-block"  style="background-color: #0c35ffb5">SAP Inventory BB1</a>
+					<a href="{{url('/inventory_scan_bb')}}" class="btn btn-default center-block"  style="background-color: #0c35ffb5">Inventory BB1</a>
 				</div>
 				<br>
 				<div class="panel panel-default">
-					<a href="{{url('/inventory_scan_bb_2')}}" class="btn btn-default center-block"  style="background-color: #0cb0ff63">SAP Inventory BB2</a>
+					<a href="{{url('/inventory_scan_bb_2')}}" class="btn btn-default center-block"  style="background-color: #0cb0ff63">Inventory BB2</a>
 				</div>
 
 

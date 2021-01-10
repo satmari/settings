@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBoxSettingsTable extends Migration {
+class CreateBoxSettingsOldWaysTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,33 +12,26 @@ class CreateBoxSettingsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('box_settings', function(Blueprint $table)
+		Schema::create('box_settings_old_ways', function(Blueprint $table)
 		{
 			$table->increments('id');
 
-			$table->string('material')->unique();
+			$table->string('key')->unique();
 			$table->string('style');
 			$table->string('color');
 			$table->string('size');
-			$table->string('brand')->nullable();
 
-			$table->integer('pcs_per_polybag')->nullable();
-			$table->integer('pcs_per_box')->nullable();
+			$table->string('style_2')->nullable();
+			$table->string('col_desc_2')->nullable();
 
 			$table->float('weight_of_polybag')->nullable();
 			$table->float('weight_of_pcs')->nullable();
 			
 			$table->integer('pcs_per_polybag_2')->nullable(); // Added
 			$table->integer('pcs_per_box_2')->nullable(); // Added
+			
+			$table->string('updated')->nullable();
 
-			$table->string('style_2')->nullable(); // Added
-			$table->string('color_2')->nullable(); // Added
-			$table->string('size_2')->nullable(); // Added
-
-			$table->string('col_desc_2')->nullable(); // Added
-			$table->string('ean_2')->nullable(); // Added
-
-			$table->string('status')->nullable();
 
 			$table->timestamps();
 		});
@@ -51,7 +44,7 @@ class CreateBoxSettingsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('box_settings');
+		Schema::drop('box_settings_old_ways');
 	}
 
 }

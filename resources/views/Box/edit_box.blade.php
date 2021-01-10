@@ -51,7 +51,12 @@
 					</div>
 
 					<div class="panel-body">
-						<p>Pcs per box 2nd:</p>
+						<p><span style="color:red">Pcs per polybag (2Q):</span></p>
+	               		{!! Form::input('number', 'pcs_per_polybag_2', $data->pcs_per_polybag_2, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+						<p><span style="color:red">Pcs per box (2Q):</span></p>
 	               		{!! Form::input('number', 'pcs_per_box_2', $data->pcs_per_box_2, ['class' => 'form-control']) !!}
 					</div>
 

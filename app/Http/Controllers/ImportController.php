@@ -615,6 +615,8 @@ class ImportController extends Controller {
 
 	public function import_post() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file1'))->getSheetNames();
 	    
@@ -625,13 +627,14 @@ class ImportController extends Controller {
 	    	//selectSheetsByIndex(0)
 	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 	            DB::table('inventories')->truncate();
+	            DB::table('inventory_temps')->truncate();
 				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file1'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file1'))->chunk(5000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -649,14 +652,10 @@ class ImportController extends Controller {
 	                	$qty = round((float)$row['available_stock'],3);
 	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
+
 
 	                	// dd($material);
-
+	                	
 	                	// try {
 							$table = new inventory;
 
@@ -683,17 +682,17 @@ class ImportController extends Controller {
 	    }
 		return redirect('/inventory');
 
-
 	}
 
 	public function import_post_wh() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file2'))->getSheetNames();
 	    
 	    foreach($getSheetName as $sheetName)
 	    {
-
 	    	//if ($sheetName === 'Product-General-Table')  {
 	    	//selectSheetsByIndex(0)
 	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -705,7 +704,7 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file2'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file2'))->chunk(5000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -723,12 +722,8 @@ class ImportController extends Controller {
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
 	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
-
 	                	// dd($material);
+	                	
 
 	                	// try {
 							$table = new inventory_wh;
@@ -761,6 +756,8 @@ class ImportController extends Controller {
 
 	public function import_post_cut() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file3'))->getSheetNames();
 	    
@@ -778,8 +775,10 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file3'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file3'))->chunk(5000, function ($reader)	            
 	            {
+	                
+	                
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
 	                // dd("Test");
@@ -795,14 +794,9 @@ class ImportController extends Controller {
 	                	$batch = $row['batch'];
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
 
 	                	// dd($material);
-
+	                	
 	                	// try {
 							$table = new inventory_cut;
 
@@ -822,7 +816,6 @@ class ImportController extends Controller {
 							// return view('Inventory.error',compact('msg'));
 						// }
 
-	                	
 	                }
 	            });
 			
@@ -834,6 +827,8 @@ class ImportController extends Controller {
 
 	public function import_post_p() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file4'))->getSheetNames();
 	    
@@ -851,8 +846,10 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file4'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file4'))->chunk(5000, function ($reader)	            
 	            {
+	            	
+
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
 	                // dd("Test");
@@ -869,13 +866,6 @@ class ImportController extends Controller {
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
 	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
-
-	                	// dd($material);
-
 	                	// try {
 							$table = new inventory_p;
 
@@ -894,7 +884,6 @@ class ImportController extends Controller {
 							// $msg = "Problem to save in inventory table";
 							// return view('Inventory.error',compact('msg'));
 						// }
-
 	                	
 	                }
 	            });
@@ -902,11 +891,11 @@ class ImportController extends Controller {
 	    }
 		return redirect('/inventory_p');
 
-
 	}
 
 	public function import_post_bb() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file5'))->getSheetNames();
 	    
@@ -924,7 +913,7 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file5'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file5'))->chunk(5000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -941,14 +930,9 @@ class ImportController extends Controller {
 	                	$batch = $row['batch'];
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
 
 	                	// dd($material);
-
+	                	
 	                	// try {
 							$table = new inventory_bb;
 
@@ -968,18 +952,18 @@ class ImportController extends Controller {
 							// return view('Inventory.error',compact('msg'));
 						// }
 
-	                	
 	                }
 	            });
 			
 	    }
 		return redirect('/inventory_bb');
 
-
 	}
 
 	public function import_post_bb_2() 
 	{
+		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file6'))->getSheetNames();
 	    
@@ -997,7 +981,7 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file6'))->chunk(500, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file6'))->chunk(5000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -1015,13 +999,8 @@ class ImportController extends Controller {
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
 	                		                	
-	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
-							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
-							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
-	      //           	"));
-
 	                	// dd($material);
-
+	                	
 	                	// try {
 							$table = new inventory_bb_2;
 
@@ -1041,7 +1020,6 @@ class ImportController extends Controller {
 							// return view('Inventory.error',compact('msg'));
 						// }
 
-	                	
 	                }
 	            });
 			

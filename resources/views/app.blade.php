@@ -52,11 +52,11 @@
 					<li><a href="{{ url('/budget') }}">Budget</a></li>
 					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
 					{{--<li><a href="{{ url('/wms') }}">WMS functions</a></li>--}}
-					<li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li>
+					<!-- <li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li> -->
 					<li><a href="{{ url('/machines') }}">Machines</a></li>
 					<li><a href="{{ url('/box') }}">FG box settings</a></li>
 					<li><a href="{{ url('/sap_inventory') }}">SAP Inventory</a></li>
-					<li><a href="{{ url('/sap_materials') }}">SAP Materials (Spare and Cons)</a></li>
+					<li><a href="{{ url('/sap_materials') }}">SAP Materials</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

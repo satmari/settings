@@ -20,7 +20,8 @@ class second_q extends Controller {
 	public function index()
 	{
 		//
-		return view('second_q.import');
+		return redirect('http://172.27.161.171/second_quality/second_q');
+		// return view('second_q.import');
 
 	}
 
@@ -68,7 +69,7 @@ class second_q extends Controller {
 						$userbulk->b3 = $row['b3'];
 						$userbulk->type = $row['type'];
 												
-						$userbulk->save();
+						// $userbulk->save();
 	                }
 	            });
 	    }
