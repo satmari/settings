@@ -54,6 +54,11 @@
 					</div>
 
 					<div class="panel-body">
+					<p>Supervisor: </p>
+						{!! Form::input('supervisor', 'supervisor', $data->supervisor, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
 						{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}
 					</div>
 
@@ -104,6 +109,11 @@
 					<div class="panel-body">
 						<p>Line leader name:</p>
 	               		{!! Form::input('line_leader', 'line_leader', $data->line_leader, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+					<p>Supervisor: </p>
+						{!! Form::input('supervisor', 'supervisor', $data->supervisor, ['class' => 'form-control']) !!}
 					</div>
 
 					<div class="panel-body">

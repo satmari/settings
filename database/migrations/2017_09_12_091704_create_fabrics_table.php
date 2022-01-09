@@ -54,6 +54,9 @@ class CreateFabricsTable extends Migration {
     		// $table->string('mq_weight')->nullable();
     		
 			// $table->string('sample')->nullable();
+
+			$table->string('sp_parameter')->nullable(); // Added
+			$table->string('info_for_sp_and_cut')->nullable(); // Added
     		
 			$table->timestamps();
 		});

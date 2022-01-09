@@ -181,6 +181,17 @@
 						<p>Sample: </p>
 						{!! Form::input('sample','sample', $data->sample, ['class' => 'form-control']) !!}
 	                </div>
+
+	                <div class="panel-body">
+					<p>Spreader parameters: </p>
+						{!! Form::input('sp_parameter', 'sp_parameter', $data->sp_parameter, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+					<p>Information for SP and CUT: </p>
+						{!! Form::input('info_for_sp_and_cut', 'info_for_sp_and_cut', $data->info_for_sp_and_cut ,['class' => 'form-control']) !!}
+					</div>
+
 	                
 	                <div class="panel-body">
 						{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}
@@ -301,6 +312,16 @@
 						<p>Sample: </p>
 						{!! Form::input('sample','sample', $data->sample, ['class' => 'form-control']) !!}
 	                </div>
+
+	                 <div class="panel-body">
+					<p>Spreader parameters: </p>
+						{!! Form::input('sp_parameter', 'sp_parameter', $data->sp_parameter, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+					<p>Information for SP and CUT: </p>
+						{!! Form::input('info_for_sp_and_cut', 'info_for_sp_and_cut', $data->info_for_sp_and_cut ,['class' => 'form-control']) !!}
+					</div>
 
 
 

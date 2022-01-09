@@ -80,6 +80,8 @@ class FabricsController extends Controller {
 			$table->supplier_truck = $input['supplier_truck'];
 			$table->labels_to_genetate = $input['labels_to_genetate'];
 			$table->sample = $input['sample'];
+			$table->sp_parameter = $input['sp_parameter'];
+			$table->info_for_sp_and_cut = $input['info_for_sp_and_cut'];
 
 			$table->save();
 		}
@@ -142,6 +144,8 @@ class FabricsController extends Controller {
 			$table->supplier_truck = $input['supplier_truck'];
 			$table->labels_to_genetate = $input['labels_to_genetate'];
 			$table->sample = $input['sample'];
+			$table->sp_parameter = $input['sp_parameter'];
+			$table->info_for_sp_and_cut = $input['info_for_sp_and_cut'];
 			
 			$table->save();
 		}

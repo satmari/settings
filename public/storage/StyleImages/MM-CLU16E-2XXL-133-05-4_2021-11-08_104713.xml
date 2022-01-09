@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--Marker Report Xml file-->
+<MarkerReport>
+  <Marker Name="C:\Lectra markers\PLX\MM-CLU16E-2XXL-133-05-4.PLX" Code="" ProcessingDate="8.11.2021" />
+  <Fabric Code="" Type="01" ConstraintFile="VT23P" MarkerType="Single ply" Motif="False" />
+  <WidthDescription>
+    <Width Value="133,00" Unit="cm" />
+    <Length Value="2,571" Unit="m" />
+    <Efficiency Value="73,72" />
+    <MetersByVariants Value="1,286" Unit="m" />
+  </WidthDescription>
+  <Tolerances>
+    <GlobalSpacing Value="2" Unit="/10mm" />
+    <FabricEdges>
+      <Top Value="-2" Unit="/10mm" />
+      <Bottom Value="-2" Unit="/10mm" />
+      <Right Value="-2" Unit="/10mm" />
+      <Left Value="-2" Unit="/10mm" />
+    </FabricEdges>
+    <Statistics>
+      <Perimeter Value="18,400" Unit="m" />
+      <Lines Value="12,790" Unit="m" />
+      <Curves Value="5,610" Unit="m" />
+      <Area Value="2,5209" Unit="m²" />
+      <Angles Value="48" />
+      <Notches Value="52" />
+      <CutPerimeter Value="18,120" Unit="m" />
+      <NotMarkedPieces Value="0" />
+      <TotalPieces Value="8" />
+    </Statistics>
+    <MarkerContent>
+      <NewVariant>
+        <Group Value="8" />
+        <Model Value="22IC_CLU16E" />
+        <Variant Value="22IC_CLU16E" />
+        <Size Value="XXL" />
+        <Quantity Value="1" />
+        <Rotation180 Value="True" />
+        <Comment Value="" />
+      </NewVariant>
+      <NewVariant>
+        <Group Value="8" />
+        <Model Value="22IC_CLU16E" />
+        <Variant Value="22IC_CLU16E" />
+        <Size Value="XXL" />
+        <Quantity Value="1" />
+        <Rotation180 Value="False" />
+        <Comment Value="" />
+      </NewVariant>
+    </MarkerContent>
+  </Tolerances>
+</MarkerReport>

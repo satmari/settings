@@ -51,6 +51,11 @@
 				</div>
 
 				<div class="panel-body">
+				<p>Supervisor: </p>
+					{!! Form::text('supervisor', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
 					{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}
 				</div>
 

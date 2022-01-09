@@ -52,6 +52,7 @@
 				           <th>Sector</th>
 				           <th>Workstudy</th>
 				           <th>Line leader</th>
+				           <th>Supervisor</th>
 				           <th>Updated</th>
 				           
 				           <th></th>
@@ -72,6 +73,7 @@
 				        	<td>{{ $d->sector }} </td>
 				        	<td>{{ $d->workstudy }} </td>
 				        	<td>{{ $d->line_leader }} </td>
+				        	<td>{{ $d->supervisor }} </td>
 				        	<td>{{ $d->updated_at }}</td>
 
 				        	<td>

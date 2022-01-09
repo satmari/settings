@@ -26,6 +26,8 @@ class CreateModulesTable extends Migration {
 			$table->string('team')->nullable(); // added later
 			$table->string('linekey')->nullable(); // added later
 
+			$table->string('supervisor')->nullable(); // added later
+
 			$table->timestamps();
 		});
 	}

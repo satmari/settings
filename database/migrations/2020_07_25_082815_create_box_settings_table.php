@@ -17,6 +17,7 @@ class CreateBoxSettingsTable extends Migration {
 			$table->increments('id');
 
 			$table->string('material')->unique();
+			$table->string('sku')->nullable();
 			$table->string('style');
 			$table->string('color');
 			$table->string('size');
@@ -37,6 +38,9 @@ class CreateBoxSettingsTable extends Migration {
 
 			$table->string('col_desc_2')->nullable(); // Added
 			$table->string('ean_2')->nullable(); // Added
+			$table->string('sku')->nullable(); // Added
+
+			$table->string('barcode_type')->nullable(); // Added
 
 			$table->string('status')->nullable();
 

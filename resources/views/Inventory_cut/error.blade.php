@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading">Error (CUT)</div>
+				<div class="panel-heading" style="background-color: #ff0c0c63">Error (Subotica fab)</div>
 				<h3 style="color:red;">Error!</h3>
 				<p style="color:red;">{{ $msg }}</p>
 				

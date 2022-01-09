@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading">SAP Inventory table (CUT)</div>
+				<div class="panel-heading" style="background-color: #ff0c0c63">SAP Inventory table (Subotica fab)</div>
 
 			
 					<a href="{{ url('import_inventory_cut') }}" class="btn btn-info btn-xs ">Import inventory database</a>

@@ -153,6 +153,16 @@
 				<p>Sample: </p>
 					{!! Form::text('sample', null, ['class' => 'form-control']) !!}
 				</div>
+
+				<div class="panel-body">
+				<p>Spreader parameters: </p>
+					{!! Form::text('sp_parameter', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
+				<p>Information for SP and CUT: </p>
+					{!! Form::text('info_for_sp_and_cut', null, ['class' => 'form-control']) !!}
+				</div>
 				
 
 

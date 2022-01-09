@@ -44,6 +44,7 @@ class ModulesController extends Controller {
 			$table->sector = $input['sector'];
 			$table->workstudy = $input['workstudy'];
 			$table->line_leader = $input['line_leader'];
+			$table->supervisor = $input['supervisor'];
 			$table->team = $input['team'];
 			$table->linekey = $input['module']."_".$input['team'];
 			
@@ -60,7 +61,8 @@ class ModulesController extends Controller {
 	public function edit_module ($id) {
 		
 		//
-		$data = Modules::findOrFail($id);		
+		$data = Modules::findOrFail($id);	
+		// dd($data);
 		return view('Modules.edit_module', compact('data'));
 	}
 
@@ -82,6 +84,7 @@ class ModulesController extends Controller {
 			$table->sector = $input['sector'];
 			$table->workstudy = $input['workstudy'];
 			$table->line_leader = $input['line_leader'];
+			$table->supervisor = $input['supervisor'];
 			$table->team = $input['team'];
 			$table->linekey = $input['module']."_".$input['team'];
 			

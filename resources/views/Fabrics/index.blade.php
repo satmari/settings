@@ -15,7 +15,7 @@
                 <div class="input-group"> <span class="input-group-addon">Filter</span>
                     <input id="filter" type="text" class="form-control" placeholder="Type here...">
                 </div>
-                <table class="table table-striped table-bordered" id="sort" 
+                <table class="table table-striped table-bordered" id="sort" style="font-size: 9px !important;"
                 data-show-export="true"
                 data-export-types="['excel']"
                 >
@@ -78,6 +78,9 @@
 				           {{-- <th>Labels to gen.</th> --}}
 				           <th>Daying type</th>
 				           <th>Main mat</th>
+				           <th>SP parameter</th>
+				           <th>Info for SP and CUT</th>
+
 				           
 				           <th></th>
 				        </tr>
@@ -122,6 +125,8 @@
 				        	<td>{{ $d->sample }} </td>
 				        	<td>{{ $d->daying_type }} </td>
 				        	<td>{{ $d->main_material }} </td>
+				        	<td>{{ $d->sp_parameter }} </td>
+				        	<td>{{ $d->info_for_sp_and_cut }} </td>
 
 				        	<td>
 				        	@if(Auth::check())

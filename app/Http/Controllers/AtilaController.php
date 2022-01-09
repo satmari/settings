@@ -123,8 +123,6 @@ class AtilaController extends Controller {
 						WHERE [No_] = '".intval($find[0]->no)."'
 						SELECT * FROM [GORDON\$Default Dimension] WHERE [No_] = '".intval($find[0]->no)."'
 					"));
-					
-
 				// }
 				
 		}

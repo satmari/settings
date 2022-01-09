@@ -83,6 +83,10 @@ Route::post('/insert_budget', 'BudgetController@insert_budget');
 Route::get('/edit_budget/{id}', 'BudgetController@edit_budget');
 Route::post('/update_budget/{id}', 'BudgetController@update_budget');
 
+// Daily Budget
+Route::get('daily_budget', 'ImportBudget@table');
+
+
 // FR_plan
 Route::get('/fr_plan', 'FR_PlanController@index');
 Route::get('/fr_plan_import', 'FR_PlanController@fr_plan_import');
@@ -124,6 +128,7 @@ Route::post('insert_box', 'boxController@insert_box');
 Route::get('/edit_box/{id}', 'boxController@edit_box');
 Route::post('/edit_box2', 'boxController@edit_box2');
 Route::post('/update_box/{id}', 'boxController@update_box');
+Route::post('/update_box2/{id}', 'boxController@update_box2');
 Route::get('/box_table', 'boxController@table');
 Route::post('box_search_by_style', 'boxController@box_search_by_style');
 Route::post('box_search_by_style_2', 'boxController@box_search_by_style_2');
@@ -132,6 +137,9 @@ Route::get('/update_second_q_info', 'boxController@update_second_q_info');
 // Import
 Route::get('/import', 'ImportController@poststock_take');
 Route::post('/postImportstock_take', 'ImportController@postImportstock_take');
+
+Route::get('import_budget', 'ImportBudget@index');
+Route::post('postImportBudget', 'ImportBudget@postImportBudget');
 
 // SAP Inventory
 Route::get('/sap_inventory', 'sap_inventoryController@index_main');
@@ -172,6 +180,18 @@ Route::post('update_su_cut/{id}', 'sap_inventoryController_cut@update_su');
 Route::get('/inventory_stop_cut', 'sap_inventoryController_cut@inventory_stop');
 Route::get('/inventory_cancel_cut', 'sap_inventoryController_cut@inventory_cancel');
 
+// SAP Inventory SENTA
+Route::get('/inventory_senta', 'sap_inventoryController_senta@index');
+Route::get('/inventory_scan_senta', 'sap_inventoryController_senta@index_scan');
+Route::get('/import_inventory_senta', 'sap_inventoryController_senta@import');
+// Route::post('import_post_senta', 'sap_inventoryController_senta@import_post');
+Route::post('import_post_senta', 'ImportController@import_post_senta');
+
+Route::post('insert_temp_su_senta', 'sap_inventoryController_senta@insert_temp_su');
+Route::post('update_su_senta/{id}', 'sap_inventoryController_senta@update_su');
+Route::get('/inventory_stop_senta', 'sap_inventoryController_senta@inventory_stop');
+Route::get('/inventory_cancel_senta', 'sap_inventoryController_senta@inventory_cancel');
+
 // SAP Inventory P
 Route::get('/inventory_p', 'sap_inventoryController_p@index');
 Route::get('/inventory_scan_p', 'sap_inventoryController_p@index_scan');
@@ -183,6 +203,18 @@ Route::post('insert_temp_su_p', 'sap_inventoryController_p@insert_temp_su');
 Route::post('update_su_p/{id}', 'sap_inventoryController_p@update_su');
 Route::get('/inventory_stop_p', 'sap_inventoryController_p@inventory_stop');
 Route::get('/inventory_cancel_p/', 'sap_inventoryController_p@inventory_cancel');
+
+// SAP Inventory Pal
+Route::get('/inventory_pal', 'sap_inventoryController_pal@index');
+Route::get('/inventory_scan_pal', 'sap_inventoryController_pal@index_scan');
+Route::get('/import_inventory_pal', 'sap_inventoryController_pal@import');
+// Route::post('import_post_pal', 'sap_inventoryController_pal@import_post');
+Route::post('import_post_pal', 'ImportController@import_post_pal');
+
+Route::post('insert_temp_su_pal', 'sap_inventoryController_pal@insert_temp_su');
+Route::post('update_su_pal/{id}', 'sap_inventoryController_pal@update_su');
+Route::get('/inventory_stop_pal', 'sap_inventoryController_pal@inventory_stop');
+Route::get('/inventory_cancel_pal/', 'sap_inventoryController_pal@inventory_cancel');
 
 // SAP Inventory BB
 Route::get('/inventory_bb', 'sap_inventoryController_bb@index');
@@ -208,6 +240,30 @@ Route::post('update_su_bb_2/{id}', 'sap_inventoryController_bb_2@update_su');
 Route::get('/inventory_stop_bb_2', 'sap_inventoryController_bb_2@inventory_stop');
 Route::get('/inventory_cancel_bb_2', 'sap_inventoryController_bb_2@inventory_cancel');
 
+// SAP Inventory BB 3 
+Route::get('/inventory_bb_3', 'sap_inventoryController_bb_3@index');
+Route::get('/inventory_scan_bb_3', 'sap_inventoryController_bb_3@index_scan');
+Route::get('/import_inventory_bb_3', 'sap_inventoryController_bb_3@import');
+// Route::post('import_post_bb_3', 'sap_inventoryController_bb_3@import_post');
+Route::post('import_post_bb_3', 'ImportController@import_post_bb_3');
+
+Route::post('insert_temp_su_bb_3', 'sap_inventoryController_bb_3@insert_temp_su');
+Route::post('update_su_bb_3/{id}', 'sap_inventoryController_bb_3@update_su');
+Route::get('/inventory_stop_bb_3', 'sap_inventoryController_bb_3@inventory_stop');
+Route::get('/inventory_cancel_bb_3', 'sap_inventoryController_bb_3@inventory_cancel');
+
+// SAP Inventory BB 4 
+Route::get('/inventory_bb_4', 'sap_inventoryController_bb_4@index');
+Route::get('/inventory_scan_bb_4', 'sap_inventoryController_bb_4@index_scan');
+Route::get('/import_inventory_bb_4', 'sap_inventoryController_bb_4@import');
+// Route::post('import_post_bb_4', 'sap_inventoryController_bb_4@import_post');
+Route::post('import_post_bb_4', 'ImportController@import_post_bb_4');
+
+Route::post('insert_temp_su_bb_4', 'sap_inventoryController_bb_4@insert_temp_su');
+Route::post('update_su_bb_4/{id}', 'sap_inventoryController_bb_4@update_su');
+Route::get('/inventory_stop_bb_4', 'sap_inventoryController_bb_4@inventory_stop');
+Route::get('/inventory_cancel_bb_4', 'sap_inventoryController_bb_4@inventory_cancel');
+
 // s_quality
 Route::get('second_q', 'second_q@index');
 // Route::post('import_post_second_q', 'second_q@import_post_second_q');
@@ -224,6 +280,13 @@ Route::post('sap_import_post_s', 'importController@sap_import_post_s');
 Route::post('sap_import_post_u', 'importController@sap_import_post_u');
 
 Route::get('sap_mech', 'sap_materialsController@sap_mech');
+
+// net_weigth
+Route::get('net_weight', 'net_weightController@index');
+Route::get('net_weight_save', 'net_weightController@save_in_table');
+Route::get('net_weight_int', 'net_weightController@index_int');
+
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
