@@ -63,6 +63,7 @@
 				           <th>Mat4 [%]</th>
 				           <th style="background-color: aliceblue;">Tot width</th>
 				           <th style="background-color: aliceblue;">Usable width</th>
+				           <th style="background-color: aliceblue;">Average length</th>
 				           <th>Shr.dry O [%]</th>
 				           <th>Shr.dry W [%]</th>
 				           <th>Shr.dry Tol</th>
@@ -110,6 +111,7 @@
 				        	<td>{{ number_format($d->mat4_p,2)*100 }} </td>
 				        	<td style="background-color: aliceblue;">{{ number_format($d->tot_width,2) }} </td>
 				        	<td style="background-color: aliceblue;">{{ number_format($d->usable_width,2) }} </td>
+				        	<td style="background-color: aliceblue;">{{ number_format($d->avg_length,2) }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_o,2)*100 }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_w,2)*100 }} </td>
 				        	<td>{{ $d->shrinkage_dry_tol }} </td>

@@ -57,6 +57,8 @@ class CreateFabricsTable extends Migration {
 
 			$table->string('sp_parameter')->nullable(); // Added
 			$table->string('info_for_sp_and_cut')->nullable(); // Added
+
+			$table->double('avg_length')->nullable(); // Added
     		
 			$table->timestamps();
 		});

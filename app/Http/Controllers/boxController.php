@@ -395,6 +395,7 @@ class boxController extends Controller {
 
 		// dd('update from 2q info');
 		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT id, style, color, size, barcode_type FROM box_settings order by id asc"));
+		// dd($data);
 
 		foreach ($data as $line ) {
 			// dd($line->size);
@@ -439,6 +440,7 @@ class boxController extends Controller {
 
 
 			$table = box_settings::findOrFail($line->id);
+			// dd($table);
 
 			$table->style_2 = $search_umesa[0]->style_2;
 			$table->color_2 = $search_umesa[0]->color_2;

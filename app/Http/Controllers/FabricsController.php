@@ -67,6 +67,7 @@ class FabricsController extends Controller {
 			$table->mat4_p = $input['mat4_p']/100;
 			$table->tot_width = $input['tot_width'];
 			$table->usable_width = $input['usable_width'];
+			$table->avg_length = $input['avg_length'];
 			$table->shrinkage_dry_o = $input['shrinkage_dry_o']/100;
 			$table->shrinkage_dry_w = $input['shrinkage_dry_w']/100;
 			$table->shrinkage_dry_tol = $input['shrinkage_dry_tol'];
@@ -131,6 +132,7 @@ class FabricsController extends Controller {
 			$table->mat4_p = $input['mat4_p']/100;
 			$table->tot_width = $input['tot_width'];
 			$table->usable_width = $input['usable_width'];
+			$table->avg_length = $input['avg_length'];
 			$table->shrinkage_dry_o = $input['shrinkage_dry_o']/100;
 			$table->shrinkage_dry_w = $input['shrinkage_dry_w']/100;
 			$table->shrinkage_dry_tol = $input['shrinkage_dry_tol'];

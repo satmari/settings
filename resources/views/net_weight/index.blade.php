@@ -62,6 +62,7 @@
 
 				           <th>(int)-(sap)</th>
 				           <th>(int)-(box)</th>
+				           <th>(box)-(sap)</th>
 				           
 				           <!-- <th></th> -->
 				        </tr>
@@ -89,6 +90,8 @@
 				        	
 				        	<td><span style="color:red">{{ round(number_format($d->int_weight,3)-number_format($d->sap_net_weight,3),3) }}</span></td>
 				        	<td><span style="color:red">{{ round(number_format($d->int_weight,3)-number_format($d->box_weight,3),3) }}</span></td>
+				        	
+				        	<td><span style="color:red">{{ round(number_format($d->box_weight,3)-number_format($d->sap_net_weight,3),3) }}</span></td>
 				   
 						</tr>
 				    

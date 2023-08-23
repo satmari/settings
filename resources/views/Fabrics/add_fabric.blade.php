@@ -100,6 +100,10 @@
 					{!! Form::input('decimal','usable_width', null, ['class' => 'form-control']) !!}
 				</div>
 				<div class="panel-body">
+				<p>Average length: </p>
+					{!! Form::input('decimal','avg_length', null, ['class' => 'form-control']) !!}
+				</div>
+				<div class="panel-body">
 				<p>Shrinkage Dry O [%]: </p>
 					{!! Form::input('decimal','shrinkage_dry_o', null, ['class' => 'form-control']) !!}
 				</div>

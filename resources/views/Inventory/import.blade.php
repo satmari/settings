@@ -48,7 +48,7 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #ffa90cb5">Import sap inventory table (Kikinda)</div>
+					<div class="panel-heading" style="background-color: #ffa90cb5">Import sap inventory table (Kikinda acc)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_p'] ]) !!}
 							<div class="panel-body">
@@ -60,7 +60,7 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #ff5b0ca1">Import sap inventory table (Senta)</div>
+					<div class="panel-heading" style="background-color: #ff5b0ca1">Import sap inventory table (Senta acc)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_senta'] ]) !!}
 							<div class="panel-body">
@@ -73,7 +73,7 @@
 						{!! Form::close() !!}
 					
 
-					<div class="panel-heading" style="background-color: #0c35ffb5">Import sap inventory table BB1 (Stock)</div>
+					<div class="panel-heading" style="background-color: #0c35ffb5">Import sap inventory table BB1 (Subotica Stock)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb'] ]) !!}
 							<div class="panel-body">
@@ -86,7 +86,7 @@
 						{!! Form::close() !!}
 					
 
-					<div class="panel-heading" style="background-color: #0cb0ff63">Import sap inventory table BB2 (Subotica)</div>
+					<div class="panel-heading" style="background-color: #0cb0ff63">Import sap inventory table BB2 (Subotica Lines)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_2'] ]) !!}
 							<div class="panel-body">
@@ -98,7 +98,7 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #03202e63">Import sap inventory table BB3 (Kikinda)</div>
+					<div class="panel-heading" style="background-color: #03202e63">Import sap inventory table BB3 (Kikinda all)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_3'] ]) !!}
 							<div class="panel-body">
@@ -110,11 +110,47 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #6e432463">Import sap inventory table BB4 (Senta)</div>
+					<div class="panel-heading" style="background-color: #6e432463">Import sap inventory table BB4 (Senta all)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_4'] ]) !!}
 							<div class="panel-body">
 								{!! Form::file('file11', ['class' => 'center-block']) !!}
+							</div>
+							<div class="panel-body">
+								{!! Form::submit('Import', ['class' => 'btn btn-warning center-block']) !!}
+							</div>
+							
+						{!! Form::close() !!}
+
+					<!-- <div class="panel-heading" style="background-color: #ff16b7">Import sap inventory table LOG</div>
+				
+						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_log'] ]) !!}							
+							<div class="panel-body">
+								{!! Form::file('file12', ['class' => 'center-block']) !!}
+							</div>
+							<div class="panel-body">
+								{!! Form::submit('Import', ['class' => 'btn btn-warning center-block']) !!}
+							</div>
+
+						{!! Form::close() !!} -->
+
+					<div class="panel-heading" style="background-color: #cf0101">Import inspection rolls</div>
+				
+						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_inspection_rolls'] ]) !!}							
+							<div class="panel-body">
+								{!! Form::file('file13', ['class' => 'center-block']) !!}
+							</div>
+							<div class="panel-body">
+								{!! Form::submit('Import', ['class' => 'btn btn-warning center-block']) !!}
+							</div>
+
+						{!! Form::close() !!}
+
+					<div class="panel-heading" style="background-color: #23cf01">Import relaxation rolls</div>
+				
+						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_relaxation_rolls'] ]) !!}							
+							<div class="panel-body">
+								{!! Form::file('file14', ['class' => 'center-block']) !!}
 							</div>
 							<div class="panel-body">
 								{!! Form::submit('Import', ['class' => 'btn btn-warning center-block']) !!}

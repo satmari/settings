@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: #6e432463">SAP Inventory table BB4 (Senta)</div>
+				<div class="panel-heading" style="background-color: #6e432463">SAP Inventory table BB4 (Senta all)</div>
 
 			
 					<a href="{{ url('import_inventory_bb_4') }}" class="btn btn-info btn-xs ">Import inventory database</a>

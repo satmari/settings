@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: #6e432463">Error BB4 (Senta)</div>
+				<div class="panel-heading" style="background-color: #6e432463">Error BB4 (Senta all)</div>
 				<h3 style="color:red;">Error!</h3>
 				<p style="color:red;">{{ $msg }}</p>
 				

@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: #ffa90cb5">SAP Inventory table (Kikinda)</div>
+				<div class="panel-heading" style="background-color: #ffa90cb5">SAP Inventory table (Kikinda acc)</div>
 
 			
 					<a href="{{ url('import_inventory_p') }}" class="btn btn-info btn-xs ">Import inventory database</a>

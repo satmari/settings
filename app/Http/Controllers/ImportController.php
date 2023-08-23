@@ -48,17 +48,22 @@ use App\inventory_temp_bb_3;
 use App\inventory_bb_4;
 use App\inventory_temp_bb_4;
 
+use App\inventory_log;
+use App\inventory_temp_log;
+
 use App\sap_material;
 use App\sap_material_stock;
 use App\sap_material_used;
+
+use App\inspection_roll;
+use App\relaxation_roll;
 
 use DB;
 // use Carbon;
 
 class ImportController extends Controller {
 	
-	public function index()
-	{
+	public function index() {
 		//
 		return view('atila.index');
 	}
@@ -557,7 +562,7 @@ class ImportController extends Controller {
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file'))->chunk(50, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file'))->chunk(5000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -565,14 +570,24 @@ class ImportController extends Controller {
 
 	                foreach($readerarray as $row)
 	                {	
+	                	// dd($row);
+	                	$fab = $row['fab'];
+	                	// dd($fab);
 
-	                	$hu = $row['hu'];
-	                	// dd($hu);
+	                	$avg_length = round($row['avg_length2'],1);
+	                	// dd($avg_length);
+
+
 
 	      //           	$data = DB::connection('sqlsrv1')->update(DB::raw("UPDATE [GORDON\$WMS Scanned Line]
 							// SET [USER ID] = 'BY LIST' , [ScannedYes] = '1' , [ScannedCount] = '1'
 							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
 	      //           	"));
+
+	                	$data = DB::connection('sqlsrv')->update(DB::raw("UPDATE [settings].[dbo].[fabrics]
+  						SET avg_length = '".$avg_length."'
+  						WHERE fabric = '".$fab."'
+	                	"));
 	                	
 	                }
 	            });
@@ -617,10 +632,73 @@ class ImportController extends Controller {
 	                	
 	                }
 	            });
-			
 	    }
 		return redirect('/');
 	}
+
+	public function close_po_post () {
+		$getSheetName = Excel::load(Request::file('file1'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('users')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file1'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$po = $row['po'];
+	                	// dd($po);
+
+	                 	$data = DB::connection('sqlsrv2')->update(DB::raw("
+	                 		UPDATE [BdkCLZG].[dbo].[CNF_PO] 
+							SET [POClosed] = '1' 
+							WHERE [POnum] = '".$po."';
+							UPDATE [172.27.161.221\INTEOSKKA].[BdkCLZKKA].[dbo].[CNF_PO] 
+							SET [POClosed] = '1' 
+							WHERE [POnum] =  '".$po."';
+							
+	                 	"));
+
+	                 	$data_check = DB::connection('sqlsrv2')->select(DB::raw("
+	                 		SELECT PONum, POClosed FROM [BdkCLZG].[dbo].[CNF_PO]
+							WHERE [POnum] = '".$po."'
+							UNION ALL
+							SELECT PONum, POClosed FROM [172.27.161.221\INTEOSKKA].[BdkCLZKKA].[dbo].[CNF_PO] 
+							WHERE [POnum] = '".$po."';
+						"));
+
+	                 	// dd($data_check[0]->POClosed);
+
+	                 	if ($data_check[0]->POClosed == '1' ) {
+	                 		$status = 'Closed';
+	                 	} else {
+	                 		$status = 'Failed';
+	                 	}
+
+	                 	var_dump('Pro '.$data_check[0]->PONum.' status  is: '.$status.' <br> ');
+	                }
+	            });
+	    }
+	    
+		var_dump('<br>Completed');
+	}
+
+// start inventar 
 
 	public function import_post() // FG
 	{
@@ -689,12 +767,11 @@ class ImportController extends Controller {
 			
 	    }
 		return redirect('/inventory');
-
 	}
 
 	public function import_post_wh()  // Sub acc
 	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
 
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file2'))->getSheetNames();
@@ -755,16 +832,13 @@ class ImportController extends Controller {
 	                	
 	                }
 	            });
-			
 	    }
 		return redirect('/inventory_wh');
-
-
 	}
 
 	public function import_post_cut() // Sub fab
 	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
 
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file3'))->getSheetNames();
@@ -831,9 +905,75 @@ class ImportController extends Controller {
 		return redirect('/inventory_cut'); 
 	}
 
-	public function import_post_senta()  // Senta
+	public function import_post_p() // Kikinda acc
 	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file4'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            DB::table('inventory_ps')->truncate();
+	            DB::table('inventory_temp_ps')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file4'))->chunk(5000, function ($reader)	            
+	            {
+	            	
+
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$material = $row['material'];
+	                	$material_desc = $row['material_description'];
+	                	$su = $row['storage_unit'];
+	                	$bin = $row['storage_bin'];
+	                	$batch = $row['batch'];
+	                	$qty = $row['available_stock'];
+	                	$uom = $row['base_unit_of_measure'];
+	                		                	
+	                	// try {
+							$table = new inventory_p;
+
+							$table->material = $material;
+							$table->material_desc = $material_desc;
+							$table->su = $su;
+							$table->bin = $bin;
+							$table->batch = $batch;
+							$table->qty = round((float)$qty,3);
+							$table->uom = $uom;
+							$table->counter = 0;
+													
+							$table->save();
+						// }
+						// catch (\Illuminate\Database\QueryException $e) {
+							// $msg = "Problem to save in inventory table";
+							// return view('Inventory.error',compact('msg'));
+						// }
+	                	
+	                }
+	            });
+	    }
+		return redirect('/inventory_p');
+	}
+
+	public function import_post_senta()  // Senta acc
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
 
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file9'))->getSheetNames();
@@ -897,13 +1037,12 @@ class ImportController extends Controller {
 	    }
 		return redirect('/inventory_senta');
 	}
-
-	public function import_post_p() // Kikinda
+	
+	public function import_post_bb()  // Subotica stock
 	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
-
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
 		// dd("Test");
-		 $getSheetName = Excel::load(Request::file('file4'))->getSheetNames();
+		 $getSheetName = Excel::load(Request::file('file5'))->getSheetNames();
 	    
 	    foreach($getSheetName as $sheetName)
 	    {
@@ -911,18 +1050,16 @@ class ImportController extends Controller {
 	    	//if ($sheetName === 'Product-General-Table')  {
 	    	//selectSheetsByIndex(0)
 	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	            DB::table('inventory_ps')->truncate();
-	            DB::table('inventory_temp_ps')->truncate();
+	            DB::table('inventory_bbs')->truncate();
+	            DB::table('inventory_temp_bbs')->truncate();
 				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file4'))->chunk(5000, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file5'))->chunk(5000, function ($reader)	            
 	            {
-	            	
-
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
 	                // dd("Test");
@@ -938,9 +1075,11 @@ class ImportController extends Controller {
 	                	$batch = $row['batch'];
 	                	$qty = $row['available_stock'];
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
+
+	                	// dd($material);
+	                	
 	                	// try {
-							$table = new inventory_p;
+							$table = new inventory_bb;
 
 							$table->material = $material;
 							$table->material_desc = $material_desc;
@@ -957,14 +1096,215 @@ class ImportController extends Controller {
 							// $msg = "Problem to save in inventory table";
 							// return view('Inventory.error',compact('msg'));
 						// }
+
+	                }
+	            });
+	    }
+		return redirect('/inventory_bb');
+	}
+
+	public function import_post_bb_2() // Subotica lines
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file6'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            DB::table('inventory_bb_2s')->truncate();
+	            DB::table('inventory_temp_bb_2s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file6'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$material = trim($row['material']);
+	                	$material_desc = $row['material_description'];
+	                	$su = $row['storage_unit'];
+	                	$bin = $row['storage_bin'];
+	                	$batch = $row['batch'];
+	                	$qty = $row['available_stock'];
+	                	$uom = $row['base_unit_of_measure'];
+	                		                	
+	                	// dd($material);
 	                	
+	                	// try {
+							$table = new inventory_bb_2;
+
+							$table->material = $material;
+							$table->material_desc = $material_desc;
+							$table->su = $su;
+							$table->bin = $bin;
+							$table->batch = $batch;
+							$table->qty = round((float)$qty,3);
+							$table->uom = $uom;
+							$table->counter = 0;
+													
+							$table->save();
+						// }
+						// catch (\Illuminate\Database\QueryException $e) {
+							// $msg = "Problem to save in inventory table";
+							// return view('Inventory.error',compact('msg'));
+						// }
+
+	                }
+	            });
+	    }
+		return redirect('/inventory_bb_2');
+	}
+
+	public function import_post_bb_3() // Kikinda all
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file10'))->getSheetNames();
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            DB::table('inventory_bb_3s')->truncate();
+	            DB::table('inventory_temp_bb_3s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file10'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$material = trim($row['material']);
+	                	$material_desc = $row['material_description'];
+	                	$su = $row['storage_unit'];
+	                	$bin = $row['storage_bin'];
+	                	$batch = $row['batch'];
+	                	$qty = $row['available_stock'];
+	                	$uom = $row['base_unit_of_measure'];
+	                		                	
+	                	// dd($material);
+	                	
+	                	// try {
+							$table = new inventory_bb_3;
+
+							$table->material = $material;
+							$table->material_desc = $material_desc;
+							$table->su = $su;
+							$table->bin = $bin;
+							$table->batch = $batch;
+							$table->qty = round((float)$qty,3);
+							$table->uom = $uom;
+							$table->counter = 0;
+													
+							$table->save();
+						// }
+						// catch (\Illuminate\Database\QueryException $e) {
+							// $msg = "Problem to save in inventory table";
+							// return view('Inventory.error',compact('msg'));
+						// }
+
 	                }
 	            });
 			
 	    }
-		return redirect('/inventory_p');
-
+		return redirect('/inventory_bb_3');
 	}
+
+	public function import_post_bb_4() // Senta all
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file11'))->getSheetNames();
+		 // dd("Test");
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            DB::table('inventory_bb_4s')->truncate();
+	            DB::table('inventory_temp_bb_4s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file11'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+
+	                	$material = trim($row['material']);
+	                	$material_desc = $row['material_description'];
+	                	$su = $row['storage_unit'];
+	                	$bin = $row['storage_bin'];
+	                	$batch = $row['batch'];
+	                	$qty = $row['available_stock'];
+	                	$uom = $row['base_unit_of_measure'];
+	                		                	
+	                	// dd($material);
+	                	
+	                	// try {
+							$table = new inventory_bb_4;
+
+							$table->material = $material;
+							$table->material_desc = $material_desc;
+							$table->su = $su;
+							$table->bin = $bin;
+							$table->batch = $batch;
+							$table->qty = round((float)$qty,3);
+							$table->uom = $uom;
+							$table->counter = 0;
+													
+							$table->save();
+						// }
+						// catch (\Illuminate\Database\QueryException $e) {
+							// $msg = "Problem to save in inventory table";
+							// return view('Inventory.error',compact('msg'));
+						// }
+
+	                }
+	            });
+			
+	    }
+		return redirect('/inventory_bb_4');
+	}
+
+// stop inventar
 
 	public function import_post_pal() 
 	{
@@ -1030,14 +1370,14 @@ class ImportController extends Controller {
 	            });
 	    }
 		return redirect('/inventory_pal');
-
 	}
 
-	public function import_post_bb() 
+	public function import_post_log()
 	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
 		// dd("Test");
-		 $getSheetName = Excel::load(Request::file('file5'))->getSheetNames();
+		$getSheetName = Excel::load(Request::file('file12'))->getSheetNames();
 	    
 	    foreach($getSheetName as $sheetName)
 	    {
@@ -1045,15 +1385,15 @@ class ImportController extends Controller {
 	    	//if ($sheetName === 'Product-General-Table')  {
 	    	//selectSheetsByIndex(0)
 	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	            DB::table('inventory_bbs')->truncate();
-	            DB::table('inventory_temp_bbs')->truncate();
+	            DB::table('inventory_logs')->truncate();
+	            DB::table('inventory_temp_logs')->truncate();
 				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
 	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
 	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
 	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file5'))->chunk(5000, function ($reader)	            
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file12'))->chunk(10000, function ($reader)	            
 	            {
 	                $readerarray = $reader->toArray();
 	                // var_dump($readerarray);
@@ -1063,75 +1403,7 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
-	                	$bin = $row['storage_bin'];
-	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
-	                	$uom = $row['base_unit_of_measure'];
-
-	                	// dd($material);
-	                	
-	                	// try {
-							$table = new inventory_bb;
-
-							$table->material = $material;
-							$table->material_desc = $material_desc;
-							$table->su = $su;
-							$table->bin = $bin;
-							$table->batch = $batch;
-							$table->qty = round((float)$qty,3);
-							$table->uom = $uom;
-							$table->counter = 0;
-													
-							$table->save();
-						// }
-						// catch (\Illuminate\Database\QueryException $e) {
-							// $msg = "Problem to save in inventory table";
-							// return view('Inventory.error',compact('msg'));
-						// }
-
-	                }
-	            });
-			
-	    }
-		return redirect('/inventory_bb');
-
-	}
-
-	public function import_post_bb_2() 
-	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
-
-		// dd("Test");
-		 $getSheetName = Excel::load(Request::file('file6'))->getSheetNames();
-	    
-	    foreach($getSheetName as $sheetName)
-	    {
-
-	    	//if ($sheetName === 'Product-General-Table')  {
-	    	//selectSheetsByIndex(0)
-	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	            DB::table('inventory_bb_2s')->truncate();
-	            DB::table('inventory_temp_bb_2s')->truncate();
-				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
-	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
-	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
-	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file6'))->chunk(5000, function ($reader)	            
-	            {
-	                $readerarray = $reader->toArray();
-	                // var_dump($readerarray);
-	                // dd("Test");
-	                // dd($readerarray);
-
-	                foreach($readerarray as $row)
-	                {	
-
-	                	$material = $row['material'];
+	                	$material = trim($row['material']);
 	                	$material_desc = $row['material_description'];
 	                	$su = $row['storage_unit'];
 	                	$bin = $row['storage_bin'];
@@ -1142,7 +1414,7 @@ class ImportController extends Controller {
 	                	// dd($material);
 	                	
 	                	// try {
-							$table = new inventory_bb_2;
+							$table = new inventory_log;
 
 							$table->material = $material;
 							$table->material_desc = $material_desc;
@@ -1162,145 +1434,8 @@ class ImportController extends Controller {
 
 	                }
 	            });
-			
 	    }
-		return redirect('/inventory_bb_2');
-
-
-	}
-
-	public function import_post_bb_3() 
-	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
-
-		// dd("Test");
-		 $getSheetName = Excel::load(Request::file('file10'))->getSheetNames();
-	    
-	    foreach($getSheetName as $sheetName)
-	    {
-
-	    	//if ($sheetName === 'Product-General-Table')  {
-	    	//selectSheetsByIndex(0)
-	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	            DB::table('inventory_bb_3s')->truncate();
-	            DB::table('inventory_temp_bb_3s')->truncate();
-				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
-	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
-	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
-	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file10'))->chunk(5000, function ($reader)	            
-	            {
-	                $readerarray = $reader->toArray();
-	                // var_dump($readerarray);
-	                // dd("Test");
-	                // dd($readerarray);
-
-	                foreach($readerarray as $row)
-	                {	
-
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
-	                	$bin = $row['storage_bin'];
-	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
-	                	$uom = $row['base_unit_of_measure'];
-	                		                	
-	                	// dd($material);
-	                	
-	                	// try {
-							$table = new inventory_bb_3;
-
-							$table->material = $material;
-							$table->material_desc = $material_desc;
-							$table->su = $su;
-							$table->bin = $bin;
-							$table->batch = $batch;
-							$table->qty = round((float)$qty,3);
-							$table->uom = $uom;
-							$table->counter = 0;
-													
-							$table->save();
-						// }
-						// catch (\Illuminate\Database\QueryException $e) {
-							// $msg = "Problem to save in inventory table";
-							// return view('Inventory.error',compact('msg'));
-						// }
-
-	                }
-	            });
-			
-	    }
-		return redirect('/inventory_bb_3');
-	}
-
-	public function import_post_bb_4() 
-	{
-		dd('Importovanje je trenutno zaustavljeno, zovi IT');
-
-		// dd("Test");
-		 $getSheetName = Excel::load(Request::file('file11'))->getSheetNames();
-	    
-	    foreach($getSheetName as $sheetName)
-	    {
-
-	    	//if ($sheetName === 'Product-General-Table')  {
-	    	//selectSheetsByIndex(0)
-	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	            DB::table('inventory_bb_4s')->truncate();
-	            DB::table('inventory_temp_bb_4s')->truncate();
-				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
-	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
-	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
-	    	
-	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file11'))->chunk(5000, function ($reader)	            
-	            {
-	                $readerarray = $reader->toArray();
-	                // var_dump($readerarray);
-	                // dd("Test");
-	                // dd($readerarray);
-
-	                foreach($readerarray as $row)
-	                {	
-
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
-	                	$bin = $row['storage_bin'];
-	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
-	                	$uom = $row['base_unit_of_measure'];
-	                		                	
-	                	// dd($material);
-	                	
-	                	// try {
-							$table = new inventory_bb_4;
-
-							$table->material = $material;
-							$table->material_desc = $material_desc;
-							$table->su = $su;
-							$table->bin = $bin;
-							$table->batch = $batch;
-							$table->qty = round((float)$qty,3);
-							$table->uom = $uom;
-							$table->counter = 0;
-													
-							$table->save();
-						// }
-						// catch (\Illuminate\Database\QueryException $e) {
-							// $msg = "Problem to save in inventory table";
-							// return view('Inventory.error',compact('msg'));
-						// }
-
-	                }
-	            });
-			
-	    }
-		return redirect('/inventory_bb_4');
+		return redirect('/inventory_log');
 	}
 
 	public function sap_import_post_mm() 
@@ -1370,8 +1505,6 @@ class ImportController extends Controller {
 													
 							$table_update->save();
 						}	
-
-	                	
 	                }
 	            });
 			
@@ -1489,6 +1622,191 @@ class ImportController extends Controller {
 			
 	    }
 		return redirect('/sap_materials');
+	}
+
+	public function import_inspection_rolls() // 
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file13'))->getSheetNames();
+		 // dd("Test");
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('inventory_bb_4s')->truncate();
+	            // DB::table('inventory_temp_bb_4s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file13'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+	                	// dd($row);
+	                	$su = $row['storage_unit'];
+	                	$material_desc;
+	                	$material = trim($row['material']);
+	                	$batch = $row['dyelot_number'];
+	                	$qty = $row['available_stock'];
+	                	$uom;
+	                	$ses;
+	                		                		                	
+	                	// dd($material);
+
+
+	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM inspection_rolls WHERE su = '".$su."' "));
+	                	// dd($data);
+	                	$data_log = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM inspection_roll_logs WHERE su = '".$su."' "));
+
+	                	if (!isset($data_log[0]->id)) {
+	                		// exist in log
+
+		                	if (isset($data[0]->id)) {
+		                		
+		                			// dd($data[0]->id);
+
+									$table1 = inspection_roll::findOrFail($data[0]->id);
+									$table1->su = $su;
+									$table1->material = $material;
+									$table1->material_desc;
+									$table1->batch = $batch;
+									$table1->qty = round((float)$qty,3);
+									$table1->uom;
+									$table1->ses = NULL;
+									$table1->save();
+
+		                	} else {
+		                	
+			                	// try {
+									$table = new inspection_roll;
+
+									$table->su = $su;
+									$table->material = $material;
+									$table->material_desc;
+									$table->batch = $batch;
+									$table->qty = round((float)$qty,3);
+									$table->uom;
+									$table->ses;
+															
+									$table->save();
+								// }
+								// catch (\Illuminate\Database\QueryException $e) {
+									// $msg = "Problem to save in inventory table";
+									// return view('Inventory.error',compact('msg'));
+								// }
+							}
+						}
+
+	                }
+	            });
+			
+	    }
+		return redirect('inspection_rolls');
+	}
+
+	public function import_relaxation_rolls() // 
+	{
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file14'))->getSheetNames();
+		 // dd("Test");
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('inventory_bb_4s')->truncate();
+	            // DB::table('inventory_temp_bb_4s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file14'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+	                	// dd($row);
+	                	$su = $row['storage_unit'];
+	                	$material_desc;
+	                	$material = trim($row['material']);
+	                	$batch = $row['dyelot_number'];
+	                	$qty = $row['available_stock'];
+	                	$uom;
+	                	$ses;
+	                		                		                	
+	                	// dd($material);
+	                	
+	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM relaxation_rolls WHERE su = '".$su."' "));
+	                	// dd($data);
+	                	$data_log = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM relaxation_roll_logs WHERE su = '".$su."' "));
+
+
+	                	if (!isset($data_log[0]->id)) {
+	                		// exist in log
+
+		                	if (isset($data[0]->id)) {
+		                		// exist in main
+		                		
+		                			$table1 = relaxation_roll::findOrFail($data[0]->id);
+									$table1->su = $su;
+									$table1->material = $material;
+									$table1->material_desc;
+									$table1->batch = $batch;
+									$table1->qty = round((float)$qty,3);
+									$table1->uom;
+									$table1->ses = NULL;
+									$table1->save();
+
+		                	} else {
+
+			                	// try {
+									$table = new relaxation_roll;
+
+									$table->su = $su;
+									$table->material = $material;
+									$table->material_desc;
+									$table->batch = $batch;
+									$table->qty = round((float)$qty,3);
+									$table->uom;
+									$table->ses;
+															
+									$table->save();
+								// }
+								// catch (\Illuminate\Database\QueryException $e) {
+									// $msg = "Problem to save in inventory table";
+									// return view('Inventory.error',compact('msg'));
+								// }
+							}
+						}
+
+	                }
+	            });
+			
+	    }
+		return redirect('relaxation_rolls');
 	}
 	
 

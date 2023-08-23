@@ -10,7 +10,7 @@
 				<p style="color:red;"></p>
 
 				<div class="panel panel-default">
-				<div class="panel-heading">Import already scaned HU for stock take</div>
+				<div class="panel-heading">Import </div>
 				
 				{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@postImportstock_take'] ]) !!}
 					<div class="panel-body">

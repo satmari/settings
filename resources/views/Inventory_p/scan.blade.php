@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-5 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-head ing" style="background-color: #ffa90cb5"><b>Scan SU (Kikinda)</b>
+				<div class="panel-head ing" style="background-color: #ffa90cb5"><b>Scan SU (Kikinda acc)</b>
 						@if (isset($msg))
 							<small><i>&nbsp &nbsp &nbsp Msg: <span style="color:blue"><b>{{ $msg }}</b></span></i></small>
 						@endif

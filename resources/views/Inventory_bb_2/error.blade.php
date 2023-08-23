@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: #0cb0ff63">Error BB2 (Subotica)</div>
+				<div class="panel-heading" style="background-color: #0cb0ff63">Error BB2 (Subotica Lines)</div>
 				<h3 style="color:red;">Error!</h3>
 				<p style="color:red;">{{ $msg }}</p>
 				

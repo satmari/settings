@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center col-md-4 col-md-offset-4">
 			<div class="panel panel-default">
-				<div class="panel-heading">Error (Senta)</div>
+				<div class="panel-heading">Error (Senta acc)</div>
 				<h3 style="color:red;">Error!</h3>
 				<p style="color:red;" style="background-color: #ff5b0ca1">{{ $msg }}</p>
 				

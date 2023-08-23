@@ -94,7 +94,7 @@
 				        	<td>{{ $d->status }}</td>
 
 				        	<td>{{ substr($d->created_at,0 , 10) }}</td>
-				        	<td>{{ substr($d->updated_at,0 , 10) }}</td>
+				        	<td>{{ substr($d->updated_at,0 , 16) }}</td>
 
 				        	<td><span style="color:red"><pre>{{ $d->sku_2 }}</pre></span></td>
 				        	<td><span style="color:red">{{ $d->ean_2 }}</span></td>

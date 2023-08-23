@@ -141,6 +141,9 @@ Route::post('/postImportstock_take', 'ImportController@postImportstock_take');
 Route::get('import_budget', 'ImportBudget@index');
 Route::post('postImportBudget', 'ImportBudget@postImportBudget');
 
+Route::get('close_po', 'AtilaController@close_po');
+Route::post('close_po_post', 'ImportController@close_po_post');
+
 // SAP Inventory
 Route::get('/sap_inventory', 'sap_inventoryController@index_main');
 Route::get('/inventory', 'sap_inventoryController@index');
@@ -264,6 +267,55 @@ Route::post('update_su_bb_4/{id}', 'sap_inventoryController_bb_4@update_su');
 Route::get('/inventory_stop_bb_4', 'sap_inventoryController_bb_4@inventory_stop');
 Route::get('/inventory_cancel_bb_4', 'sap_inventoryController_bb_4@inventory_cancel');
 
+// SAP Inventory log
+Route::get('/inventory_log', 'sap_inventoryController_log@index');
+Route::get('/inventory_scan_log', 'sap_inventoryController_log@index_scan');
+Route::get('/import_inventory_log', 'sap_inventoryController_log@import');
+// Route::post('import_post_log', 'sap_inventoryController_log@import_post');
+Route::post('import_post_log', 'ImportController@import_post_log');
+
+Route::post('insert_temp_su_log', 'sap_inventoryController_log@insert_temp_su');
+Route::post('update_su_log/{id}', 'sap_inventoryController_log@update_su');
+Route::get('/inventory_stop_log', 'sap_inventoryController_log@inventory_stop');
+Route::get('/inventory_cancel_log', 'sap_inventoryController_log@inventory_cancel');
+
+Route::get('/inventory_issue/{id}', 'sap_inventoryController_log@inventory_issue');
+Route::post('inventory_issue_next', 'sap_inventoryController_log@inventory_issue_next');
+Route::post('inventory_issue_qty', 'sap_inventoryController_log@inventory_issue_qty');
+
+
+// Insepction rolls
+Route::get('inspection_rolls', 'inspection_roll_controller@index');
+// Route::get('inspection_rolls', 'inspection_roll_controller@index_scan');
+
+Route::post('import_inspection_rolls', 'ImportController@import_inspection_rolls');
+
+Route::get('inspection_rolls_scan_r', 'inspection_roll_controller@index_scan_r');
+Route::post('insert_inspection_roll_r', 'inspection_roll_controller@insert_inspection_roll_r');
+// Route::get('inspection_rolls_scan', 'inspection_roll_controller@index_scan');
+Route::post('insert_inspection_roll', 'inspection_roll_controller@insert_inspection_roll');
+Route::post('confirm_inspection_roll', 'inspection_roll_controller@confirm_inspection_roll');
+Route::get('remove_inspection_roll/{id}/{session}', 'inspection_roll_controller@remove_inspection_roll');
+Route::get('log_out_i', 'inspection_roll_controller@log_out_i');
+Route::get('/import_inspection_roll', 'sap_inventoryController_wh@import');
+
+
+// Relaxation rolls
+Route::get('relaxation_rolls', 'relaxation_roll_controller@index');
+// Route::get('relaxation_rolls', 'relaxation_roll_controller@index_scan');
+
+Route::post('import_relaxation_rolls', 'ImportController@import_relaxation_rolls');
+
+Route::get('relaxation_rolls_scan_r', 'relaxation_roll_controller@index_scan_r');
+Route::post('insert_relaxation_roll_r', 'relaxation_roll_controller@insert_relaxation_roll_r');
+// Route::get('relaxation_rolls_scan', 'relaxation_roll_controller@index_scan');
+Route::post('insert_relaxation_roll', 'relaxation_roll_controller@insert_relaxation_roll');
+Route::post('confirm_relaxation_roll', 'relaxation_roll_controller@confirm_relaxation_roll');
+Route::get('remove_relaxation_roll/{id}/{session}', 'relaxation_roll_controller@remove_relaxation_roll');
+Route::get('log_out_r', 'relaxation_roll_controller@log_out_r');
+Route::get('/import_relaxation_roll', 'sap_inventoryController_wh@import');
+
+
 // s_quality
 Route::get('second_q', 'second_q@index');
 // Route::post('import_post_second_q', 'second_q@import_post_second_q');
@@ -280,6 +332,7 @@ Route::post('sap_import_post_s', 'importController@sap_import_post_s');
 Route::post('sap_import_post_u', 'importController@sap_import_post_u');
 
 Route::get('sap_mech', 'sap_materialsController@sap_mech');
+
 
 // net_weigth
 Route::get('net_weight', 'net_weightController@index');

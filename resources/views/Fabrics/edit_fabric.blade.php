@@ -127,6 +127,10 @@
 						<p>Usable width:</p>
 						{!! Form::input('decimal','usable_width', number_format($data->usable_width,2), ['class' => 'form-control']) !!}
 	                </div>
+	                 <div class="panel-body">
+						<p>Average length:</p>
+						{!! Form::input('decimal','avg_length', number_format($data->avg_length,1), ['class' => 'form-control']) !!}
+	                </div>
 	                <div class="panel-body">
 						<p>Shrinkage Dry O [%]: </p>
 						{!! Form::input('decimal','shrinkage_dry_o', number_format($data->shrinkage_dry_o,2)*100, ['class' => 'form-control']) !!}

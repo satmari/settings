@@ -15,8 +15,7 @@ use Session;
 class AtilaController extends Controller {
 
 	
-	public function index()
-	{
+	public function index() {
 		//
 
 		$data = DB::connection('sqlsrv1')->select(DB::raw("SELECT [No_] as no, [Value Posting] as value_posting FROM [GORDON\$Default Dimension] WHERE [No_] like '5%' "));
@@ -25,8 +24,13 @@ class AtilaController extends Controller {
 		return view('atila.index', compact('data', 'data1'));
 	}
 
-	public function copy_cc_from_nav()
-	{
+	public function close_po() {
+		//
+
+		return view('atila.close_po');
+	}
+
+	public function copy_cc_from_nav() {
 		//
 
 		$data = DB::connection('sqlsrv1')->select(DB::raw("SELECT [No_] as no, [Value Posting] as value_posting FROM [GORDON\$Default Dimension] WHERE [No_] like '5%' "));
@@ -72,8 +76,7 @@ class AtilaController extends Controller {
 		// return view('atila.index');
 	}
 
-	public function truncate_local_cc()
-	{
+	public function truncate_local_cc() {
 		//
 
 		// $data = DB::connection('sqlsrv')->select(DB::raw("truncate table [settings].[dbo].[cctabelas]"));
@@ -87,8 +90,7 @@ class AtilaController extends Controller {
 		// return view('atila.index');
 	}
 
-	public function copy_cc_from_local()
-	{
+	public function copy_cc_from_local() {
 		//
 
 		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT no,value_posting FROM cctabelas ORDER BY id"));
@@ -131,8 +133,7 @@ class AtilaController extends Controller {
 		// return view('atila.index');
 	}
 
-	public function delete_nav_cc()
-	{
+	public function delete_nav_cc() {
 
 		$update = DB::connection('sqlsrv1')->select(DB::raw("
 			SET NOCOUNT ON;
@@ -144,12 +145,9 @@ class AtilaController extends Controller {
 
 		return redirect('/atila');
 		// return view('atila.index');
-
 	}
 
-
-	public function bbstatus()
-	{
+	public function bbstatus() {
 
 		$data = DB::connection('sqlsrv2')->select(DB::raw("SELECT 
 			  po.INTKEY as intkey
@@ -164,17 +162,14 @@ class AtilaController extends Controller {
 		  WHERE po.CREATEDATE > '06-01-2018' ORDER BY po.[POnum] desc "));
 
 		return view('atila.bbstatus', compact('data'));
-
 	}
 
-	public function edit_po_bbstatus($pon)
-	{
+	public function edit_po_bbstatus($pon) {
 		// dd($pon);
 		return view('atila.bbstatus_change', compact('pon'));
 	}
 
-	public function update_bbstatus(Request $request)
-	{
+	public function update_bbstatus(Request $request) {
 
 		$this->validate($request, ['new_status' => 'required', 'pon' => 'required' ]);
 		$input = $request->all();
@@ -194,8 +189,7 @@ class AtilaController extends Controller {
 		return redirect('/bbstatus');
 	}
 
-	public function it_dezurstva()
-	{
+	public function it_dezurstva() {
 		return view('atila.it');
 	}
 	
