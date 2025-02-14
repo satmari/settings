@@ -23,6 +23,14 @@ class CreateStylesTable extends Migration {
 			$table->string('order_type')->nullable();
 
 			$table->string('image')->nullable(); //added
+
+			$table->string('spreading_method')->nullable();
+			$table->integer('standard_bb_qty')->nullable();
+			$table->string('pad_print')->nullable();
+			$table->string('bansek')->nullable();
+			$table->string('adeziv')->nullable();
+
+			$table->string('status')->nullable();
 			
 			$table->timestamps();
 		});

@@ -18,6 +18,8 @@ class CreateMatAbbrevsTable extends Migration {
 
 			$table->string('abbreviation')->unique();
 			$table->string('description')->nullable();
+			$table->string('description_en')->nullable();
+			$table->string('description_rs')->nullable();
 			
 			$table->timestamps();
 		});

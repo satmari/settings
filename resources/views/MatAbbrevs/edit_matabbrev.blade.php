@@ -22,28 +22,13 @@
 						<p>Description:</p>
 	               		{!! Form::input('description', 'description', $data->description, ['class' => 'form-control']) !!}
 					</div>
-
 					<div class="panel-body">
-						{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}
+						<p>Description EN:</p>
+	               		{!! Form::input('description_en', 'description_en', $data->description_en, ['class' => 'form-control']) !!}
 					</div>
-
-					@include('errors.list')
-
-					{!! Form::close() !!}
-
-				@endif
-
-
-				@if(Auth::check() && Auth::user()->name == 'workstudy')
-
-					{!! Form::open(['url' => 'update_matabrev/'.$data->id]) !!}
-					<input type="hidden" name="_token" id="_token" value="<?php echo csrf_token(); ?>">
-
-					{!! Form::hidden('abbreviation', $data->abbreviation, ['class' => 'form-control']) !!}
-					
 					<div class="panel-body">
 						<p>Description:</p>
-	               		{!! Form::input('description', 'description', $data->description, ['class' => 'form-control']) !!}
+	               		{!! Form::input('description_rs', 'description_rs', $data->description_rs, ['class' => 'form-control']) !!}
 					</div>
 
 					<div class="panel-body">
@@ -53,10 +38,8 @@
 					@include('errors.list')
 
 					{!! Form::close() !!}
-				
-				@endif
 
-				
+				@endif
 
 
 				<br>

@@ -53,6 +53,7 @@
 				<!-- <div class="panel panel-default">
 					<a href="{{url('/inventory_pal')}}" class="btn btn-default center-block"  style="background-color: #0ffff63">SU PAL Test</a>
 				</div> -->
+				<hr>
 				<div class="panel panel-default">
 					<a href="{{url('/inspection_rolls')}}" class="btn btn-default center-block"  style="background-color: #cf0101">Inspection rolls</a>
 				</div>

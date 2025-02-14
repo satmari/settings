@@ -13,8 +13,7 @@ use Session;
 
 class boxController extends Controller {
 
-	public function index()
-	{
+	public function index() {
 		//
 		$style = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT style FROM box_settings ORDER BY style asc"));
 		$style_2 = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT style_2 FROM box_settings ORDER BY style_2 asc"));
@@ -22,8 +21,7 @@ class boxController extends Controller {
 		return view('Box.index', compact('style', 'style_2'));
 	}
 
-	public function table()
-	{
+	public function table() {
 		//
 		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT [id]
 			  ,[sku]
@@ -48,8 +46,7 @@ class boxController extends Controller {
 		return view('Box.table', compact('data'));
 	}
 
-	public function add_box()
-	{
+	public function add_box() {
 		//
 		$data = DB::connection('sqlsrv3')->select(DB::raw("SELECT distinct fg FROM [trebovanje].[dbo].[sap_coois]"));
 		return view('Box.add_box');
@@ -82,8 +79,13 @@ class boxController extends Controller {
 		      ,[pcs_per_polybag_2]
 		      ,[ean_2]
 		      ,[barcode_type]
+		      ,(SELECT bq.[Barcode] FROM [172.27.161.200].[preparation].[dbo].[Barcode Table Quality] as bq
+		      	WHERE 	bq.[Item No_] = [style] COLLATE Latin1_General_CI_AS and 
+		      			bq.[Color] = [color] COLLATE Latin1_General_CI_AS and 
+		      			bq.[TG] = [size] COLLATE Latin1_General_CI_AS
+		      		) as ean_1
 		    FROM box_settings WHERE style = '".$style."' ORDER BY style, color asc"));
-		// dd($style);
+		// dd($data);
 		return view('Box.table', compact('data'));
 	}
 

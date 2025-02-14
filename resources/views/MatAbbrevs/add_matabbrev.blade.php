@@ -19,6 +19,14 @@
 				<p>Description: </p>
 					{!! Form::text('description', null, ['class' => 'form-control']) !!}
 				</div>
+				<div class="panel-body">
+				<p>Description EN: </p>
+					{!! Form::text('description_en', null, ['class' => 'form-control']) !!}
+				</div>
+				<div class="panel-body">
+				<p>Description RS: </p>
+					{!! Form::text('description_rs', null, ['class' => 'form-control']) !!}
+				</div>
 
 
 				<div class="panel-body">

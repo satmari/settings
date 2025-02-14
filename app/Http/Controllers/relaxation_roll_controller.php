@@ -26,6 +26,16 @@ class relaxation_roll_controller extends Controller {
 		return view('relaxation_rolls.index', compact('data'));
 	}
 
+	public function relaxation_rolls_history()
+	{
+		//
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM [relaxation_roll_logs] 
+			 WHERE created_at > DATEADD(day, -7, GETDATE())
+			 ORDER BY created_at desc"));
+
+		return view('relaxation_rolls.relaxation_rolls_history', compact('data'));
+	}
+
 	public function index_scan_r() {
 
 		$rnumber = Session::get('rnumber');

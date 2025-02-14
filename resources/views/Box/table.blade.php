@@ -55,6 +55,7 @@
 				           <th>Weight of polybag</th>
 				           <th>Weight of 1 pcs</th>
 
+				           <th>EAN</th>
 				           <th>Status</th>
 
 				           <th>Created at</th>
@@ -90,6 +91,7 @@
 				        	
 				        	<td>{{ round($d->weight_of_polybag,3) }}</td>
 				        	<td>{{ round($d->weight_of_pcs,3) }}</td>
+				        	<td>{{ $d->ean_1}}</td>
 				        	
 				        	<td>{{ $d->status }}</td>
 

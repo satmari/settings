@@ -9,7 +9,13 @@
 
 			
 					<a href="{{ url('import_relaxation_roll') }}" class="btn btn-info btn-xs ">Import relaxation rolls</a>
-					<a href="{{ url('relaxation_rolls_scan_r') }}" class="btn btn-success btn-xs ">Relaxation rolls scan</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('relaxation_rolls_history') }}" class="btn btn-info btn-xs ">Relaxation roll history</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('paspul_rolls_scan_r') }}" class="btn btn-primary btn-xs ">Paspul rolls scan</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('relaxation_rolls_scan_r') }}" class="btn btn-success btn-xs "><big>Relaxation rolls scan</big></a>
+					
 										
 			
                 <div class="input-group"> <span class="input-group-addon">Filter</span>

@@ -9,6 +9,10 @@
 					&nbsp; &nbsp; &nbsp;<a href="{{ url('log_out_r') }}" class="btn btn-xs btn-danger">Logout</a>
 				</div>
 				<br>
+				<div class="panel-head ing" style="background-color:  ">
+					<a href="{{ url('relaxation_rolls_history') }}" class="btn btn-info btn-xs ">Relaxation roll history (7 days)</a>
+				</div>
+				<br>
 				<div class="panel-head ing" style="background-color:  #23cf01"><b>Scan relaxation roll</b>
 						<br>
 						@if (isset($msg))

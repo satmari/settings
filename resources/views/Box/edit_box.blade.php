@@ -27,7 +27,7 @@
 
 					<div class="panel-body">
 						<p>Brand:<span style="color:red;">*</span></p>
-	               		{!! Form::select('brand', array(''=>'','Intimissimi'=>'Intimissimi','Tezenis'=>'Tezenis','Calzedonia'=>'Calzedonia'), $data->brand, array('class' => 'form-control')); !!} 
+	               		{!! Form::select('brand', array(''=>'','Intimissimi'=>'Intimissimi','Intimissimi Uomo'=>'Intimissimi Uomo','Tezenis'=>'Tezenis','Calzedonia'=>'Calzedonia'), $data->brand, array('class' => 'form-control')); !!} 
 					</div>
 
 					<div class="panel-body">

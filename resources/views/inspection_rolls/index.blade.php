@@ -9,7 +9,13 @@
 
 			
 					<a href="{{ url('import_inspection_roll') }}" class="btn btn-info btn-xs ">Import inspection rolls</a>
-					<a href="{{ url('inspection_rolls_scan_r') }}" class="btn btn-success btn-xs ">Inspection rolls scan</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('inspection_rolls_history') }}" class="btn btn-info btn-xs ">Inspection roll history</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('paspul_rolls_scan_r') }}" class="btn btn-primary btn-xs ">Paspul rolls scan</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="{{ url('inspection_rolls_scan_r') }}" class="btn btn-success btn-xs "><big>Inspection rolls scan</big></a>
+					
 										
 			
                 <div class="input-group"> <span class="input-group-addon">Filter</span>

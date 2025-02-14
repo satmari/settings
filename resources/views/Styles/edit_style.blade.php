@@ -37,6 +37,35 @@
 						<p>Order Type:</p>
 	               		{!! Form::input('order_type', 'order_type', $data->order_type, ['class' => 'form-control']) !!}
 					</div>
+					<div class="panel-body">
+						<p>FG family:</p>
+	               		{!! Form::input('fg_family', 'fg_family', $data->fg_family, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Spreading method:</p>
+	               		{!! Form::input('spreading_method', 'spreading_method', $data->spreading_method, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Standard bb qty:</p>
+	               		{!! Form::input('integer', 'standard_bb_qty', $data->standard_bb_qty, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Pad print:</p>
+	               		{!! Form::input('pad_print', 'pad_print', $data->pad_print, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Bansek:</p>
+	               		{!! Form::input('bansek', 'bansek', $data->bansek, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Adeziv:</p>
+	               		{!! Form::input('adeziv', 'adeziv', $data->adeziv, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+						<p>Status:</p>
+	               		{!! Form::select('status', array(''=>'','ACTIVE'=>'ACTIVE','INACTIVE'=>'INACTIVE'), $data->status, array('class' => 'form-control')); !!} 
+					</div>
 
 
 					

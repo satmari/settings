@@ -42,7 +42,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					{{-- <li><a href="{{ url('/') }}">Home</a></li> --}}
+					<!-- <li><a href="{{ url('/') }}">Home</a></li> -->
 					<li><a href="{{ url('/modules') }}">Lines</a></li>
 					<li><a href="{{ url('/styles') }}">Styles</a></li>
 					<li><a href="{{ url('/styles_extra') }}">Styles Extra</a></li>
@@ -50,9 +50,9 @@
 					<li><a href="{{ url('/matabbrevs') }}">Material Abbreviation</a></li>
 					<li><a href="{{ url('/suppliers') }}">Suppliers</a></li>
 					<!-- <li><a href="{{ url('/budget') }}">Budget</a></li> -->
-					<li><a href="{{ url('/daily_budget') }}">Daily Budget</a></li>
-					<li><a href="{{ url('/fr_plan') }}">FR Plan</a></li>
-					{{--<li><a href="{{ url('/wms') }}">WMS functions</a></li>--}}
+					<!-- <li><a href="{{ url('/daily_budget') }}">Daily Budget</a></li> -->
+					<!-- <li><a href="{{ url('/fr_plan') }}">FR Plan</a></li> -->
+					<!-- <li><a href="{{ url('/wms') }}">WMS functions</a></li> -->
 					<!-- <li><a href="{{ url('/bbstatus') }}">Change BB creation status</a></li> -->
 					<li><a href="{{ url('/machines') }}">Machines</a></li>
 					<li><a href="{{ url('/box') }}">FG box settings</a></li>

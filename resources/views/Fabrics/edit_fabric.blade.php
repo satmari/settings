@@ -127,6 +127,10 @@
 						<p>Usable width:</p>
 						{!! Form::input('decimal','usable_width', number_format($data->usable_width,2), ['class' => 'form-control']) !!}
 	                </div>
+	                <div class="panel-body">
+						<p>Actual width:</p>
+						{!! Form::input('decimal','actual_width', number_format($data->actual_width,2), ['class' => 'form-control']) !!}
+	                </div>
 	                 <div class="panel-body">
 						<p>Average length:</p>
 						{!! Form::input('decimal','avg_length', number_format($data->avg_length,1), ['class' => 'form-control']) !!}
@@ -158,7 +162,7 @@
 	                <div class="panel-body">
 						<p>Relaxation: </p>
 						{{-- {!! Form::input('relaxation','relaxation', $data->relaxation, ['class' => 'form-control']) !!} --}}
-						{!! Form::select('relaxation', array(''=>'','YES'=>'YES','NO'=>'NO'), $data->relaxation, array('class' => 'form-control')); !!} 
+						{!! Form::select('relaxation', array(''=>'','YES'=>'YES','NO'=>'NO','MIX'=>'MIX'), $data->relaxation, array('class' => 'form-control')); !!} 
 	                </div>
 	                <div class="panel-body">
 						<p>MQ Weight: </p>
@@ -194,6 +198,11 @@
 					<div class="panel-body">
 					<p>Information for SP and CUT: </p>
 						{!! Form::input('info_for_sp_and_cut', 'info_for_sp_and_cut', $data->info_for_sp_and_cut ,['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
+					<p>Fabric family: </p>
+						{!! Form::input('fabric_family', 'fabric_family', $data->fabric_family ,['class' => 'form-control']) !!}
 					</div>
 
 	                
@@ -265,6 +274,10 @@
 						<p>Usable width:</p>
 						{!! Form::input('decimal','usable_width', number_format($data->usable_width,2), ['class' => 'form-control']) !!}
 	                </div>
+	                 <div class="panel-body">
+						<p>Actual width:</p>
+						{!! Form::input('decimal','actual_width', number_format($data->actual_width,2), ['class' => 'form-control']) !!}
+	                </div>
 	                <div class="panel-body">
 						<p>Shrinkage Dry O [%]: </p>
 						{!! Form::input('decimal','shrinkage_dry_o', number_format($data->shrinkage_dry_o,2)*100, ['class' => 'form-control']) !!}
@@ -327,6 +340,10 @@
 						{!! Form::input('info_for_sp_and_cut', 'info_for_sp_and_cut', $data->info_for_sp_and_cut ,['class' => 'form-control']) !!}
 					</div>
 
+					<div class="panel-body">
+					<p>Fabric family: </p>
+						{!! Form::input('fabric_family', 'fabric_family', $data->fabric_family ,['class' => 'form-control']) !!}
+					</div>
 
 
 	                <div class="panel-body">

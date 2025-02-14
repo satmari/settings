@@ -25,7 +25,6 @@
 					        	<source src="{{ asset('/css/3.wav') }}" type="audio/wav">
 					       	</audio>
 						@endif
-					
 				</div>
 				
 				{!! Form::open(['url' => 'insert_temp_su_bb_2']) !!}
@@ -46,8 +45,6 @@
 					
 					@include('errors.list')
 					{!! Form::close() !!}
-					
-				
 				
 				@if(isset($data))
 				@foreach ($data as $d)

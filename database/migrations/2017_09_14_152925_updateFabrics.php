@@ -39,6 +39,7 @@ class UpdateFabrics extends Migration {
     		// $table->string('image')->nullable(); //added
 
     		// $table->double('avg_length')->nullable(); // Added
+    		// $table->double('actual_width')->nullable(); // Added
 
 		});
 

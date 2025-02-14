@@ -5,7 +5,7 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: #0cb0ff63">SAP Inventory table BB2 (Subotica Lines)</div>
+				<div class="panel-heading" style="background-color: #0cb0ff63">Inventory table BB2 (Subotica Lines)</div>
 
 			
 					<a href="{{ url('import_inventory_bb_2') }}" class="btn btn-info btn-xs ">Import inventory database</a>

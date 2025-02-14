@@ -31,6 +31,9 @@ Route::post('/update_style/{id}', 'StylesController@update_style');
 Route::get('/upload_image/{id}', 'StylesController@upload_image');
 Route::post('/upload_style_image/', 'ImportImageController@upload_style_image');
 
+Route::get('/import_styles', 'ImportstyleController@index');
+Route::post('/postImportStyle', 'ImportstyleController@postImportStyle');
+
 // Styles extra
 Route::get('/styles_extra', 'Styles_extraController@index');
 Route::get('/add_style_extra', 'Styles_extraController@add_style');
@@ -299,6 +302,8 @@ Route::get('remove_inspection_roll/{id}/{session}', 'inspection_roll_controller@
 Route::get('log_out_i', 'inspection_roll_controller@log_out_i');
 Route::get('/import_inspection_roll', 'sap_inventoryController_wh@import');
 
+Route::get('inspection_rolls_history', 'inspection_roll_controller@inspection_rolls_history');
+
 
 // Relaxation rolls
 Route::get('relaxation_rolls', 'relaxation_roll_controller@index');
@@ -315,6 +320,12 @@ Route::get('remove_relaxation_roll/{id}/{session}', 'relaxation_roll_controller@
 Route::get('log_out_r', 'relaxation_roll_controller@log_out_r');
 Route::get('/import_relaxation_roll', 'sap_inventoryController_wh@import');
 
+Route::get('relaxation_rolls_history', 'relaxation_roll_controller@relaxation_rolls_history');
+
+// Paspul rolls
+Route::get('paspul_rolls_scan_r', 'paspul_roll_controller@index_scan_r');
+Route::post('insert_paspul_roll', 'paspul_roll_controller@insert_paspul_roll');
+
 
 // s_quality
 Route::get('second_q', 'second_q@index');
@@ -330,6 +341,8 @@ Route::get('sap_import', 'sap_materialsController@sap_import');
 Route::post('sap_import_post_mm', 'importController@sap_import_post_mm');
 Route::post('sap_import_post_s', 'importController@sap_import_post_s');
 Route::post('sap_import_post_u', 'importController@sap_import_post_u');
+
+Route::post('postImportDoneSU', 'ImportController@postImportDoneSU');
 
 Route::get('sap_mech', 'sap_materialsController@sap_mech');
 

@@ -63,6 +63,7 @@
 				           <th>Mat4 [%]</th>
 				           <th style="background-color: aliceblue;">Tot width</th>
 				           <th style="background-color: aliceblue;">Usable width</th>
+				           <th style="background-color: aliceblue;">Actual width</th>
 				           <th style="background-color: aliceblue;">Average length</th>
 				           <th>Shr.dry O [%]</th>
 				           <th>Shr.dry W [%]</th>
@@ -81,6 +82,7 @@
 				           <th>Main mat</th>
 				           <th>SP parameter</th>
 				           <th>Info for SP and CUT</th>
+				           <th>Fab Family</th>
 
 				           
 				           <th></th>
@@ -111,6 +113,7 @@
 				        	<td>{{ number_format($d->mat4_p,2)*100 }} </td>
 				        	<td style="background-color: aliceblue;">{{ number_format($d->tot_width,2) }} </td>
 				        	<td style="background-color: aliceblue;">{{ number_format($d->usable_width,2) }} </td>
+				        	<td style="background-color: aliceblue;">{{ number_format($d->actual_width,2) }} </td>
 				        	<td style="background-color: aliceblue;">{{ number_format($d->avg_length,2) }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_o,2)*100 }} </td>
 				        	<td>{{ number_format($d->shrinkage_dry_w,2)*100 }} </td>
@@ -129,6 +132,7 @@
 				        	<td>{{ $d->main_material }} </td>
 				        	<td>{{ $d->sp_parameter }} </td>
 				        	<td>{{ $d->info_for_sp_and_cut }} </td>
+				        	<td>{{ $d->fabric_family }} </td>
 
 				        	<td>
 				        	@if(Auth::check())

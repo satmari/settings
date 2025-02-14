@@ -9,6 +9,7 @@
 
 				@if(Auth::check() && Auth::user()->name == "admin")
 					<a href="{{ url('add_style') }}" class="btn btn-info btn-xs ">Add new style</a>
+					<a href="{{ url('import_styles') }}" class="btn btn-danger btn-xs ">Import style table</a>
 				@endif
 
                 <div class="input-group"> <span class="input-group-addon">Filter</span>
@@ -44,12 +45,20 @@
 				        <tr>
 				           {{-- <th>id</th> --}}
 				           
-				           <th>Style</th>
-				           <th>Brand</th>
-				           <th>Cutting SMV</th>
-				           <th>Cluster</th>
-				           <th>Order Type</th>
-				           <th>Image file</th>
+				           <th data-sortable="true">Style</th>
+				           <th data-sortable="true">Brand</th>
+				           <th data-sortable="true">Cutting SMV</th>
+				           <th data-sortable="true">Cluster</th>
+				           <th data-sortable="true">Order Type</th>
+				           <th data-sortable="true">FG family</th>
+				           <th data-sortable="true">Spreading method</th>
+				           <th data-sortable="true">Standard BB qty</th>
+				           <th data-sortable="true">Pad print</th>
+				           <th data-sortable="true">Bansek</th>
+				           <th data-sortable="true">Adeziv</th>
+				           <th data-sortable="true">Status</th>
+				           <th data-sortable="true">Image file</th>
+				           
 				           <th></th>
 				           
 				           <th></th>
@@ -67,6 +76,14 @@
 				        	<td>{{ number_format($d->cutting_smv, 3) }} </td>
 				        	<td>{{ $d->cluster }} </td>
 				        	<td>{{ $d->order_type}} </td>
+				        	<td>{{ $d->fg_family}} </td>
+				        	<td>{{ $d->spreading_method}} </td>
+				        	<td>{{ $d->standard_bb_qty}} </td>
+				        	<td>{{ $d->pad_print}} </td>
+				        	<td>{{ $d->bansek}} </td>
+				        	<td>{{ $d->adeziv}} </td>
+
+				        	<td>{{ $d->status}} </td>
 				        	<td>{{ $d->image}} </td>
 				        	<td> <a href="{{ url('/public/storage/StyleImages/'.$d->image ) }}" target="_blank" onClick="javascript:window.open('{{ url('/public/storage/StyleImages/'.$d->image ) }}','Windows','width=650,height=350,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,directories=no,status=no');return false" ) >show image</a> </td>
 

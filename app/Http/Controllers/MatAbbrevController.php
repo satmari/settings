@@ -39,6 +39,8 @@ class MatAbbrevController extends Controller {
 
 			$table->abbreviation = $input['abbreviation'];
 			$table->description = $input['description'];
+			$table->description_en = $input['description_en'];
+			$table->description_rs = $input['description_rs'];
 						
 			$table->save();
 		}
@@ -69,6 +71,8 @@ class MatAbbrevController extends Controller {
 
 			$table->abbreviation = $input['abbreviation'];
 			$table->description = $input['description'];
+			$table->description_en = $input['description_en'];
+			$table->description_rs = $input['description_rs'];
 			
 			$table->save();
 		}

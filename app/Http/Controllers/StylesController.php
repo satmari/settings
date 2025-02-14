@@ -74,6 +74,13 @@ class StylesController extends Controller {
 			$table->cutting_smv = $input['cutting_smv'];
 			$table->cluster = $input['cluster'];
 			$table->order_type = $input['order_type'];
+			$table->fg_family = $input['fg_family'];
+			$table->spreading_method = $input['spreading_method'];
+			$table->standard_bb_qty = $input['standard_bb_qty'];
+			$table->pad_print = $input['pad_print'];
+			$table->bansek = $input['bansek'];
+			$table->adeziv = $input['adeziv'];
+			$table->status = $input['status'];
 			
 			$table->save();
 		}

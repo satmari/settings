@@ -67,6 +67,7 @@ class FabricsController extends Controller {
 			$table->mat4_p = $input['mat4_p']/100;
 			$table->tot_width = $input['tot_width'];
 			$table->usable_width = $input['usable_width'];
+			$table->actual_width = $input['actual_width'];
 			$table->avg_length = $input['avg_length'];
 			$table->shrinkage_dry_o = $input['shrinkage_dry_o']/100;
 			$table->shrinkage_dry_w = $input['shrinkage_dry_w']/100;
@@ -83,6 +84,7 @@ class FabricsController extends Controller {
 			$table->sample = $input['sample'];
 			$table->sp_parameter = $input['sp_parameter'];
 			$table->info_for_sp_and_cut = $input['info_for_sp_and_cut'];
+			$table->fabric_family = $input['fabric_family'];
 
 			$table->save();
 		}
@@ -132,6 +134,7 @@ class FabricsController extends Controller {
 			$table->mat4_p = $input['mat4_p']/100;
 			$table->tot_width = $input['tot_width'];
 			$table->usable_width = $input['usable_width'];
+			$table->actual_width = $input['actual_width'];
 			$table->avg_length = $input['avg_length'];
 			$table->shrinkage_dry_o = $input['shrinkage_dry_o']/100;
 			$table->shrinkage_dry_w = $input['shrinkage_dry_w']/100;
@@ -148,6 +151,8 @@ class FabricsController extends Controller {
 			$table->sample = $input['sample'];
 			$table->sp_parameter = $input['sp_parameter'];
 			$table->info_for_sp_and_cut = $input['info_for_sp_and_cut'];
+			$table->fabric_family = $input['fabric_family'];
+
 			
 			$table->save();
 		}

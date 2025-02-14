@@ -26,6 +26,17 @@ class inspection_roll_controller extends Controller {
 		return view('inspection_rolls.index', compact('data'));
 	}
 
+	public function inspection_rolls_history()
+	{
+		//
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM [inspection_roll_logs] 
+			 WHERE created_at > DATEADD(day, -7, GETDATE())
+			 ORDER BY created_at desc"));
+
+		return view('inspection_rolls.inspection_rolls_history', compact('data'));
+	}
+
+
 	public function index_scan_r() {
 
 		$rnumber = Session::get('rnumber');

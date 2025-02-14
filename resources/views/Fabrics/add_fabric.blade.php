@@ -100,6 +100,10 @@
 					{!! Form::input('decimal','usable_width', null, ['class' => 'form-control']) !!}
 				</div>
 				<div class="panel-body">
+				<p>Actual width:</p>
+					{!! Form::input('decimal','actual_width', null, ['class' => 'form-control']) !!}
+	             </div>
+				<div class="panel-body">
 				<p>Average length: </p>
 					{!! Form::input('decimal','avg_length', null, ['class' => 'form-control']) !!}
 				</div>
@@ -166,6 +170,11 @@
 				<div class="panel-body">
 				<p>Information for SP and CUT: </p>
 					{!! Form::text('info_for_sp_and_cut', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
+				<p>Fabric family: </p>
+					{!! Form::text('fabric_family', null, ['class' => 'form-control']) !!}
 				</div>
 				
 

@@ -73,7 +73,7 @@
 						{!! Form::close() !!}
 					
 
-					<div class="panel-heading" style="background-color: #0c35ffb5">Import sap inventory table BB1 (Subotica Stock)</div>
+					<div class="panel-heading" style="background-color: #0c35ffb5">Import inventory table BB1 (Subotica Stock)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb'] ]) !!}
 							<div class="panel-body">
@@ -86,7 +86,7 @@
 						{!! Form::close() !!}
 					
 
-					<div class="panel-heading" style="background-color: #0cb0ff63">Import sap inventory table BB2 (Subotica Lines)</div>
+					<div class="panel-heading" style="background-color: #0cb0ff63">Import inventory table BB2 (Subotica Lines)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_2'] ]) !!}
 							<div class="panel-body">
@@ -98,7 +98,7 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #03202e63">Import sap inventory table BB3 (Kikinda all)</div>
+					<div class="panel-heading" style="background-color: #03202e63">Import inventory table BB3 (Kikinda all)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_3'] ]) !!}
 							<div class="panel-body">
@@ -110,7 +110,7 @@
 							
 						{!! Form::close() !!}
 
-					<div class="panel-heading" style="background-color: #6e432463">Import sap inventory table BB4 (Senta all)</div>
+					<div class="panel-heading" style="background-color: #6e432463">Import inventory table BB4 (Senta all)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_post_bb_4'] ]) !!}
 							<div class="panel-body">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row vertical-center-row">
-		<div class="text-center col-md-5 col-md-offset-4">
+		<div class="text-center col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">Material Abbreviation table</div>
 
@@ -46,6 +46,8 @@
 				           
 				           <th>Abbreviation</th>
 				           <th>Description</th>
+				           <th>Description EN</th>
+				           <th>Description RS</th>
 				           
 				           <th></th>
 				        </tr>
@@ -59,6 +61,8 @@
 				        	
 				        	<td>{{ $d->abbreviation }} </td>
 				        	<td>{{ $d->description }} </td>
+				        	<td>{{ $d->description_en }} </td>
+				        	<td>{{ $d->description_rs }} </td>
 				        	
 				        	<td>
 				        	@if(Auth::check())

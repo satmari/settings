@@ -10,28 +10,22 @@
 				<p style="color:red;"></p>
 
 				<div class="panel panel-default">
-				<div class="panel-heading">Import </div>
-				
-				{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@postImportstock_take'] ]) !!}
-					<div class="panel-body">
-						{!! Form::file('file', ['class' => 'center-block']) !!}
-					</div>
-					<div class="panel-body">
-						{!! Form::submit('Import list of HU', ['class' => 'btn btn-warning center-block']) !!}
-					</div>
+					<div class="panel-heading">Import aa </div>
 					
-				{!! Form::close() !!}
+					{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@postImportstock_take'] ]) !!}
+						<div class="panel-body">
+							{!! Form::file('file', ['class' => 'center-block']) !!}
+						</div>
+						<div class="panel-body">
+							{!! Form::submit('Import list of HU', ['class' => 'btn btn-warning center-block']) !!}
+						</div>
+					{!! Form::close() !!}
 
-				<hr>
-
-
-				
-			</div>
-							
+					<hr>
+				</div>
 
 			</div>
 		</div>
-		
 	</div>
 </div>
 

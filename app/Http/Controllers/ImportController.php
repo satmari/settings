@@ -570,11 +570,95 @@ class ImportController extends Controller {
 
 	                foreach($readerarray as $row)
 	                {	
-	                	// dd($row);
-	                	$fab = $row['fab'];
+	                	dd($row);
+
+	                	// $os = trim($row['os']);
+	                	// $id = trim($row['id']);
+
+	                	/*
+	                	// UPDATE SETTINGS
+	                	$fabric = trim($row['fabric']);
+	                	// $num = (int)$row['num'];
+	                	$tot_width = (int)$row['tot_width'];
+	                	$usable_width = (float)$row['usable_width'];
+	                	$sp_parameter = trim($row['sp_parameter']);
+
+	                		$data = DB::connection('sqlsrv')->update(DB::raw("
+	                 			UPDATE [settings].[dbo].[fabrics]
+  							 		SET tot_width = '".$tot_width."' ,
+  							 			usable_width = '".$usable_width."' ,
+  							 			sp_parameter = '".$sp_parameter."' 
+  							 		WHERE fabric =  '".$fabric."'
+	        	          	"));
+	        	        */
+
+						/*
+	                	$style = trim($row['style']);
+	                	$fg_family = trim($row['fg_family']);
+
+	                		$data = DB::connection('sqlsrv')->update(DB::raw("
+	                 				UPDATE [settings].[dbo].[styles]
+  							 		SET fg_family = '".$fg_family."'
+  							 		WHERE style = '".$style."'
+	        	          	"));
+						*/
+
+						/*
+						// UPDATE POSUMMARY
+						$id = trim($row['id']);
+						$qty = (int)$row['qty'];
+						$smv = (float)$row['smv'];
+						$order_group_macro = trim($row['order_group_macro']);
+						$order_group = trim($row['order_group']);
+
+						$data = DB::connection('sqlsrv6')->update(DB::raw("
+	                 				UPDATE [posummary].[dbo].[future_orders]
+  							 		SET qty = '".$qty."',
+  							 			smv = '".$smv."',
+  							 			order_group_macro = '".$order_group_macro."',
+  							 			order_group = '".$order_group."'
+
+  							 		WHERE id = '".$id."'
+	        	        "));
+	        	        */
+
+	                	
+
+	        //         	$data = DB::connection('sqlsrv2')->update(DB::raw("
+	        //         		UPDATE [BdkCLZG].[dbo].[CNF_MachPool] 
+  							// SET MaTyCod = '".(int)$id."'
+  							// WHERE MachNum =  '".$os."'
+	        //          	"));
+
+	        //          	$data1 = DB::connection('sqlsrv2')->update(DB::raw("
+	        //         		UPDATE [172.27.161.221\INTEOSKKA].[BdkCLZKKA].[dbo].[CNF_MachPool]
+  							// SET MaTyCod = '".(int)$id."'
+  							// WHERE MachNum =  '".$os."'
+	        //          	"));
+
+	        //          	$find = DB::connection('sqlsrv2')->select(DB::raw("
+	        //         		SELECT * FROM [BdkCLZG].[dbo].[CNF_MachPool] 
+  							// WHERE MachNum =  '".$os."' and MaTyCod = '".(int)$id."'
+  							// UNION 
+  							// SELECT * FROM [172.27.161.221\INTEOSKKA].[BdkCLZKKA].[dbo].[CNF_MachPool]
+  							// WHERE MachNum =  '".$os."' and MaTyCod = '".(int)$id."'
+	        //          	"));
+	        //          	// dd($find);
+
+	        //          	if (isset($find[0]->MachNum)) {
+	                 		
+	        //          		print('Done <br/>');
+	        //          	} else {
+
+	        //          		print(' ------------ ERROR --------------');
+	        //          	}
+
+
+	                	///////
+	                	// $fab = $row['fab'];
 	                	// dd($fab);
 
-	                	$avg_length = round($row['avg_length2'],1);
+	                	// $avg_length = round($row['avg_length2'],1);
 	                	// dd($avg_length);
 
 
@@ -584,16 +668,21 @@ class ImportController extends Controller {
 							// WHERE [Document Type] = '1'  and [Barcode No_] = '".$hu."'
 	      //           	"));
 
-	                	$data = DB::connection('sqlsrv')->update(DB::raw("UPDATE [settings].[dbo].[fabrics]
-  						SET avg_length = '".$avg_length."'
-  						WHERE fabric = '".$fab."'
-	                	"));
+	       //          	$data = DB::connection('sqlsrv')->update(DB::raw("UPDATE [settings].[dbo].[fabrics]
+  						// SET avg_length = '".$avg_length."'
+  						// WHERE fabric = '".$fab."'
+	       //          	"));7
+
+
 	                	
 	                }
+
+
 	            });
 			
 	    }
-		return redirect('/');
+		// return redirect('/');
+		print('Completed');
 	}
 
 	public function postImportstock_takenothu () {
@@ -687,7 +776,7 @@ class ImportController extends Controller {
 	                 	if ($data_check[0]->POClosed == '1' ) {
 	                 		$status = 'Closed';
 	                 	} else {
-	                 		$status = 'Failed';
+	                 		$status = 'Error -> Failed';
 	                 	}
 
 	                 	var_dump('Pro '.$data_check[0]->PONum.' status  is: '.$status.' <br> ');
@@ -698,7 +787,7 @@ class ImportController extends Controller {
 		var_dump('<br>Completed');
 	}
 
-// start inventar 
+// start inventar
 
 	public function import_post() // FG
 	{
@@ -1038,9 +1127,10 @@ class ImportController extends Controller {
 		return redirect('/inventory_senta');
 	}
 	
-	public function import_post_bb()  // Subotica stock
+	public function import_post_bb()  // Subotica BB stock
 	{
 		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+		
 		// dd("Test");
 		 $getSheetName = Excel::load(Request::file('file5'))->getSheetNames();
 	    
@@ -1303,6 +1393,8 @@ class ImportController extends Controller {
 	    }
 		return redirect('/inventory_bb_4');
 	}
+
+	
 
 // stop inventar
 
@@ -1808,6 +1900,101 @@ class ImportController extends Controller {
 	    }
 		return redirect('relaxation_rolls');
 	}
+
+	public function postImportDoneSU() {
+
+		// dd('Importovanje je trenutno zaustavljeno, zovi IT');
+
+		// dd("Test");
+		 $getSheetName = Excel::load(Request::file('file1'))->getSheetNames();
+		 // dd("Test");
+	    
+	    foreach($getSheetName as $sheetName)
+	    {
+
+	    	//if ($sheetName === 'Product-General-Table')  {
+	    	//selectSheetsByIndex(0)
+	           	// DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+	            // DB::table('inventory_bb_4s')->truncate();
+	            // DB::table('inventory_temp_bb_4s')->truncate();
+				// DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+	            //Excel::selectSheets($sheetName)->load($request->file('file'), function ($reader)
+	            //Excel::selectSheets($sheetName)->load(Input::file('file'), function ($reader)
+	            //Excel::filter('chunk')->selectSheetsByIndex(0)->load(Request::file('file'))->chunk(50, function ($reader)
+	    	
+	            Excel::filter('chunk')->selectSheets($sheetName)->load(Request::file('file1'))->chunk(5000, function ($reader)	            
+	            {
+	                $readerarray = $reader->toArray();
+	                // var_dump($readerarray);
+	                // dd("Test");
+	                // dd($readerarray);
+
+	                foreach($readerarray as $row)
+	                {	
+	                	// dd($row);
+	                	$su = $row['su'];
+	                	// $material_desc;
+	                	// $material = trim($row['material']);
+	                	// $batch = $row['dyelot_number'];
+	                	// $qty = $row['available_stock'];
+	                	// $uom;
+	                	// $ses;
+	                		                		                	
+	                	// dd($su);
+
+
+	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM [inventory_whs] WHERE su = '".$su."' "));
+	                	// dd($data);
+	                	
+	                	if (isset($data[0]->id)) {
+		                		
+	                			// dd($data[0]->id);
+
+								$table1 = inventory_wh::findOrFail($data[0]->id);
+								// $table1->su = $su;
+								// $table1->material = $material;
+								// $table1->material_desc;
+								// $table1->batch = $batch;
+								// $table1->qty = round((float)$qty,3);
+								// $table1->uom;
+								// $table1->bin;
+								$table1->bin_actual = $table1->bin;
+								$table1->qty_actual = (float)$table1->qty;
+								$table1->ses = 'importovano';
+								$table1->save();
+
+	                	} /* else {
+	                	
+		                	// try {
+								$table = new inspection_roll;
+
+								$table->su = $su;
+								$table->material = $material;
+								$table->material_desc;
+								$table->batch = $batch;
+								$table->qty = round((float)$qty,3);
+								$table->uom;
+								$table->ses;
+								// $table->save();
+
+							// }
+							// catch (\Illuminate\Database\QueryException $e) {
+								// $msg = "Problem to save in inventory table";
+								// return view('Inventory.error',compact('msg'));
+							// }
+							}*/
+					}
+
+	                
+	            });
+			
+	    }
+		// return redirect('inspection_rolls');
+		dd('Done');
+	}
+
+
 	
 
 }
