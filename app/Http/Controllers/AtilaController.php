@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\cctabela;
 use App\cctabela_log;
+use App\inventory_bin_to_loc;
 use DB;
 
 use Session;
@@ -191,6 +192,89 @@ class AtilaController extends Controller {
 
 	public function it_dezurstva() {
 		return view('atila.it');
+	}
+
+	public function inventory_bintoloc() {
+
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM inventory_bin_to_locs ORDER BY id asc"));
+		return view('Inventory_bintoloc.index', compact('data'));
+	}
+
+	public function inventory_bintoloc_scan()
+	{
+		//
+		$session = Session::getId();
+		$msg = "Please scan BIN";
+		return view('Inventory_bintoloc.scan', compact('msg'));
+	}
+
+	public function inventory_bintoloc_post(Request $request) {
+
+		$this->validate($request, ['bin' => 'required']);
+		$input = $request->all();
+
+		$bin = $input['bin'];
+		if (strlen($bin) !== 20) {
+	        $msge = "BIN must be 20 chars";
+	        // $msge = ;
+			return view('Inventory_bintoloc.scan', compact('msg', 'msge'));
+	    }
+
+		$msg = "Please scan LOCATION";
+		return view('Inventory_bintoloc.scan_loc', compact('bin','msg'));
+	}
+
+	public function inventory_bintoloc_post_loc(Request $request) {
+
+		$this->validate($request, ['bin' => 'required', 'location' => 'required']);
+		$input = $request->all();
+
+		$bin = $input['bin'];
+		$location = $input['location'];
+
+		$code = substr($bin, 9, 3);
+		// dd($code);
+
+		if ($code == '117') {
+		    $bin_type = 'WOOD';
+		} elseif ($code == '116') {
+		    $bin_type = 'KAS';
+		} elseif ($code == '115') {
+		    $bin_type = 'PAL';
+		} else {
+		    $bin_type = 'UNKNOWN';
+		}
+		// dd($bin_type);
+
+		$check = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM inventory_bin_to_locs 
+			WHERE bin = '".$bin."' "));
+
+		if (isset($check[0]->id)) {
+			// var_dump(" and exist");	
+
+			$table1 = inventory_bin_to_loc::findOrFail($check[0]->id);
+			$table1->location = $location;
+			$table1->bin_type = $bin_type;
+			$table1->ses = Session::getId();
+			$table1->save();
+
+		} else {
+			// var_dump(" and not exist in main");
+
+			$table = new inventory_bin_to_loc;
+			$table->bin = $bin;
+			$table->location = $location;
+			$table->bin_type = $bin_type;
+			$table->ses =  Session::getId();
+			$table->save();
+
+			
+		}
+
+		$msg = 'BIN and LOCATION saved in table';
+		$msgs = 1;
+		return view('Inventory_bintoloc.scan', compact('msg', 'msgs'));
+		
 	}
 	
 	

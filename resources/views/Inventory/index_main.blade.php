@@ -10,6 +10,10 @@
 				<p style="color:red;"></p>
 
 				<div class="panel panel-default">
+					<a href="{{url('/inventory_bintoloc')}}" class="btn btn-default center-block"  style="background-color: #999">SAP Bin to location</a>
+				</div>
+				<br>
+				<div class="panel panel-default">
 					<a href="{{url('/inventory')}}" class="btn btn-default center-block"  style="background-color: #1bff0c52">SAP Inventory (FG)</a>
 				</div>
 				<br>
@@ -62,6 +66,16 @@
 					<a href="{{url('/relaxation_rolls')}}" class="btn btn-default center-block"  style="background-color: #23cf01">Relaxation rolls</a>
 				</div>
 				<br>
+				<!-- <hr>
+				<div class="panel panel-default">
+					<a href="http://172.27.161.76:8080/restart" class="btn btn-default center-block"  style="background-color: #111; color:white;">Restart print server</a>
+				</div>
+				<br> -->
+				<br>
+				<div class="panel panel-default">
+					<a href="{{url('/lockers')}}" class="btn btn-default center-block"  style="background-color: yellow">Employee Locker Assignment</a>
+				</div>
+
 			</div>
 		</div>
 		

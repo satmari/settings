@@ -134,7 +134,7 @@
 
 						{!! Form::close() !!} -->
 
-					<div class="panel-heading" style="background-color: #cf0101">Import inspection rolls</div>
+					<div class="panel-heading" style="background-color: #cf0101">Import inspection rolls (new SAP - Batch View)</div>
 				
 						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportController@import_inspection_rolls'] ]) !!}							
 							<div class="panel-body">

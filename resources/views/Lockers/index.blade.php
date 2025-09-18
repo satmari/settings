@@ -5,16 +5,20 @@
 	<div class="row vertical-center-row">
 		<div class="text-center">
 			<div class="panel panel-default">
-				<div class="panel-heading">Lines table</div>
+				<div class="panel-heading">Lockers table</div>
 
-				@if(Auth::check() && Auth::user()->name == "admin")
-					<a href="{{ url('add_module') }}" class="btn btn-info btn-xs ">Add new line</a>
+				
+				@if(Auth::check() && Auth::user()->name == "nikol")
+					<a href="{{ url('lockers_add') }}" class="btn btn-danger btn-xs ">Add new locker to list</a>
 				@endif
+				&nbsp;&nbsp;&nbsp;
+
+				<a href="{{ url('lockers_scan') }}" class="btn btn-info btn-xs ">Assign locker to employee</a>
 
                 <div class="input-group"> <span class="input-group-addon">Filter</span>
                     <input id="filter" type="text" class="form-control" placeholder="Type here...">
                 </div>
-                <table class="table table-striped table-bordered" id="sort" 
+                <table class="table table-striped table-bordered" id="sort" style="font-size: 18px !important;"
                 data-show-export="true"
                 data-export-types="['excel']"
                 >
@@ -44,20 +48,12 @@
 				        <tr>
 				           {{-- <th>id</th> --}}
 				           
-				           <th>Sort Order</th>
-				           <th>Line/Module</th>
-				           <th>Team/Shift</th>
-				           <th>Row</th>
-				           <th>Column Group</th>
-				           <th>Sector</th>
-				           <th>Workstudy</th>
-				           <th>Workstudy R</th>
-				           <th>Line leader</th>
-				           <th>Line leader R</th>
-				           <th>Supervisor</th>
-				           <th>Supervisor R</th>
-				           <th>Updated</th>
-				           
+				           <!-- <th>id</th> -->
+				           <!-- <th>Locker</th> -->
+				           <th>Locker Number</th>
+				           <th>Place</th>
+				           <th>R number</th>
+				           <th>Employee</th>
 				           <th></th>
 				        </tr>
 				    </thead>
@@ -66,25 +62,17 @@
 				    @foreach ($data as $d)
 				    	
 				        <tr>
-				        	{{-- <td>{{ $d->id }}</td> --}}
+				        	<!-- <td>{{ $d->id }}</td> -->
 				        	
-				        	<td>{{ $d->sort_order }} </td>
-				        	<td>{{ $d->module }} </td>
-				        	<td>{{ $d->team }} </td>
-				        	<td>{{ $d->row }} </td>
-				        	<td>{{ $d->column_group }} </td>
-				        	<td>{{ $d->sector }} </td>
-				        	<td>{{ $d->workstudy }} </td>
-				        	<td>{{ $d->workstudy_r }} </td>
-				        	<td>{{ $d->line_leader }} </td>
-				        	<td>{{ $d->line_leader_r }} </td>
-				        	<td>{{ $d->supervisor }} </td>
-				        	<td>{{ $d->supervisor_r }} </td>
-				        	<td>{{ $d->updated_at }}</td>
-
+				            <!-- <td>{{ $d->locker }} </td> -->
+				            <td>{{ $d->number }} </td>
+				        	<td>{{ $d->place }} </td>
+				        	<td>{{ $d->r_number }} </td>
+				        	<td>{{ $d->employee }} </td>
+				        	
 				        	<td>
-				        	@if(Auth::check())
-				        	  	<a href="{{ url('edit_module/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
+				        	@if(Auth::check() && Auth::user()->name == "nikol")
+				        	  	<a href="{{ url('locker_edit/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
 				        	@endif
 				        	</td>
 						</tr>

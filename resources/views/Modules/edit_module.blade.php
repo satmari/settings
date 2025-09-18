@@ -44,18 +44,51 @@
 					</div>
 
 					<div class="panel-body">
-						<p>Workstudy name:</p>
-	               		{!! Form::input('workstudy', 'workstudy', $data->workstudy, ['class' => 'form-control']) !!}
+						<p>Workstudy: <i>{{$data->workstudy}}</i></p>
+						<select name="workstudy" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->workstudy == 'no' ? 'selected' : '' }}>No</option>
+					    	<option value="Replacement" {{ $data->workstudy == 'Replacement' ? 'selected' : '' }}>Replacement</option>
+
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->workstudy == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} {{ $line->name }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
-						<p>Line leader name:</p>
-	               		{!! Form::input('line_leader', 'line_leader', $data->line_leader, ['class' => 'form-control']) !!}
+						<p>Line leader: <i>{{$data->line_leader}}</i></p>
+						<select name="line_leader" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->line_leader == 'no' ? 'selected' : '' }}>No</option>
+					    	<option value="Replacement" {{ $data->line_leader == 'Replacement' ? 'selected' : '' }}>Replacement</option>
+
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->line_leader == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} {{ $line->name }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
-					<p>Supervisor: </p>
-						{!! Form::input('supervisor', 'supervisor', $data->supervisor, ['class' => 'form-control']) !!}
+						<p>Supervisor: <i>{{$data->supervisor}}</i></p>
+						<select name="supervisor" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->supervisor == 'no' ? 'selected' : '' }}>No</option>
+					    	<option value="Replacement" {{ $data->supervisor == 'Replacement' ? 'selected' : '' }}>Replacement</option>
+					    	
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->supervisor == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} {{ $line->name }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
@@ -102,18 +135,45 @@
 					</div>
 
 					<div class="panel-body">
-						<p>Workstudy name:</p>
-	               		{!! Form::input('workstudy', 'workstudy', $data->workstudy, ['class' => 'form-control']) !!}
+						<p>Workstudy: <i>{{$data->workstudy}}</i></p>
+						<select name="workstudy" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->workstudy == 'no' ? 'selected' : '' }}>No</option>
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->workstudy == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} - {{ $line->name }} - {{ $data->workstudy }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
-						<p>Line leader name:</p>
-	               		{!! Form::input('line_leader', 'line_leader', $data->line_leader, ['class' => 'form-control']) !!}
+						<p>Line leader: <i>{{$data->line_leader}}</i></p>
+						<select name="line_leader" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->line_leader == 'no' ? 'selected' : '' }}>No</option>
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->line_leader == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} - {{ $line->name }} - {{ $data->line_leader }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
-					<p>Supervisor: </p>
-						{!! Form::input('supervisor', 'supervisor', $data->supervisor, ['class' => 'form-control']) !!}
+						<p>Supervisor: <i>{{$data->supervisor}}</i></p>
+						<select name="supervisor" class="chosen narrow-chosen form-control">
+					    	
+					    	<option value="no" {{ $data->supervisor == 'no' ? 'selected' : '' }}>No</option>
+					    	@foreach ($operators as $line)
+					        	<option value="{{ $line->rnumber }} {{ $line->name }}" 
+								    {{ $data->supervisor == $line->name ? 'selected' : '' }}>
+								    {{ $line->rnumber }} - {{ $line->name }} - {{ $data->supervisor }}
+								</option>
+					    	@endforeach
+						</select>
 					</div>
 
 					<div class="panel-body">
@@ -137,4 +197,16 @@
 		</div>
 	</div>
 </div>
+
+<style>
+.narrow-chosen + .chosen-container {
+    width: 300px !important;
+}
+.narrow-chosen + .chosen-container .chosen-drop {
+    width: 300px !important;
+}
+.narrow-chosen + .chosen-container .chosen-search input {
+    width: 300px !important;
+}
+</style>
 @endsection

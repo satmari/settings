@@ -575,22 +575,34 @@ class ImportController extends Controller {
 	                	// $os = trim($row['os']);
 	                	// $id = trim($row['id']);
 
-	                	/*
+	                	
 	                	// UPDATE SETTINGS
-	                	$fabric = trim($row['fabric']);
-	                	// $num = (int)$row['num'];
-	                	$tot_width = (int)$row['tot_width'];
-	                	$usable_width = (float)$row['usable_width'];
-	                	$sp_parameter = trim($row['sp_parameter']);
+	                	//style
+	           //      	$style = trim($row['style']);
+	           //      	$fg_family = trim($row['fg_family']);
 
-	                		$data = DB::connection('sqlsrv')->update(DB::raw("
-	                 			UPDATE [settings].[dbo].[fabrics]
-  							 		SET tot_width = '".$tot_width."' ,
-  							 			usable_width = '".$usable_width."' ,
-  							 			sp_parameter = '".$sp_parameter."' 
-  							 		WHERE fabric =  '".$fabric."'
-	        	          	"));
-	        	        */
+	           //      	$data = DB::connection('sqlsrv')->update(DB::raw("
+	           //       			UPDATE [settings].[dbo].[styles]
+  							 		// SET fg_family = '".$fg_family."' 
+  							 		// WHERE style =  '".$style."'
+	        	  //         	"));
+
+
+
+	                	// $fabric = trim($row['fabric']);
+	                	// $num = (int)$row['num'];
+	                	// $tot_width = (int)$row['tot_width'];
+	                	// $usable_width = (float)$row['usable_width'];
+	                	// $sp_parameter = trim($row['sp_parameter']);
+	             
+	           //      		$data = DB::connection('sqlsrv')->update(DB::raw("
+	           //       			UPDATE [settings].[dbo].[fabrics]
+  							 		// SET tot_width = '".$tot_width."' ,
+  							 		// 	usable_width = '".$usable_width."' ,
+  							 		// 	sp_parameter = '".$sp_parameter."' 
+  							 		// WHERE fabric =  '".$fabric."'
+	        	  //         	"));
+	        	        
 
 						/*
 	                	$style = trim($row['style']);
@@ -820,15 +832,27 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// dd($row);
+
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = $row['product'];
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = round((float)$row['available_stock'],3);
+	                	$qty = round((float)$row['quantity'],3);
 	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
-
 
 	                	// dd($material);
 	                	
@@ -888,14 +912,27 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = $row['product'];
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
+
 	                	// dd($material);
 	                	
 
@@ -958,12 +995,24 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = $row['product'];
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
 
 	                	// dd($material);
@@ -1027,13 +1076,27 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = $row['product'];
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
+
+	                	// dd($material);
 	                		                	
 	                	// try {
 							$table = new inventory_p;
@@ -1092,12 +1155,24 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = $row['product'];
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
 
 	                	// dd($material);
@@ -1158,12 +1233,24 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = $row['material'];
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = trim($row['product']);
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
 
 	                	// dd($material);
@@ -1224,13 +1311,27 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = trim($row['material']);
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = trim($row['product']);
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
+
+	                	// dd($material);
 	                		                	
 	                	// dd($material);
 	                	
@@ -1290,13 +1391,28 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = trim($row['material']);
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = trim($row['product']);
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
+
+	                	// dd($material);
 	                		                	
 	                	// dd($material);
 	                	
@@ -1358,14 +1474,26 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 
-	                	$material = trim($row['material']);
-	                	$material_desc = $row['material_description'];
-	                	$su = $row['storage_unit'];
+	                	// OLD SAP 
+	                	// $material = $row['material'];
+	                	// $material_desc = $row['material_description'];
+	                	// $su = $row['storage_unit'];
+	                	// $bin = $row['storage_bin'];
+	                	// $batch = $row['batch'];
+	                	// $qty = round((float)$row['available_stock'],3);
+	                	// // dd($qty);
+	                	// $uom = $row['base_unit_of_measure'];
+
+	                	// NEW SAP EWM
+	                	$material = trim($row['product']);
+	                	$material_desc = $row['product_short_description'];
+	                	$su = $row['handling_unit'];
 	                	$bin = $row['storage_bin'];
 	                	$batch = $row['batch'];
-	                	$qty = $row['available_stock'];
+	                	$qty = round((float)$row['quantity'],3);
+	                	// dd($qty);
 	                	$uom = $row['base_unit_of_measure'];
-	                		                	
+
 	                	// dd($material);
 	                	
 	                	// try {
@@ -1748,6 +1876,9 @@ class ImportController extends Controller {
 	                foreach($readerarray as $row)
 	                {	
 	                	// dd($row);
+
+	                	/*
+	                	// OLD SAP Z_BATCH_CLASS_EE
 	                	$su = $row['storage_unit'];
 	                	$material_desc;
 	                	$material = trim($row['material']);
@@ -1755,7 +1886,17 @@ class ImportController extends Controller {
 	                	$qty = $row['available_stock'];
 	                	$uom;
 	                	$ses;
-	                		                		                	
+	                	// dd($material);
+	                	*/
+
+	                	// NEW SAP Z_BATCH_CLASS_EE
+	                	$su = $row['handling_unit'];
+	                	$material_desc;
+	                	$material = trim($row['product']);
+	                	$batch = $row['dye_lot_number'];
+	                	$qty = $row['quantity'];
+	                	$uom;
+	                	$ses;
 	                	// dd($material);
 
 
@@ -1840,6 +1981,7 @@ class ImportController extends Controller {
 
 	                foreach($readerarray as $row)
 	                {	
+	                	/*
 	                	// dd($row);
 	                	$su = $row['storage_unit'];
 	                	$material_desc;
@@ -1848,8 +1990,19 @@ class ImportController extends Controller {
 	                	$qty = $row['available_stock'];
 	                	$uom;
 	                	$ses;
-	                		                		                	
 	                	// dd($material);
+	                	*/
+
+	                	// NEW SAP Z_BATCH_CLASS_EE
+	                	$su = $row['handling_unit'];
+	                	$material_desc;
+	                	$material = trim($row['product']);
+	                	$batch = $row['dye_lot_number'];
+	                	$qty = $row['quantity'];
+	                	$uom;
+	                	$ses;
+	                	// dd($material);
+
 	                	
 	                	$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM relaxation_rolls WHERE su = '".$su."' "));
 	                	// dd($data);

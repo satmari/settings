@@ -48,7 +48,9 @@ class UpdateModuleTable extends Migration {
 			// $table->string('ean_2')->nullable(); // Added
 			// $table->string('sku')->nullable(); // Added
 
-			// $table->string('supervisor')->nullable(); // added later
+			$table->string('workstudy_r')->nullable(); // added later
+			$table->string('line_leader_r')->nullable(); // added later
+			$table->string('supervisor_r')->nullable(); // added later
 			
 		});
 

@@ -147,6 +147,13 @@ Route::post('postImportBudget', 'ImportBudget@postImportBudget');
 Route::get('close_po', 'AtilaController@close_po');
 Route::post('close_po_post', 'ImportController@close_po_post');
 
+// SAP EWM BIN TO LOCAION
+
+Route::get('inventory_bintoloc', 'AtilaController@inventory_bintoloc');
+Route::get('inventory_bintoloc_scan', 'AtilaController@inventory_bintoloc_scan');
+Route::post('inventory_bintoloc_post', 'AtilaController@inventory_bintoloc_post');
+Route::post('inventory_bintoloc_post_loc', 'AtilaController@inventory_bintoloc_post_loc');
+
 // SAP Inventory
 Route::get('/sap_inventory', 'sap_inventoryController@index_main');
 Route::get('/inventory', 'sap_inventoryController@index');
@@ -286,7 +293,6 @@ Route::get('/inventory_issue/{id}', 'sap_inventoryController_log@inventory_issue
 Route::post('inventory_issue_next', 'sap_inventoryController_log@inventory_issue_next');
 Route::post('inventory_issue_qty', 'sap_inventoryController_log@inventory_issue_qty');
 
-
 // Insepction rolls
 Route::get('inspection_rolls', 'inspection_roll_controller@index');
 // Route::get('inspection_rolls', 'inspection_roll_controller@index_scan');
@@ -303,7 +309,6 @@ Route::get('log_out_i', 'inspection_roll_controller@log_out_i');
 Route::get('/import_inspection_roll', 'sap_inventoryController_wh@import');
 
 Route::get('inspection_rolls_history', 'inspection_roll_controller@inspection_rolls_history');
-
 
 // Relaxation rolls
 Route::get('relaxation_rolls', 'relaxation_roll_controller@index');
@@ -352,6 +357,19 @@ Route::get('net_weight', 'net_weightController@index');
 Route::get('net_weight_save', 'net_weightController@save_in_table');
 Route::get('net_weight_int', 'net_weightController@index_int');
 
+
+Route::get('lockers', 'lockersController@lockers');
+Route::get('lockers_scan', 'lockersController@lockers_scan');
+Route::post('locker_scan_rnumber', 'lockersController@locker_scan_rnumber');
+Route::post('locker_scan_locker', 'lockersController@locker_scan_locker');
+
+Route::get('lockers_add', 'lockersController@lockers_add');
+Route::post('lockers_add_post', 'lockersController@lockers_add_post');
+
+Route::get('locker_edit/{id}', 'lockersController@locker_edit');
+Route::post('locker_edit_post', 'lockersController@locker_edit_post');
+
+Route::get('remove_employee/{id}', 'lockersController@remove_employee');
 
 
 Route::controllers([

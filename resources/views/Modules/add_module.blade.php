@@ -41,18 +41,54 @@
 				</div>
 
 				<div class="panel-body">
-				<p>Workstudy name: </p>
-					{!! Form::text('workstudy', null, ['class' => 'form-control']) !!}
+				<!-- <p>Workstudy name: </p> -->
+					<!-- {!! Form::text('workstudy', null, ['class' => 'form-control']) !!} -->
+
+				<p>Workstudy: </p>
+					<select name="workstudy" class="chosen narrow-chosen">
+	                	<option value="" selected></option>
+	                	<option value="no" >No</option>
+	                	<option value="Replacement" >Replacement</option>
+	                	@foreach ($operators as $line)
+		                    <option value="{{ $line->rnumber }} {{ $line->name }}">
+		                        {{ $line->rnumber }} {{ $line->name }}
+		                    </option>
+		                @endforeach
+	               	</select>
 				</div>
 
 				<div class="panel-body">
-				<p>Line leader name: </p>
-					{!! Form::text('line_leader', null, ['class' => 'form-control']) !!}
+				<!-- <p>Line leader name: </p> -->
+					<!-- {!! Form::text('line_leader', null, ['class' => 'form-control']) !!} -->
+
+				<p>Line leader: </p>
+					<select name="line_leader" class="chosen narrow-chosen">
+	                	<option value="" selected></option>
+	                	<option value="no" >No</option>
+	                	<option value="Replacement" >Replacement</option>
+	                	@foreach ($operators as $line)
+	                	<option value="{{ $line->rnumber }} {{ $line->name }}">
+		                        {{ $line->rnumber }} {{ $line->name }}
+		                    </option>
+		                @endforeach
+	               	</select>
 				</div>
 
 				<div class="panel-body">
-				<p>Supervisor: </p>
-					{!! Form::text('supervisor', null, ['class' => 'form-control']) !!}
+				<!-- <p>Supervisor: </p> -->
+					<!-- {!! Form::text('supervisor', null, ['class' => 'form-control']) !!} -->
+
+				<p>Line leader: </p>
+					<select name="supervisor" class="chosen narrow-chosen">
+						<option value="" selected></option>
+						<option value="no" >No</option>
+						<option value="Replacement" >Replacement</option>
+	                	@foreach ($operators as $line)
+		                    <option value="{{ $line->rnumber }} {{ $line->name }}">
+		                        {{ $line->rnumber }} {{ $line->name }}
+		                    </option>
+		                @endforeach
+	               	</select>
 				</div>
 
 				<div class="panel-body">
@@ -72,4 +108,16 @@
 		</div>
 	</div>
 </div>
+
+<style>
+.narrow-chosen + .chosen-container {
+    width: 300px !important;
+}
+.narrow-chosen + .chosen-container .chosen-drop {
+    width: 300px !important;
+}
+.narrow-chosen + .chosen-container .chosen-search input {
+    width: 300px !important;
+}
+</style>
 @endsection

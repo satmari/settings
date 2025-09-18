@@ -59,6 +59,7 @@
 					<li><a href="{{ url('/net_weight') }}">FG net weight</a></li>
 					<li><a href="{{ url('/sap_inventory') }}">SAP Inventory</a></li>
 					<li><a href="{{ url('/sap_materials') }}">SAP Materials</a></li>
+					<li><a href="{{ url('/lockers') }}">Lockers</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
