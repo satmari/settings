@@ -191,6 +191,7 @@ class AtilaController extends Controller {
 	}
 
 	public function it_dezurstva() {
+		
 		return view('atila.it');
 	}
 
@@ -200,8 +201,7 @@ class AtilaController extends Controller {
 		return view('Inventory_bintoloc.index', compact('data'));
 	}
 
-	public function inventory_bintoloc_scan()
-	{
+	public function inventory_bintoloc_scan() {
 		//
 		$session = Session::getId();
 		$msg = "Please scan BIN";

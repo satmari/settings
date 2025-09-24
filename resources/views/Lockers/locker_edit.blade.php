@@ -42,7 +42,7 @@
                     <p>Employee : </p>
                         <select name="r_number" class="chosen narrow-chosen" data-placeholder="Select employee" data-allow_single_deselect="true">
                             <option value=""></option>
-                            
+                            <option value="Securitas">Securitas</option>
                             @foreach ($operators as $line)
                                 <option value="{{ $line->r_number }}-{{ $line->employee }}"
                                     @if(($data->r_number . '-' . $data->employee) == ($line->r_number . '-' . $line->employee)) 
@@ -53,8 +53,6 @@
                                 </option>
                             @endforeach
                         </select>
-                                                
-
                     </p>
                         
                     

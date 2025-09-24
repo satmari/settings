@@ -37,13 +37,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" >Settings App</a>
+				<a class="navbar-brand">Settings App</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<!-- <li><a href="{{ url('/') }}">Home</a></li> -->
 					<li><a href="{{ url('/modules') }}">Lines</a></li>
+					<li><a href="{{ url('/zradnice') }}">QC radnice</a></li>
 					<li><a href="{{ url('/styles') }}">Styles</a></li>
 					<li><a href="{{ url('/styles_extra') }}">Styles Extra</a></li>
 					<li><a href="{{ url('/fabrics') }}">Fabrics</a></li>

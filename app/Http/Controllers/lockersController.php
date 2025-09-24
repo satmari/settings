@@ -37,15 +37,15 @@ class lockersController extends Controller {
 	
 	public function locker_scan_rnumber(Request $request) {
 		
+		dd('Trenutno je zaustavljena opcija skeniranja, zovite Marijanu');
 		//
 		$session = Session::getId();
 		$input = $request->all();
 		
 		// $input_employee = $input['r_number'];
-		// $parts = explode("-", $input_employee);
-
-		// $r_number  = trim($parts[0]);
-		// $employee  = trim($parts[1]);
+		// $input_employee_array = explode("-", $input_employee);
+		// $r_number  = trim($input_employee_array[0]);
+		// $employee  = trim($input_employee_array[1]);
 
 		$r_number = $input['r_number'];
 
@@ -86,6 +86,7 @@ class lockersController extends Controller {
 
 	public function locker_scan_locker(Request $request) {
 		
+		dd('Trenutno je zaustavljena opcija skeniranja, zovite Marijanu');
 		//
 		$session = Session::getId();
 		$input = $request->all();
@@ -283,10 +284,18 @@ class lockersController extends Controller {
 		
 		$id = $input['id'];
 		$input_employee = $input['r_number'];
-		$parts = explode("-", $input_employee);
 
-		$r_number  = trim($parts[0]);
-		$employee  = trim($parts[1]);
+		if ($input_employee != 'Securitas') {
+
+			$input_employee_array = explode("-", $input_employee);
+			$r_number  = trim($input_employee_array[0]);
+			$employee  = trim($input_employee_array[1]);
+
+		} else {
+			$r_number  = 'Securitas';
+			$employee  = 'Securitas';
+
+		}
 
 		// dd($employee);
 

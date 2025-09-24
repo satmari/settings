@@ -739,6 +739,7 @@ class ImportController extends Controller {
 
 	public function close_po_post () {
 		$getSheetName = Excel::load(Request::file('file1'))->getSheetNames();
+		
 	    
 	    foreach($getSheetName as $sheetName)
 	    {

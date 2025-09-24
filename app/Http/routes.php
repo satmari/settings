@@ -371,6 +371,13 @@ Route::post('locker_edit_post', 'lockersController@locker_edit_post');
 
 Route::get('remove_employee/{id}', 'lockersController@remove_employee');
 
+// Z radnice
+Route::get('zradnice', 'zradniceController@zradnice');
+Route::get('edit_zradnica/{id}', 'zradniceController@edit_zradnica');
+Route::post('edit_zradnica_post', 'zradniceController@edit_zradnica_post');
+
+Route::get('update_status_radnice', 'zradniceController@update_status_radnice');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
