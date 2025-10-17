@@ -8,18 +8,19 @@
 				<div class="panel-heading">
 					&nbsp;&nbsp;&nbsp;
 				
-					<a href="{{ url('lockers') }}" class="btn btn-primary btn-xs " disabled>List with all lockers</a>
+					<a href="{{ url('lockers_ki') }}" class="btn btn-warning btn-xs " >List with all lockers</a>
 					&nbsp;&nbsp;&nbsp;
-					<a href="{{ url('lockers_empty') }}" class="btn btn-primary btn-xs ">List with available lockers</a>
+					<a href="{{ url('lockers_ki_empty') }}" class="btn btn-warning btn-xs " disabled>List with available lockers</a>
 				</div>
 				<br>
+
 				
-				@if(Auth::check() && Auth::user()->name == "nikol")
-					<a href="{{ url('lockers_add') }}" class="btn btn-danger btn-xs ">Add new locker to list</a>
+				@if(Auth::check() && Auth::user()->name == "maja")
+					<a href="{{ url('lockers_ki_add') }}" class="btn btn-danger btn-xs ">Add new locker to list</a>
 				@endif
 				&nbsp;&nbsp;&nbsp;
 
-				<a href="{{ url('lockers_scan') }}" class="btn btn-info btn-xs ">Assign locker to employee (with scanner)</a>
+				<a href="{{ url('lockers_ki_scan') }}" class="btn btn-info btn-xs ">Assign locker to employee (with scanner)</a>
 
                 <div class="input-group"> <span class="input-group-addon">Filter</span>
                     <input id="filter" type="text" class="form-control" placeholder="Type here...">
@@ -77,8 +78,8 @@
 				        	<td>{{ $d->employee }} </td>
 				        	
 				        	<td>
-				        	@if(Auth::check() && Auth::user()->name == "nikol")
-				        	  	<a href="{{ url('locker_edit/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
+				        	@if(Auth::check() && Auth::user()->name == "maja")
+				        	  	<a href="{{ url('locker_ki_edit/'.$d->id) }}" class="btn btn-info btn-xs center-block">Edit</a>
 				        	@endif
 				        	</td>
 						</tr>

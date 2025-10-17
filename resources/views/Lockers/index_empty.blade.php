@@ -8,11 +8,12 @@
 				<div class="panel-heading">
 					&nbsp;&nbsp;&nbsp;
 				
-					<a href="{{ url('lockers') }}" class="btn btn-primary btn-xs " disabled>List with all lockers</a>
+					<a href="{{ url('lockers') }}" class="btn btn-primary btn-xs " >List with all lockers</a>
 					&nbsp;&nbsp;&nbsp;
-					<a href="{{ url('lockers_empty') }}" class="btn btn-primary btn-xs ">List with available lockers</a>
+					<a href="{{ url('lockers_empty') }}" class="btn btn-primary btn-xs " disabled>List with available lockers</a>
 				</div>
 				<br>
+
 				
 				@if(Auth::check() && Auth::user()->name == "nikol")
 					<a href="{{ url('lockers_add') }}" class="btn btn-danger btn-xs ">Add new locker to list</a>

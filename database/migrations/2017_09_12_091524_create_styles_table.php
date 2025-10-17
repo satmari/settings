@@ -31,6 +31,11 @@ class CreateStylesTable extends Migration {
 			$table->string('adeziv')->nullable();
 
 			$table->string('status')->nullable();
+
+			$table->string('paspul')->nullable();
+			$table->string('material_2nd')->nullable();
+			$table->string('bonding')->nullable();
+			$table->string('preproduction')->nullable();
 			
 			$table->timestamps();
 		});

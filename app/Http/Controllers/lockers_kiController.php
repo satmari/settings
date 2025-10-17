@@ -6,29 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-use App\lockers;
+use App\lockers_ki;
 use App\lockers_log;
 
 use DB;
 
 use Session;
 
-class lockersController extends Controller {
+class lockers_kiController extends Controller {
 
-	public function lockers() {
+	public function lockers_ki() {
 		//
-		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM lockers ORDER BY id asc"));
-		return view('Lockers.index', compact('data'));
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM lockers_ki ORDER BY id asc"));
+		return view('Lockers_ki.index', compact('data'));
 	}
 
-	public function lockers_empty() {
+	public function lockers_ki_empty() {
 		//
-		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM lockers WHERE r_number = '' OR r_number is null 
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM lockers_ki WHERE r_number = '' OR r_number is null 
 			ORDER BY id asc"));
-		return view('Lockers.index_empty', compact('data'));
+		return view('Lockers_ki.index_empty', compact('data'));
 	}
 
-	public function lockers_scan() {
+	public function lockers_ki_scan() {
 
 		$session = Session::getId();
 
@@ -37,11 +37,11 @@ class lockersController extends Controller {
 		  WHERE [FlgAct] = '1' and [BadgeNum] like 'R%'
 		  ORDER BY BadgeNum asc "));
 
-		return view('Lockers.lockers_scan', compact('operators'));
+		return view('Lockers_ki.lockers_scan', compact('operators'));
 
 	}
 	
-	public function locker_scan_rnumber(Request $request) {
+	public function locker_ki_scan_rnumber(Request $request) {
 		
 		dd('Trenutno je zaustavljena opcija skeniranja, zovite Marijanu');
 		//
@@ -72,25 +72,25 @@ class lockersController extends Controller {
 				  ORDER BY BadgeNum asc "));
 
 			$msge = 'Operator not found with this r number.';
-			return view('Lockers.lockers_scan', compact('operators','msge'));
+			return view('Lockers_ki.lockers_scan', compact('operators','msge'));
 		}
 		// dd($employee);
 
 		
 
 		$locker_number = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT number
-		  FROM lockers
+		  FROM lockers_ki
 		  ORDER BY number asc "));
 
 		$locker_place = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT place
-		  FROM lockers
+		  FROM lockers_ki
 		  ORDER BY place asc "));
 
-		return view('Lockers.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place'));
+		return view('Lockers_ki.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place'));
 
 	}
 
-	public function locker_scan_locker(Request $request) {
+	public function locker_ki_scan_locker(Request $request) {
 		
 		dd('Trenutno je zaustavljena opcija skeniranja, zovite Marijanu');
 		//
@@ -108,7 +108,7 @@ class lockersController extends Controller {
 		$locker = $input['place'].'-'.$input['number'];
 
 		$check = DB::connection('sqlsrv')->select(DB::raw("SELECT *
-		  FROM lockers
+		  FROM lockers_ki
 		  WHERE locker = '".$locker."' AND (r_number != '' AND r_number is not null) "));
 		// dd($check);
 
@@ -155,22 +155,22 @@ class lockersController extends Controller {
 
 				$msg = 'Succesfuly saved in log';
 				$msgs = 1;
-				return view('Lockers.lockers_scan', compact('operators','msgs','msg'));
+				return view('Lockers_ki.lockers_scan', compact('operators','msgs','msg'));
 
 
 			} else {
 				// dd('without save - error');
 
 				$locker_number = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT number
-				  	FROM lockers
+				  	FROM lockers_ki
 				 	 ORDER BY number asc "));
 
 				$locker_place = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT place
-				  	FROM lockers
+				  	FROM lockers_ki
 				 	ORDER BY place asc "));
 
 				$msge = 'Error: Locker already assigned !!! Choose correct locker for employee '.$employee;
-				return view('Lockers.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place','msge'));
+				return view('Lockers_ki.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place','msge'));
 			    
 			}
 
@@ -178,23 +178,23 @@ class lockersController extends Controller {
 		} else {
 			// dd('ready to asign employee  - success saved');
 
-			$table = Lockers::where('locker', $locker)->first();
+			$table = Lockers_ki::where('locker', $locker)->first();
 
 			if (!$table) {
 
 			    // Not found → return custom error message
 
 			    $locker_number = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT number
-				  	FROM lockers
+				  	FROM lockers_ki
 				 	 ORDER BY number asc "));
 
 				$locker_place = DB::connection('sqlsrv')->select(DB::raw("SELECT DISTINCT place
-				  	FROM lockers
+				  	FROM lockers_ki
 				 	ORDER BY place asc "));
 				
 			    $msge = 'Error: Locker does not exist in table !!!';
 
-			    return view('Lockers.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place','msge'));
+			    return view('Lockers_ki.locker_scan_rnumber', compact('r_number','employee','locker_number','locker_place','msge'));
 			}
 
 			$table->r_number = $r_number;
@@ -209,7 +209,7 @@ class lockersController extends Controller {
 
 			$msg = 'Succesfuly saved';
 			$msgs = 1;
-			return view('Lockers.lockers_scan', compact('operators','msgs','msg'));
+			return view('Lockers_ki.lockers_scan', compact('operators','msgs','msg'));
 
 		}
 		
@@ -217,13 +217,13 @@ class lockersController extends Controller {
 	}
 
 
-	public function lockers_add () {
+	public function lockers_ki_add () {
 
-		return view('Lockers.lockers_add');
+		return view('Lockers_ki.lockers_add');
 
 	}
 
-	public function lockers_add_post (Request $request) {
+	public function lockers_ki_add_post (Request $request) {
 		
 		//
 		$session = Session::getId();
@@ -235,7 +235,7 @@ class lockersController extends Controller {
 		$locker = $input['place'].'-'.$input['number'];
 
 		$check = DB::connection('sqlsrv')->select(DB::raw("SELECT *
-		  FROM lockers
+		  FROM lockers_ki
 		  WHERE locker = '".$locker."' "));
 
 
@@ -246,7 +246,7 @@ class lockersController extends Controller {
 		}
 
 
-	    $table = new lockers;
+	    $table = new Lockers_ki;
 	    $table->locker = $locker;
 	    $table->number = $number;
 	    $table->place = $place;
@@ -255,15 +255,15 @@ class lockersController extends Controller {
 		$table->save();
 
 
-		return redirect('lockers');
+		return redirect('lockers_ki');
 	}
 
 
-	public function locker_edit($id) {
+	public function locker_ki_edit($id) {
 
 		// dd($id);
 		$locker_info = DB::connection('sqlsrv')->select(DB::raw("SELECT *
-			  FROM lockers
+			  FROM lockers_ki
 			  WHERE id = '".$id."' "));
 		// dd($locker_info);
 
@@ -272,17 +272,17 @@ class lockersController extends Controller {
 
 
 
-		$data = DB::table('lockers')->where('id', $id)->first();
+		$data = DB::table('lockers_ki')->where('id', $id)->first();
 
 	    $operators = DB::connection('sqlsrv2')->select(DB::raw("SELECT [BadgeNum] as r_number,[Name] as employee
 		  FROM [BdkCLZG].[dbo].[WEA_PersData]
 		  WHERE [FlgAct] = '1' and [BadgeNum] like 'R%'
 		  ORDER BY BadgeNum asc "));
 
-	    return view('Lockers.locker_edit', compact('data','operators','id'));
+	    return view('Lockers_ki.locker_edit', compact('data','operators','id'));
 	}
 
-	public function locker_edit_post(Request $request) {
+	public function locker_ki_edit_post(Request $request) {
 		
 		//
 		$input = $request->all();
@@ -305,25 +305,25 @@ class lockersController extends Controller {
 
 		// dd($employee);
 
-		$table = lockers::where('id', $id)->firstOrFail();
+		$table = Lockers_ki::where('id', $id)->firstOrFail();
 		$table->r_number = $r_number;
 		$table->employee = $employee;
 		$table->save();
 
-		return redirect('lockers');
+		return redirect('lockers_ki');
 
 	}
 
-	public function remove_employee($id) {
+	public function remove_k_employee($id) {
 
 		// dd($id);
 
-		$table = lockers::where('id', $id)->firstOrFail();
+		$table = Lockers_ki::where('id', $id)->firstOrFail();
 		$table->r_number = '';
 		$table->employee = '';
 		$table->save();
 
-		return redirect('lockers');
+		return redirect('lockers_ki');
 	}
 	
 }

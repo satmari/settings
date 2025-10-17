@@ -35,6 +35,26 @@
 					{!! Form::text('order_type', null, ['class' => 'form-control']) !!}
 				</div>
 
+				<div class="panel-body">
+				<p>Paspul: </p>
+					{!! Form::text('paspul', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
+				<p>2nd material Type: </p>
+					{!! Form::text('material_2nd', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
+				<p>Bonding: </p>
+					{!! Form::text('bonding', null, ['class' => 'form-control']) !!}
+				</div>
+
+				<div class="panel-body">
+				<p>Preproduction: </p>
+					{!! Form::text('preproduction', null, ['class' => 'form-control']) !!}
+				</div>
+
 
 				<div class="panel-body">
 					{!! Form::submit('Confirm', ['class' => 'btn btn-success btn-lg center-block']) !!}

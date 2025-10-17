@@ -51,12 +51,16 @@
 				           <th data-sortable="true">Cluster</th>
 				           <th data-sortable="true">Order Type</th>
 				           <th data-sortable="true">FG family</th>
-				           <th data-sortable="true">Spreading method</th>
-				           <th data-sortable="true">Standard BB qty</th>
+				           <th data-sortable="true">Sp method</th>
+				           <th data-sortable="true">St BB qty</th>
 				           <th data-sortable="true">Pad print</th>
 				           <th data-sortable="true">Bansek</th>
 				           <th data-sortable="true">Adeziv</th>
 				           <th data-sortable="true">Status</th>
+				           <th data-sortable="true">Paspul</th>
+				           <th data-sortable="true">2nd mat</th>
+				           <th data-sortable="true">Bonding</th>
+				           <th data-sortable="true">Preprod</th>
 				           <th data-sortable="true">Image file</th>
 				           
 				           <th></th>
@@ -83,6 +87,10 @@
 				        	<td>{{ $d->bansek}} </td>
 				        	<td>{{ $d->adeziv}} </td>
 
+				        	<td>{{ $d->paspul}} </td>
+				        	<td>{{ $d->material_2nd}} </td>
+				        	<td>{{ $d->bonding}} </td>
+				        	<td>{{ $d->preproduction}} </td>
 				        	<td>{{ $d->status}} </td>
 				        	<td>{{ $d->image}} </td>
 				        	<td> <a href="{{ url('/public/storage/StyleImages/'.$d->image ) }}" target="_blank" onClick="javascript:window.open('{{ url('/public/storage/StyleImages/'.$d->image ) }}','Windows','width=650,height=350,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,directories=no,status=no');return false" ) >show image</a> </td>

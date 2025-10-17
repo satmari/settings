@@ -63,6 +63,23 @@
 					</div>
 
 					<div class="panel-body">
+						<p>Paspul:</p>
+	               		{!! Form::input('paspul', 'paspul', $data->paspul, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>2nd material:</p>
+	               		{!! Form::input('material_2nd', 'material_2nd', $data->material_2nd, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Bonding:</p>
+	               		{!! Form::input('bonding', 'bonding', $data->bonding, ['class' => 'form-control']) !!}
+					</div>
+					<div class="panel-body">
+						<p>Preproduction:</p>
+	               		{!! Form::input('preproduction', 'preproduction', $data->preproduction, ['class' => 'form-control']) !!}
+					</div>
+
+					<div class="panel-body">
 						<p>Status:</p>
 	               		{!! Form::select('status', array(''=>'','ACTIVE'=>'ACTIVE','INACTIVE'=>'INACTIVE'), $data->status, array('class' => 'form-control')); !!} 
 					</div>

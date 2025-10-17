@@ -55,6 +55,18 @@ class Change extends Migration {
 			
 		});
 
+		Schema::table('styles', function(Blueprint $table)
+		{
+			// $table->string('paspul')->nullable();
+			// $table->string('material_2nd')->nullable();
+			// $table->string('bonding')->nullable();
+			// $table->string('preproduction')->nullable();
+			
+		});
+		
+
+
+
 	}
 
 	/**

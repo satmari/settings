@@ -41,6 +41,10 @@ class StylesController extends Controller {
 			$table->cutting_smv = $input['cutting_smv'];
 			$table->cluster = $input['cluster'];
 			$table->order_type = $input['order_type'];
+			$table->paspul = $input['paspul'];
+			$table->material_2nd = $input['material_2nd'];
+			$table->bonding = $input['bonding'];
+			$table->preproduction = $input['preproduction'];
 			
 			$table->save();
 		}
@@ -81,6 +85,10 @@ class StylesController extends Controller {
 			$table->bansek = $input['bansek'];
 			$table->adeziv = $input['adeziv'];
 			$table->status = $input['status'];
+			$table->paspul = $input['paspul'];
+			$table->material_2nd = $input['material_2nd'];
+			$table->bonding = $input['bonding'];
+			$table->preproduction = $input['preproduction'];
 			
 			$table->save();
 		}

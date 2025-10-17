@@ -70,6 +70,10 @@ class ImportstyleController extends Controller {
 								$table->pad_print = $row['pad_print'];
 								$table->bansek = $row['bansek'];
 								$table->adeziv = $row['adeziv'];
+								$table->paspul = $row['paspul'];
+								$table->material_2nd = $row['material_2nd'];
+								$table->bonding = $row['bonding'];
+								$table->preproduction = $row['preproduction'];
 
 								$table->save();
 							}
@@ -97,6 +101,10 @@ class ImportstyleController extends Controller {
 							$table->pad_print = $row['pad_print'];
 							$table->bansek = $row['bansek'];
 							$table->adeziv = $row['adeziv'];
+							$table->paspul = $row['paspul'];
+							$table->material_2nd = $row['material_2nd'];
+							$table->bonding = $row['bonding'];
+							$table->preproduction = $row['preproduction'];
 
 							$table->save();
 

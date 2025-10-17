@@ -358,18 +358,29 @@ Route::get('net_weight_save', 'net_weightController@save_in_table');
 Route::get('net_weight_int', 'net_weightController@index_int');
 
 
+// Lockers Subotica
 Route::get('lockers', 'lockersController@lockers');
+Route::get('lockers_empty', 'lockersController@lockers_empty');
 Route::get('lockers_scan', 'lockersController@lockers_scan');
 Route::post('locker_scan_rnumber', 'lockersController@locker_scan_rnumber');
 Route::post('locker_scan_locker', 'lockersController@locker_scan_locker');
-
 Route::get('lockers_add', 'lockersController@lockers_add');
 Route::post('lockers_add_post', 'lockersController@lockers_add_post');
-
 Route::get('locker_edit/{id}', 'lockersController@locker_edit');
 Route::post('locker_edit_post', 'lockersController@locker_edit_post');
-
 Route::get('remove_employee/{id}', 'lockersController@remove_employee');
+
+// Lockers Kikinda
+Route::get('lockers_ki', 'lockers_kiController@lockers_ki');
+Route::get('lockers_ki_empty', 'lockers_kiController@lockers_ki_empty');
+Route::get('lockers_ki_scan', 'lockers_kiController@lockers_ki_scan');
+Route::post('locker_ki_scan_rnumber', 'lockers_kiController@locker_ki_scan_rnumber');
+Route::post('locker_ki_scan_locker', 'lockers_kiController@locker_ki_scan_locker');
+Route::get('lockers_ki_add', 'lockers_kiController@lockers_ki_add');
+Route::post('lockers_ki_add_post', 'lockers_kiController@lockers_ki_add_post');
+Route::get('locker_ki_edit/{id}', 'lockers_kiController@locker_ki_edit');
+Route::post('locker_ki_edit_post', 'lockers_kiController@locker_ki_edit_post');
+Route::get('remove_k_employee/{id}', 'lockers_kiController@remove_k_employee');
 
 // Z radnice
 Route::get('zradnice', 'zradniceController@zradnice');

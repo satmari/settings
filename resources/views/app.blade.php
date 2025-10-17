@@ -60,7 +60,8 @@
 					<li><a href="{{ url('/net_weight') }}">FG net weight</a></li>
 					<li><a href="{{ url('/sap_inventory') }}">SAP Inventory</a></li>
 					<li><a href="{{ url('/sap_materials') }}">SAP Materials</a></li>
-					<li><a href="{{ url('/lockers') }}">Lockers</a></li>
+					<li><a href="{{ url('/lockers') }}">Lockers SU</a></li>
+					<li><a href="{{ url('/lockers_ki') }}">Lockers KI</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -150,15 +151,14 @@ $(function() {
 
 
 	// $('#myTabs a').click(function (e) {
- //  		e.preventDefault()
- //  		$(this).tab('show')
+ 	//  		e.preventDefault()
+ 	//  		$(this).tab('show')
 	// });
 	// $('#myTabs a:first').tab('show') // Select first tab
 
 	// $(function() {
- //    	$( "#datepicker" ).datepicker();
- //  	});
-
+ 	//    	$( "#datepicker" ).datepicker();
+ 	//  	});
   	
 	$('#sort').bootstrapTable({
     	
