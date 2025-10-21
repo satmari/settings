@@ -81,7 +81,7 @@
 
 					<div class="panel-body">
 						<p>Status:</p>
-	               		{!! Form::select('status', array(''=>'','ACTIVE'=>'ACTIVE','INACTIVE'=>'INACTIVE'), $data->status, array('class' => 'form-control')); !!} 
+	               		{!! Form::select('status', array(''=>'','ACTIVE'=>'ACTIVE','NOT IN USE'=>'NOT IN USE'), $data->status, array('class' => 'form-control')); !!} 
 					</div>
 
 

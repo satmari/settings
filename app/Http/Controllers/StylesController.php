@@ -106,5 +106,41 @@ class StylesController extends Controller {
 	}
 
 
+	public function update_status_for_styles () {
+
+		$styles = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM styles ORDER BY id asc"));
+
+		foreach ($styles as $st) {
+			
+
+			$open_po = DB::connection('sqlsrv6')->select(DB::raw("SELECT 
+				      *
+				FROM [posummary].[dbo].[pro]
+				WHERE style = '".$st->style."'
+				AND status_int = 'Open'
+				 "));
+			// dd($open_po);
+
+			if (isset($open_po[0]->style)) {
+				// dd($open_po[0]->style);
+
+				$table = Styles::where('style', $st->style)->firstOrFail();
+				$table->status = 'ACTIVE';
+				$table->save();
+
+			} else {
+
+				$table = Styles::where('style', $st->style)->firstOrFail();
+				$table->status = 'NOT IN USE';
+				$table->save();
+			}
+
+		}
+
+		$data = DB::connection('sqlsrv')->select(DB::raw("SELECT * FROM styles ORDER BY id asc"));
+		return view('Styles.index', compact('data'));
+
+	}
+
 
 }

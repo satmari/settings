@@ -29,10 +29,14 @@ Route::post('/insert_style', 'StylesController@insert_style');
 Route::get('/edit_style/{id}', 'StylesController@edit_style');
 Route::post('/update_style/{id}', 'StylesController@update_style');
 Route::get('/upload_image/{id}', 'StylesController@upload_image');
+Route::get('/update_status_for_styles', 'StylesController@update_status_for_styles');
+
 Route::post('/upload_style_image/', 'ImportImageController@upload_style_image');
 
 Route::get('/import_styles', 'ImportstyleController@index');
 Route::post('/postImportStyle', 'ImportstyleController@postImportStyle');
+
+
 
 // Styles extra
 Route::get('/styles_extra', 'Styles_extraController@index');
