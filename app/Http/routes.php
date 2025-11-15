@@ -35,6 +35,7 @@ Route::post('/upload_style_image/', 'ImportImageController@upload_style_image');
 
 Route::get('/import_styles', 'ImportstyleController@index');
 Route::post('/postImportStyle', 'ImportstyleController@postImportStyle');
+Route::post('/postImportStyle1', 'ImportstyleController@postImportStyle1');
 
 
 

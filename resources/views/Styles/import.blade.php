@@ -13,7 +13,7 @@
 
 					<div class="panel-heading" style="">Import Style table</div>
 					
-						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportstyleController@postImportStyle'] ]) !!}
+						{!! Form::open(['files'=>'True', 'method'=>'POST', 'action'=>['ImportstyleController@postImportStyle1'] ]) !!}
 							<div class="panel-body">
 								{!! Form::file('file', ['class' => 'center-block']) !!}
 							</div>
